@@ -86,6 +86,8 @@ call dein#add('hashivim/vim-packer')
 
 call dein#add('daisuzu/facebook.vim')
 
+call dein#add('JamshedVesuna/vim-markdown-preview')
+
 " Required:
 call dein#end()
 
@@ -385,3 +387,9 @@ nnoremap <leader>p :cprevious<cr>
 " ------------
 let g:openbrowser_use_vimproc = 1
 nmap <localleader>o <Plug>(openbrowser-open)
+
+" Markdown Preview
+" ----------------
+let vim_markdown_preview_github=1
+let vim_markdown_preview_use_xdg_open=1
+
