@@ -1,0 +1,387 @@
+
+" Move Backup Files to ~/.vim/sessions
+" ------------------------------------
+let backupdir=g:vimdir . "sessions"
+let dir=g:vimdir . "sessions"
+
+exec "set runtimepath^=" . g:vimdir . "dein/repos/github.com/Shougo/dein.vim"
+
+set nocompatible
+
+filetype off                  " required
+
+" Leader
+let mapleader = "ü"
+let maplocalleader = "ö"
+
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
+endif
+
+let g:dein#install_process_timeout=960
+
+" Required:
+call dein#begin(expand('~/.vim/dein'))
+
+" Let dein manage dein
+" Required:
+call dein#add('Shougo/dein.vim')
+
+" call dein#add('Shougo/vimproc.vim', { 'build' : 'make -f make_unix.mak' })
+call dein#add('Shougo/vimproc.vim', { 'build' : 'make' })
+call dein#add('sheerun/vim-polyglot')
+call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+
+call dein#add('Shougo/unite.vim')
+
+call dein#add('davidhalter/jedi-vim')
+call dein#add('tpope/vim-fugitive')
+call dein#add('gregsexton/gitv')
+call dein#add('scrooloose/syntastic')
+call dein#add('altercation/vim-colors-solarized')
+
+call dein#add('Shougo/vimshell')
+
+call dein#add('chrisbra/SudoEdit.vim')
+" call dein#add('vim-scripts/sudo.vim')
+call dein#add('Shougo/unite-sudo')
+call dein#add('Shougo/neossh.vim')
+call dein#add('Shougo/vimfiler.vim')
+call dein#add('mattn/webapi-vim')
+call dein#add('tyru/open-browser.vim')
+call dein#add('timcharper/textile.vim')
+call dein#add('vim-scripts/TwitVim')
+call dein#add('valloric/YouCompleteMe', { 'build' : 'git submodule update --init --recursive; ./install.py --clang-completer --system-libclang' })
+
+"call dein#add('felipec/notmuch-vim')
+call dein#add('daisuzu/unite-notmuch')
+call dein#add('h1mesuke/unite-outline')
+call dein#add('guyzmo/notmuch-abook')
+call dein#add('fweep/vim-tabber')
+
+call dein#add('bling/vim-airline')
+call dein#add('airblade/vim-gitgutter')
+call dein#add('mhinz/vim-signify')
+call dein#add('chrisbra/changesPlugin')
+
+call dein#add('bogado/file-line')
+
+" Python2 only
+call dein#add('etnadji/vim-epub')
+
+call dein#add('benjifisher/matchit.zip', { 'on_map': ['nxo', '%', 'g%'] })
+call dein#add('tell-k/vim-autopep8')
+
+call dein#add('vim-latex/vim-latex')
+call dein#add('tpope/vim-commentary')
+
+call dein#add('okcompute/vim-python-tests-runner')
+call dein#add('tpope/vim-dispatch')
+call dein#add('tpope/vim-eunuch')
+call dein#add('reinh/vim-makegreen')
+
+call dein#add('hashivim/vim-vagrant')
+call dein#add('hashivim/vim-packer')
+
+call dein#add('daisuzu/facebook.vim')
+
+" Required:
+call dein#end()
+
+" Required:
+filetype plugin indent on
+
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
+
+"End dein Scripts-------------------------
+
+" Airline:
+set laststatus=2 " Always display the statusline in all windows
+let g:airline_powerline_fonts = 1
+let g:airline_detect_modified=1
+let g:airline_detect_paste=1
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#virtualenv#enabled = 1
+if has("gui_running")
+  set guifont=Monaco\ for\ Powerline\ 8
+  "  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline 8
+endif
+
+let g:unite_source_menu_menus = {}
+let g:unite_source_menu_menus.shell = {
+  \     'description' : 'Test menu3',
+  \ }
+let g:unite_source_menu_menus.shell.command_candidates = [
+  \   ['bash', 'VimShellInteractive bash'],
+  \   ['ipython', 'VimShellInteractive ipython'],
+  \ ]
+
+nnoremap <silent> sm  :<C-u>Unite menu:test<CR>
+
+let g:unite_source_menu_menus.git = {
+  \ 'description' : 'Git repositories',
+  \}
+
+let g:unite_source_menu_menus.git.command_candidates = [
+  \['▷ tig                                                        ⌘ ,gt',
+    \'normal ,gt'],
+  \['▷ git status       (Fugitive)                                ⌘ ,gs',
+    \'Gstatus'],
+  \['▷ git diff         (Fugitive)                                ⌘ ,gd',
+    \'Gdiff'],
+  \['▷ git commit       (Fugitive)                                ⌘ ,gc',
+    \'Gcommit'],
+  \['▷ git log          (Fugitive)                                ⌘ ,gl',
+    \'exe "silent Glog | Unite quickfix"'],
+  \['▷ git blame        (Fugitive)                                ⌘ ,gb',
+    \'Gblame'],
+  \['▷ git stage        (Fugitive)                                ⌘ ,gw',
+    \'Gwrite'],
+  \['▷ git checkout     (Fugitive)                                ⌘ ,go',
+    \'Gread'],
+  \['▷ git rm           (Fugitive)                                ⌘ ,gr',
+    \'Gremove'],
+  \['▷ git mv           (Fugitive)                                ⌘ ,gm',
+    \'exe "Gmove " input("destino: ")'],
+  \['▷ git push         (Fugitive, salida por buffer)             ⌘ ,gp',
+    \'Git! push'],
+  \['▷ git pull         (Fugitive, salida por buffer)             ⌘ ,gP',
+    \'Git! pull'],
+  \['▷ git prompt       (Fugitive, salida por buffer)             ⌘ ,gi',
+    \'exe "Git! " input("comando git: ")'],
+  \['▷ git cd           (Fugitive)',
+    \'Gcd'],
+\]
+
+
+nnoremap <silent>[menu]g :Unite -silent -start-insert menu:git<CR>
+
+" Less Menus
+" ----------
+" This must happen before the syntax system is enabled
+" aunmenu Help.
+" aunmenu Window.
+let no_buffers_menu = 1
+set mousemodel=popup
+
+set history=50		" keep 50 lines of command line history
+set showcmd		" display incomplete commands
+set incsearch		" do incremental searching
+
+" Window Decorations
+" ------------------
+" activate wildmenu, permanent ruler and disable Toolbar, and add line
+" highlighting as well as numbers.
+" And disable the sucking pydoc preview window for the omni completion
+" also highlight current line and disable the blinking cursor.
+set wildmenu
+set ruler
+set guioptions-=T
+" set completeopt-=preview " let's fool around with completion
+
+if has("autocmd")
+  au!
+  " My PC is fast enough, do syntax highlight syncing from start
+  autocmd BufEnter * :syntax sync fromstart
+endif
+
+" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
+" let &guioptions = substitute(&guioptions, "t", "", "g")
+
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+
+  filetype on
+
+" Enable file type detection.
+" Use the default filetype settings, so that mail gets 'tw' set to 72,
+  " 'cindent' is on in C files, etc.
+  " Also load indent files, to automatically do language-dependent indenting.
+  filetype plugin indent on
+
+  " Put these in an autocmd group, so that we can delete them easily.
+  augroup vimrcEx
+    au!
+
+    " For all text files set 'textwidth' to 78 characters.
+    autocmd FileType text setlocal textwidth=78
+
+    " When editing a file, always jump to the last known cursor position.
+    " Don't do it when the position is invalid or when inside an event handler
+    " (happens when dropping a file on gvim).
+    " Also don't do it when the mark is in the first line, that is the default
+    " position when opening a file.
+    autocmd BufReadPost *
+      \ if line("'\"") > 1 && line("'\"") <= line("$") |
+      \   exe "normal! g`\"" |
+      \ endif
+  augroup END
+
+  " Highlight NBSP
+  " --------------
+  "  wanna see them
+  function! HighlightNonBreakingSpace()
+  syn match suckingNonBreakingSpace " " containedin=ALL
+  hi suckingNonBreakingSpace guibg=#157249
+  endfunction
+  autocmd BufEnter * :call HighlightNonBreakingSpace()
+
+  augroup lilypond
+    autocmd FileType lilypond compiler lilypond
+    autocmd Filetype lilypond setlocal makeprg=lilycompile.sh
+    autocmd Filetype lilypond setlocal shiftwidth=4
+  augroup END
+
+  augroup python
+    autocmd FileType python compiler runner
+  augroup END
+else
+
+  set autoindent  " always set autoindenting on
+
+endif " has("autocmd")
+
+" Indention-Options
+" General
+set tabstop=4
+set shiftwidth=4
+set shiftround
+set expandtab
+"set smartindent
+
+" use 256 colors in Console mode if we think the terminal supports it
+if &term =~? 'mlterm\|xterm'
+  set t_Co=256
+endif
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+  syntax on
+  set hlsearch
+endif
+
+" Solarized
+let g:solarized_termcolors=256 " color depth
+let g:solarized_termtrans=0 " 1|0 background transparent
+let g:solarized_bold=1 " 1|0 show bold fonts
+let g:solarized_italic=1 " 1|0 show italic fonts
+let g:solarized_underline=1 " 1|0 show underlines
+let g:solarized_contrast="high" " normal|high|low contrast
+let g:solarized_visibility="high" " normal|high|low effect on whitespace characters
+set background=dark
+colorscheme solarized
+
+" Vim Tabber
+set tabline=%!tabber#TabLine()
+set guioptions-=e
+
+" Spell-checking
+" --------------
+setlocal nospell
+
+nnoremap <localleader>n :setlocal nospell<cr>
+nnoremap <localleader>d :setlocal spell spelllang=de<cr>
+nnoremap <localleader>u :setlocal spell spelllang=en_us<cr>
+nnoremap <localleader>b :setlocal spell spelllang=en_gb<cr>
+nnoremap <localleader>f :setlocal spell spelllang=fr<cr>
+
+" Python
+" ------
+" let g:python_tests_runner="pytest"
+let g:python_tests_runner="nose"
+let g:jedi#completions_enabled = 0
+let g:jedi#goto_command = "<leader>g"
+let g:jedi#goto_assignments_command = "<leader>a"
+let g:jedi#goto_definitions_command = "<leader>d"
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>u"
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#rename_command = "<leader>r"
+
+" Copied from azyr
+ " ==== Ignoring certain errors/warnings ====
+" - Pylint is checking the modules against python2, don't know how to change that.
+" - Disabling import checks.
+" - Disabling 80 character width style warning.
+" - I don't care about missing module docstrings.
+" - Don't complain if I use dashes in my filenames for example (invalid-name).
+" - Parens are neccessary after print keyword in python3.
+" - Ignored too-many-* warnings make no sense to me.
+" - ConnectionResetError is only on python3 namespace.
+" - I like to use strings as comments (pointless-string-statements).
+" - too-few-public-methods makes no sense.
+" - global-variable-not-assigned does not detect if some properties of the variable are changed.
+" - Python 3 automatically supports unicode (invalid-encoded-data)
+" - [syntax-error] pylint gets python3 syntax wrong sometimes
+" - [-bad-builtin] hardly makes any sense??
+" - [-star-args] why???
+" - [-global-statements] i do like to use them sometimes ...
+" - FileNotFoundError is introduced in python3 i believe
+let pylint_ignore_regexp =  '\(too-many-public-methods\)'
+  " \'\(invalid-name\|Missing module docstring\|line-too-long\|no-name-in-module\|
+  " \import-error\|redefined-outer-name\|no-member\|too-many-instance-attributes\|
+  " \too-many-locals\|too-many-branches\|too-many-statements\|
+  " \Unnecessary parens after .print. keyword\|Undefined variable .ConnectionResetError\|
+  " \pointless-string-statement\|too-few-public-methods\|
+  " \global-variable-not-assigned\|invalid-encoded-data\|
+  " \Used builtin function .filter.\|Used builtin function .map.\|
+  " \syntax-error\|bad-builtin\|star-args\|global-statement\|
+  " \FileNotFoundError\)'
+" E501 = 80 character width style warning
+" ConnectionResetError is only on python3 namespace
+" E302 => sometimes i like to use nested functions
+"         (2 lines warning not appropriate there)
+" E301 => 1 lines warning inappropriate when using nested function
+let flake8_ignore_regexp =
+  \'\(E501\|undefined name .ConnectionResetError\|E302\|E301\)'
+" Ignore 80 character width style warning
+let g:syntastic_python_flake8_quiet_messages = { 'regex': flake8_ignore_regexp }
+let g:syntastic_python_pylint_quiet_messages = { 'regex': pylint_ignore_regexp }
+" Programming in General
+nnoremap <localleader>r :MakeGreen<cr>
+nnoremap <leader>b :Unite buffer<cr>
+nnoremap <leader>m :Unite bookmark<cr>
+nnoremap <leader>M :UniteBookmarkAdd %<cr>
+
+" Unite outline
+" -------------
+if exists($XDG_CACHE_HOME)
+  let g:unite_data_directory = $XDG_CACHE_HOME + "/unite"
+else
+  let g:unite_data_directory = $HOME + ".cache/unite"
+endif
+
+let g:unite_abbr_highlight = 'Normal'
+let s:default_highlight = {
+  \ 'comment' : 'Comment',
+  \ 'expanded': 'Constant',
+  \ 'function': 'Function',
+  \ 'id'      : 'Special',
+  \ 'macro'   : 'Macro',
+  \ 'method'  : 'Function',
+  \ 'normal'  : g:unite_abbr_highlight,
+  \ 'package' : g:unite_abbr_highlight,
+  \ 'special' : 'Macro',
+  \ 'type'    : 'Type',
+  \ 'level_1' : 'Type',
+  \ 'level_2' : 'PreProc',
+  \ 'level_3' : 'Identifier',
+  \ 'level_4' : 'Constant',
+  \ 'level_5' : 'Special',
+  \ 'level_6' : g:unite_abbr_highlight,
+  \ 'parameter_list': g:unite_abbr_highlight,
+  \ }
+nnoremap <leader>o :Unite outline<cr>
+
+nnoremap <leader>n :cnext<cr>
+nnoremap <leader>p :cprevious<cr>
+
+" Open Browser
+" ------------
+let g:openbrowser_use_vimproc = 1
+nmap <localleader>o <Plug>(openbrowser-open)
