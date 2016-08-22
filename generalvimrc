@@ -52,7 +52,7 @@ call dein#add('mattn/webapi-vim')
 call dein#add('tyru/open-browser.vim')
 call dein#add('timcharper/textile.vim')
 call dein#add('vim-scripts/TwitVim')
-call dein#add('valloric/YouCompleteMe', { 'build' : 'git submodule update --init --recursive; ./install.py --clang-completer --system-libclang' })
+call dein#add('valloric/YouCompleteMe', { 'build' : 'git submodule update --init --recursive; ./install.py --clang-completer' })
 
 "call dein#add('felipec/notmuch-vim')
 call dein#add('daisuzu/unite-notmuch')
