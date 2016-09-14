@@ -87,6 +87,7 @@ call dein#add('hashivim/vim-packer')
 call dein#add('daisuzu/facebook.vim')
 
 call dein#add('JamshedVesuna/vim-markdown-preview')
+call dein#add('vim-ruby/vim-ruby'
 
 " Required:
 call dein#end()
