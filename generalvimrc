@@ -77,6 +77,7 @@ call dein#add('vim-latex/vim-latex')
 call dein#add('tpope/vim-commentary')
 
 call dein#add('okcompute/vim-python-tests-runner')
+call dein#add('5long/pytest-vim-compiler')
 call dein#add('tpope/vim-dispatch')
 call dein#add('tpope/vim-eunuch')
 call dein#add('reinh/vim-makegreen')
