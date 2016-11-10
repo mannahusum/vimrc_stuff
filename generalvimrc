@@ -120,6 +120,17 @@ let g:jedi#popup_select_first = 0
 " use TAB completion neocomplete
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
+" open-browser
+let g:openbrowser_browser_commands =[
+		\ {"name": "xdg-open",
+		\  "args": ["{browser}", "{uri}"]},
+		\ {"name": "firefox",
+		\  "args": ["{browser}", "{uri}"]},
+		\ {"name": "w3m",
+		\  "args": ["{browser}", "{uri}"]},
+		\]
+let g:openbrowser_use_vimproc = 1
+
 " Airline:
 " --------
 set laststatus=2 " Always display the statusline in all windows
@@ -132,6 +143,15 @@ if has("gui_running")
   set guifont=Monaco\ for\ Powerline\ 8
   "  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline 8
 endif
+" configure the title text for quickfix buffers >
+let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
+" configure the title text for location list buffers >
+let g:airline#extensions#quickfix#location_text = 'Location'
+" enable fugitive integration
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#branch#format = 2
+let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long', 'mixed-indent-file' ]
 
 let g:unite_source_menu_menus = {}
 let g:unite_source_menu_menus.shell = {
