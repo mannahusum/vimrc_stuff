@@ -87,6 +87,10 @@ call dein#add('hashivim/vim-packer')
 call dein#add('daisuzu/facebook.vim')
 
 call dein#add('JamshedVesuna/vim-markdown-preview')
+call dein#add('mrtazz/simplenote.vim')
+
+" Farbschema für Leonie
+call dein#add('jonathanfilip/vim-lucius')
 
 " Required:
 call dein#end()
