@@ -30,7 +30,7 @@ call dein#add('Shougo/dein.vim')
 
 " call dein#add('Shougo/vimproc.vim', { 'build' : 'make -f make_unix.mak' })
 call dein#add('Shougo/vimproc.vim', { 'build' : 'make' })
-call dein#add('sheerun/vim-polyglot')
+" call dein#add('sheerun/vim-polyglot')
 call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
 call dein#add('Shougo/unite.vim')
@@ -52,7 +52,10 @@ call dein#add('mattn/webapi-vim')
 call dein#add('tyru/open-browser.vim')
 call dein#add('timcharper/textile.vim')
 call dein#add('vim-scripts/TwitVim')
-call dein#add('valloric/YouCompleteMe', { 'build' : 'git submodule update --init --recursive; ./install.py --clang-completer' })
+" call dein#add('valloric/YouCompleteMe', { 'build' : 'git submodule update --init --recursive; ./install.py --clang-completer' })
+call dein#add('Shougo/neocomplete.vim')
+call dein#add('Shougo/neosnippet')
+call dein#add('Shougo/neosnippet-snippets')
 
 "call dein#add('felipec/notmuch-vim')
 call dein#add('daisuzu/unite-notmuch')
@@ -77,6 +80,7 @@ call dein#add('vim-latex/vim-latex')
 call dein#add('tpope/vim-commentary')
 
 call dein#add('okcompute/vim-python-tests-runner')
+call dein#add('5long/pytest-vim-compiler')
 call dein#add('tpope/vim-dispatch')
 call dein#add('tpope/vim-eunuch')
 call dein#add('reinh/vim-makegreen')
@@ -105,7 +109,33 @@ endif
 
 "End dein Scripts-------------------------
 
+" neocomplete
+" -----------
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#smart_auto_mappings = 0
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#force_omni_input_patterns.python =
+\ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+" alternative pattern: '\h\w*\|[^. \t]\.\w*'
+"
+let g:jedi#popup_select_first = 0
+" use TAB completion neocomplete
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" open-browser
+let g:openbrowser_browser_commands =[
+		\ {"name": "xdg-open",
+		\  "args": ["{browser}", "{uri}"]},
+		\ {"name": "firefox",
+		\  "args": ["{browser}", "{uri}"]},
+		\ {"name": "w3m",
+		\  "args": ["{browser}", "{uri}"]},
+		\]
+let g:openbrowser_use_vimproc = 1
+
 " Airline:
+" --------
 set laststatus=2 " Always display the statusline in all windows
 let g:airline_powerline_fonts = 1
 let g:airline_detect_modified=1
@@ -116,6 +146,15 @@ if has("gui_running")
   set guifont=Monaco\ for\ Powerline\ 8
   "  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline 8
 endif
+" configure the title text for quickfix buffers >
+let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
+" configure the title text for location list buffers >
+let g:airline#extensions#quickfix#location_text = 'Location'
+" enable fugitive integration
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#branch#format = 2
+let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long', 'mixed-indent-file' ]
 
 let g:unite_source_menu_menus = {}
 let g:unite_source_menu_menus.shell = {
@@ -203,8 +242,8 @@ if has("autocmd")
 
   filetype on
 
-" Enable file type detection.
-" Use the default filetype settings, so that mail gets 'tw' set to 72,
+  " Enable file type detection.
+  " Use the default filetype settings, so that mail gets 'tw' set to 72,
   " 'cindent' is on in C files, etc.
   " Also load indent files, to automatically do language-dependent indenting.
   filetype plugin indent on
@@ -231,9 +270,10 @@ if has("autocmd")
   " --------------
   "  wanna see them
   function! HighlightNonBreakingSpace()
-  syn match suckingNonBreakingSpace " " containedin=ALL
-  hi suckingNonBreakingSpace guibg=#157249
+    syn match suckingNonBreakingSpace " " containedin=ALL
+    hi suckingNonBreakingSpace guibg=#157249
   endfunction
+
   autocmd BufEnter * :call HighlightNonBreakingSpace()
 
   augroup lilypond
@@ -243,7 +283,9 @@ if has("autocmd")
   augroup END
 
   augroup python
-    autocmd FileType python compiler runner
+    " autocmd FileType python compiler runner
+    autocmd FileType python compiler pytest
+    autocmd FileType python setlocal omnifunc=jedi#completions
   augroup END
 else
 
@@ -252,6 +294,7 @@ else
 endif " has("autocmd")
 
 " Indention-Options
+" -----------------
 " General
 set tabstop=4
 set shiftwidth=4
@@ -272,6 +315,7 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 " Solarized
+" ---------
 let g:solarized_termcolors=256 " color depth
 let g:solarized_termtrans=0 " 1|0 background transparent
 let g:solarized_bold=1 " 1|0 show bold fonts
@@ -283,6 +327,7 @@ set background=dark
 colorscheme solarized
 
 " Vim Tabber
+" ----------
 set tabline=%!tabber#TabLine()
 set guioptions-=e
 
@@ -298,8 +343,8 @@ nnoremap <localleader>f :setlocal spell spelllang=fr<cr>
 
 " Python
 " ------
-" let g:python_tests_runner="pytest"
-let g:python_tests_runner="nose"
+let g:python_tests_runner="pytest"
+" let g:python_tests_runner="nose"
 let g:jedi#completions_enabled = 0
 let g:jedi#goto_command = "<leader>g"
 let g:jedi#goto_assignments_command = "<leader>a"
