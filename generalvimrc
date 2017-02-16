@@ -52,7 +52,6 @@ call dein#add('mattn/webapi-vim')
 call dein#add('tyru/open-browser.vim')
 call dein#add('timcharper/textile.vim')
 call dein#add('vim-scripts/TwitVim')
-" call dein#add('valloric/YouCompleteMe', { 'build' : 'git submodule update --init --recursive; ./install.py --clang-completer' })
 call dein#add('Shougo/neocomplete.vim')
 call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
@@ -98,6 +97,10 @@ call dein#add('mrtazz/simplenote.vim')
 " Farbschema für Leonie
 call dein#add('jonathanfilip/vim-lucius')
 
+" Groovy stuff
+call dein#add('vim-scripts/groovy.vim--Ruley')
+call dein#add('rdolgushin/groovy.vim')
+
 " Required:
 call dein#end()
 
@@ -121,7 +124,7 @@ if !exists('g:neocomplete#force_omni_input_patterns')
   let g:neocomplete#force_omni_input_patterns = {}
 endif
 let g:neocomplete#force_omni_input_patterns.python =
-\ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+  \'\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 " alternative pattern: '\h\w*\|[^. \t]\.\w*'
 "
 let g:jedi#popup_select_first = 0
@@ -130,13 +133,13 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " open-browser
 let g:openbrowser_browser_commands =[
-		\ {"name": "xdg-open",
-		\  "args": ["{browser}", "{uri}"]},
-		\ {"name": "firefox",
-		\  "args": ["{browser}", "{uri}"]},
-		\ {"name": "w3m",
-		\  "args": ["{browser}", "{uri}"]},
-		\]
+    \ {"name": "xdg-open",
+    \  "args": ["{browser}", "{uri}"]},
+    \ {"name": "firefox",
+    \  "args": ["{browser}", "{uri}"]},
+    \ {"name": "w3m",
+    \  "args": ["{browser}", "{uri}"]},
+    \]
 let g:openbrowser_use_vimproc = 1
 
 " Airline:
@@ -159,7 +162,12 @@ let g:airline#extensions#quickfix#location_text = 'Location'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#format = 2
 let g:airline#extensions#whitespace#enabled = 1
-let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long', 'mixed-indent-file' ]
+let g:airline#extensions#whitespace#checks = [
+    \ 'indent',
+    \ 'trailing',
+    \ 'long',
+    \ 'mixed-indent-file'
+    \ ]
 
 let g:unite_source_menu_menus = {}
 let g:unite_source_menu_menus.shell = {
@@ -327,7 +335,8 @@ let g:solarized_bold=1 " 1|0 show bold fonts
 let g:solarized_italic=1 " 1|0 show italic fonts
 let g:solarized_underline=1 " 1|0 show underlines
 let g:solarized_contrast="high" " normal|high|low contrast
-let g:solarized_visibility="high" " normal|high|low effect on whitespace characters
+" normal|high|low effect on whitespace characters
+let g:solarized_visibility="high"
 set background=dark
 colorscheme solarized
 
@@ -361,17 +370,20 @@ let g:jedi#rename_command = "<leader>r"
 
 " Copied from azyr
  " ==== Ignoring certain errors/warnings ====
-" - Pylint is checking the modules against python2, don't know how to change that.
+" - Pylint is checking the modules against python2,
+"   don't know how to change that.
 " - Disabling import checks.
 " - Disabling 80 character width style warning.
 " - I don't care about missing module docstrings.
-" - Don't complain if I use dashes in my filenames for example (invalid-name).
+" - Don't complain if I use dashes in my filenames for example
+"   (invalid-name).
 " - Parens are neccessary after print keyword in python3.
 " - Ignored too-many-* warnings make no sense to me.
 " - ConnectionResetError is only on python3 namespace.
 " - I like to use strings as comments (pointless-string-statements).
 " - too-few-public-methods makes no sense.
-" - global-variable-not-assigned does not detect if some properties of the variable are changed.
+" - global-variable-not-assigned does not detect if some properties
+"   of the variable are changed.
 " - Python 3 automatically supports unicode (invalid-encoded-data)
 " - [syntax-error] pylint gets python3 syntax wrong sometimes
 " - [-bad-builtin] hardly makes any sense??
@@ -379,15 +391,15 @@ let g:jedi#rename_command = "<leader>r"
 " - [-global-statements] i do like to use them sometimes ...
 " - FileNotFoundError is introduced in python3 i believe
 let pylint_ignore_regexp =  '\(too-many-public-methods\)'
-  " \'\(invalid-name\|Missing module docstring\|line-too-long\|no-name-in-module\|
-  " \import-error\|redefined-outer-name\|no-member\|too-many-instance-attributes\|
-  " \too-many-locals\|too-many-branches\|too-many-statements\|
-  " \Unnecessary parens after .print. keyword\|Undefined variable .ConnectionResetError\|
-  " \pointless-string-statement\|too-few-public-methods\|
-  " \global-variable-not-assigned\|invalid-encoded-data\|
-  " \Used builtin function .filter.\|Used builtin function .map.\|
-  " \syntax-error\|bad-builtin\|star-args\|global-statement\|
-  " \FileNotFoundError\)'
+" \'\(invalid-name\|Missing module docstring\|line-too-long\|
+" \no-name-in-module\|\import-error\|redefined-outer-name\|no-member\|
+" \too-many-instance-attributes\|\too-many-locals\|too-many-branches\|
+" \too-many-statements\|\Unnecessary parens after .print. keyword\|
+" \Undefined variable .ConnectionResetError\|\pointless-string-statement\|
+" \too-few-public-methods\|\global-variable-not-assigned\|
+" \invalid-encoded-data\|\Used builtin function .filter.\|
+" Used builtin function .map.\|\syntax-error\|bad-builtin\|star-args\|
+" global-statement\|\FileNotFoundError\)'
 " E501 = 80 character width style warning
 " ConnectionResetError is only on python3 namespace
 " E302 => sometimes i like to use nested functions
@@ -396,8 +408,10 @@ let pylint_ignore_regexp =  '\(too-many-public-methods\)'
 let flake8_ignore_regexp =
   \'\(E501\|undefined name .ConnectionResetError\|E302\|E301\)'
 " Ignore 80 character width style warning
-let g:syntastic_python_flake8_quiet_messages = { 'regex': flake8_ignore_regexp }
-let g:syntastic_python_pylint_quiet_messages = { 'regex': pylint_ignore_regexp }
+let g:syntastic_python_flake8_quiet_messages =
+    \{ 'regex': flake8_ignore_regexp }
+let g:syntastic_python_pylint_quiet_messages =
+    \{ 'regex': pylint_ignore_regexp }
 " Programming in General
 nnoremap <localleader>r :MakeGreen<cr>
 nnoremap <leader>b :Unite buffer<cr>
