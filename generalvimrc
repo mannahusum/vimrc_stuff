@@ -37,6 +37,7 @@ call dein#add('Shougo/unite.vim')
 
 call dein#add('davidhalter/jedi-vim')
 call dein#add('tpope/vim-fugitive')
+call dein#add('tpope/vim-rhubarb')
 call dein#add('gregsexton/gitv')
 call dein#add('scrooloose/syntastic')
 call dein#add('altercation/vim-colors-solarized')
@@ -321,6 +322,13 @@ if has("autocmd")
 
     autocmd FileType vim setlocal shiftwidth=2
   augroup END
+
+  augroup fugitive
+    autocmd!
+
+    autocmd BufReadPost fugitive://* set bufhidden=delete
+  augroup END
+
 else
 
   set autoindent  " always set autoindenting on
