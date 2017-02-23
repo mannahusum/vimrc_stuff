@@ -242,7 +242,8 @@ set guioptions-=T
 " set completeopt-=preview " let's fool around with completion
 
 if has("autocmd")
-  au!
+  autocmd!
+
   " My PC is fast enough, do syntax highlight syncing from start
   autocmd BufEnter * :syntax sync fromstart
 endif
@@ -263,7 +264,7 @@ if has("autocmd")
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
-    au!
+    autocmd!
 
     " For all text files set 'textwidth' to 78 characters.
     autocmd FileType text setlocal textwidth=78
@@ -290,15 +291,35 @@ if has("autocmd")
   autocmd BufEnter * :call HighlightNonBreakingSpace()
 
   augroup lilypond
+    autocmd!
+      
     autocmd FileType lilypond compiler lilypond
     autocmd Filetype lilypond setlocal makeprg=lilycompile.sh
     autocmd Filetype lilypond setlocal shiftwidth=4
   augroup END
 
   augroup python
+    autocmd!
+
     " autocmd FileType python compiler runner
     autocmd FileType python compiler pytest
     autocmd FileType python setlocal omnifunc=jedi#completions
+  augroup END
+
+  augroup groovy
+    autocmd!
+
+    autocmd BufReadPost,BufNewFile Jenkinsfile set syntax=groovy
+    autocmd BufReadPost,BufNewFile Jenkinsfile set filetype=groovy
+
+    autocmd BufReadPost,BufNewFile Jenkinsfile_* set syntax=groovy
+    autocmd BufReadPost,BufNewFile Jenkinsfile_* set filetype=groovy
+  augroup END
+
+  augroup vimrc
+    autocmd!
+
+    autocmd FileType vim setlocal shiftwidth=2
   augroup END
 else
 
