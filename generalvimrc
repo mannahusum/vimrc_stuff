@@ -95,8 +95,11 @@ call dein#add('daisuzu/facebook.vim')
 call dein#add('JamshedVesuna/vim-markdown-preview')
 call dein#add('mrtazz/simplenote.vim')
 
-" Farbschema für Leonie
-call dein#add('jonathanfilip/vim-lucius')
+call dein#add('jplaut/vim-arduino-ino')
+
+" cmake
+call dein#add('jansenm/vim-cmake')
+call dein#add('vivkin/vim-call-cmake')
 
 " Groovy stuff
 call dein#add('vim-scripts/groovy.vim--Ruley')
@@ -153,7 +156,6 @@ let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#virtualenv#enabled = 1
 if has("gui_running")
   set guifont=Monaco\ for\ Powerline\ 8
-  "  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline 8
 endif
 " configure the title text for quickfix buffers >
 let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
@@ -293,7 +295,7 @@ if has("autocmd")
 
   augroup lilypond
     autocmd!
-      
+
     autocmd FileType lilypond compiler lilypond
     autocmd Filetype lilypond setlocal makeprg=lilycompile.sh
     autocmd Filetype lilypond setlocal shiftwidth=4
@@ -420,15 +422,18 @@ let g:jedi#rename_command = "<leader>r"
 " - [-global-statements] i do like to use them sometimes ...
 " - FileNotFoundError is introduced in python3 i believe
 let pylint_ignore_regexp =  '\(too-many-public-methods\)'
-" \'\(invalid-name\|Missing module docstring\|line-too-long\|
-" \no-name-in-module\|\import-error\|redefined-outer-name\|no-member\|
-" \too-many-instance-attributes\|\too-many-locals\|too-many-branches\|
-" \too-many-statements\|\Unnecessary parens after .print. keyword\|
-" \Undefined variable .ConnectionResetError\|\pointless-string-statement\|
-" \too-few-public-methods\|\global-variable-not-assigned\|
-" \invalid-encoded-data\|\Used builtin function .filter.\|
-" Used builtin function .map.\|\syntax-error\|bad-builtin\|star-args\|
-" global-statement\|\FileNotFoundError\)'
+  " \'\(invalid-name\|
+  " \Missing module docstring\|line-too-long\|no-name-in-module\|
+  " \import-error\|redefined-outer-name\|no-member\|
+  " \too-many-instance-attributes\|
+  " \too-many-locals\|too-many-branches\|too-many-statements\|
+  " \Unnecessary parens after .print. keyword\|
+  " \Undefined variable .ConnectionResetError\|
+  " \pointless-string-statement\|too-few-public-methods\|
+  " \global-variable-not-assigned\|invalid-encoded-data\|
+  " \Used builtin function .filter.\|Used builtin function .map.\|
+  " \syntax-error\|bad-builtin\|star-args\|global-statement\|
+  " \FileNotFoundError\)'
 " E501 = 80 character width style warning
 " ConnectionResetError is only on python3 namespace
 " E302 => sometimes i like to use nested functions
@@ -491,3 +496,12 @@ let vim_markdown_preview_github=1
 let vim_markdown_preview_use_xdg_open=1
 let vim_markdown_preview_preview_hotkey='<localleader>p'
 
+" arduino
+" -------
+
+let g:vim_arduino_ino_cmd = 'ano'
+
+"Default: /Applications/Arduino.app/Contents/Resources/Java
+let g:vim_arduino_library_path = '/home/christian/Projekte/W48/arduino'
+"Default: result of `$(ls /dev/tty.* | grep usb)`
+let g:vim_arduino_serial_port = '/dev/ttyACM0'
