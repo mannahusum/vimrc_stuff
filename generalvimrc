@@ -372,7 +372,7 @@ let g:solarized_contrast="high" " normal|high|low contrast
 " normal|high|low effect on whitespace characters
 let g:solarized_visibility="high"
 set background=dark
-colorscheme solarized
+silent! colorscheme solarized
 
 " Vim Tabber
 " ----------
