@@ -78,6 +78,8 @@ call dein#add('etnadji/vim-epub')
 
 call dein#add('benjifisher/matchit.zip', { 'on_map': ['nxo', '%', 'g%'] })
 call dein#add('tell-k/vim-autopep8')
+call dein#add('tpope/vim-surround')
+
 
 call dein#add('vim-latex/vim-latex')
 call dein#add('tpope/vim-commentary')
