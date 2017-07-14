@@ -110,6 +110,9 @@ call dein#add('vivkin/vim-call-cmake')
 call dein#add('vim-scripts/groovy.vim--Ruley')
 call dein#add('rdolgushin/groovy.vim')
 
+" Java stuff
+call dein#add('artur-shaik/vim-javacomplete2')
+
 " Required:
 call dein#end()
 
@@ -334,6 +337,20 @@ if has("autocmd")
     autocmd!
 
     autocmd BufReadPost fugitive://* set bufhidden=delete
+  augroup END
+
+  augroup java
+    autocmd!
+
+    autocmd FileType java setlocal omnifunc=javacomplete#Complete
+    autocmd FileType java nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+    autocmd FileType java imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+    autocmd FileType java nmap <F5> <Plug>(JavaComplete-Imports-Add)
+    autocmd FileType java imap <F5> <Plug>(JavaComplete-Imports-Add)
+    autocmd FileType java nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+    autocmd FileType java imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+    autocmd FileType java nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+    autocmd FileType java imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
   augroup END
 
 else
