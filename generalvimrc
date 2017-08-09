@@ -62,7 +62,7 @@ call dein#add('Shougo/neosnippet-snippets')
 
 "call dein#add('felipec/notmuch-vim')
 call dein#add('daisuzu/unite-notmuch')
-call dein#add('h1mesuke/unite-outline')
+call dein#add('Shougo/unite-outline')
 call dein#add('guyzmo/notmuch-abook')
 call dein#add('fweep/vim-tabber')
 
