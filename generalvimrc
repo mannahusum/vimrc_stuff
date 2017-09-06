@@ -109,7 +109,7 @@ call dein#add('vivkin/vim-call-cmake')
 " Groovy stuff
 call dein#add('vim-scripts/groovy.vim--Ruley')
 call dein#add('rdolgushin/groovy.vim')
-call dein#add('https://gist.github.com/am4dr/4e6fc1bade7c1add02e5', {'script_type': 'plugin'})
+call dein#add('https://gist.github.com/am4dr/4e6fc1bade7c1add02e5', {'script_type': 'plugin', 'rev': '5456ad51b559c7b4c2dacc8640b8ab077cc5d595'})
 
 " Java stuff
 call dein#add('artur-shaik/vim-javacomplete2')
