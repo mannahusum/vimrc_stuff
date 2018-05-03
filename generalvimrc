@@ -61,9 +61,10 @@ call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
 
 "call dein#add('felipec/notmuch-vim')
+call dein#add('caio/querycommandcomplete.vim')
 call dein#add('daisuzu/unite-notmuch')
 call dein#add('h1mesuke/unite-outline')
-call dein#add('guyzmo/notmuch-abook')
+" call dein#add('guyzmo/notmuch-abook')
 call dein#add('fweep/vim-tabber')
 
 call dein#add('bling/vim-airline')
@@ -101,6 +102,7 @@ call dein#add('JamshedVesuna/vim-markdown-preview')
 call dein#add('mrtazz/simplenote.vim')
 
 call dein#add('jplaut/vim-arduino-ino')
+call dein#add('1995parham/vim-spice')
 
 " cmake
 call dein#add('jansenm/vim-cmake')
@@ -109,6 +111,9 @@ call dein#add('vivkin/vim-call-cmake')
 " Groovy stuff
 call dein#add('vim-scripts/groovy.vim--Ruley')
 call dein#add('rdolgushin/groovy.vim')
+
+" Todoist
+call dein#add('Siprah/vim-todoist')
 
 " Required:
 call dein#end()
@@ -125,6 +130,7 @@ endif
 
 " neocomplete
 " -----------
+let g:qcc_format_abbr = '${1} <${0}>'
 let g:jedi#completions_enabled = 0
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#smart_auto_mappings = 0
@@ -160,7 +166,25 @@ let g:airline_detect_paste=1
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#virtualenv#enabled = 1
 if has("gui_running")
+  let s:pattern = '^\(.* \)\([1-9][0-9]*\)$'
   set guifont=Monaco\ for\ Powerline\ 8
+  nnoremap <leader>f :call ToggleFontSize()<cr>
+
+  function! ToggleFontSize()
+    if has("gui_running")
+      let fontname = substitute(&guifont, s:pattern, '\1', '')
+      let cursize = substitute(&guifont, s:pattern, '\2', '')
+      if cursize >= 20
+        let newsize = 8
+      else
+        let newsize = 20
+      endif 
+      let newfont = fontname . newsize
+      let &guifont = newfont
+    else
+      echoerr "You need to run the GTK2 version of Vim to use this function."
+    endif
+  endfunction
 endif
 " configure the title text for quickfix buffers >
 let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
