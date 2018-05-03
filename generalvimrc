@@ -64,7 +64,6 @@ call dein#add('Shougo/neosnippet-snippets')
 call dein#add('caio/querycommandcomplete.vim')
 call dein#add('daisuzu/unite-notmuch')
 call dein#add('h1mesuke/unite-outline')
-" call dein#add('guyzmo/notmuch-abook')
 call dein#add('fweep/vim-tabber')
 
 call dein#add('bling/vim-airline')
@@ -111,6 +110,10 @@ call dein#add('vivkin/vim-call-cmake')
 " Groovy stuff
 call dein#add('vim-scripts/groovy.vim--Ruley')
 call dein#add('rdolgushin/groovy.vim')
+call dein#add('https://gist.github.com/am4dr/4e6fc1bade7c1add02e5', {'script_type': 'plugin', 'rev': '5456ad51b559c7b4c2dacc8640b8ab077cc5d595'})
+
+" Java stuff
+call dein#add('artur-shaik/vim-javacomplete2')
 
 " Todoist
 call dein#add('Siprah/vim-todoist')
@@ -360,6 +363,20 @@ if has("autocmd")
     autocmd BufReadPost fugitive://* set bufhidden=delete
   augroup END
 
+  augroup java
+    autocmd!
+
+    autocmd FileType java setlocal omnifunc=javacomplete#Complete
+    autocmd FileType java nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+    autocmd FileType java imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+    autocmd FileType java nmap <F5> <Plug>(JavaComplete-Imports-Add)
+    autocmd FileType java imap <F5> <Plug>(JavaComplete-Imports-Add)
+    autocmd FileType java nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+    autocmd FileType java imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+    autocmd FileType java nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+    autocmd FileType java imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+  augroup END
+
 else
 
   set autoindent  " always set autoindenting on
@@ -484,7 +501,7 @@ nnoremap <leader>M :UniteBookmarkAdd %<cr>
 " Unite outline
 " -------------
 if exists($XDG_CACHE_HOME)
-  let g:unite_data_directory = $XDG_CACHE_HOME + "/unite"
+  let g:unite_data_directorgg/y = $XDG_CACHE_HOME + "/unite"
 else
   let g:unite_data_directory = $HOME + ".cache/unite"
 endif
@@ -505,7 +522,7 @@ let s:default_highlight = {
   \ 'level_2' : 'PreProc',
   \ 'level_3' : 'Identifier',
   \ 'level_4' : 'Constant',
-  \ 'level_5' : 'Special',
+   'level_5' : 'Special',
   \ 'level_6' : g:unite_abbr_highlight,
   \ 'parameter_list': g:unite_abbr_highlight,
   \ }
