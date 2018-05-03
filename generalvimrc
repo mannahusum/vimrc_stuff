@@ -110,7 +110,9 @@ call dein#add('vivkin/vim-call-cmake')
 " Groovy stuff
 call dein#add('vim-scripts/groovy.vim--Ruley')
 call dein#add('rdolgushin/groovy.vim')
-call dein#add('https://gist.github.com/am4dr/4e6fc1bade7c1add02e5', {'script_type': 'plugin', 'rev': '5456ad51b559c7b4c2dacc8640b8ab077cc5d595'})
+call dein#add('https://gist.github.com/am4dr/4e6fc1bade7c1add02e5',
+      \{'script_type': 'plugin',
+       \'rev': '5456ad51b559c7b4c2dacc8640b8ab077cc5d595'})
 
 " Java stuff
 call dein#add('artur-shaik/vim-javacomplete2')
@@ -181,7 +183,7 @@ if has("gui_running")
         let newsize = 8
       else
         let newsize = 20
-      endif 
+      endif
       let newfont = fontname . newsize
       let &guifont = newfont
     else
@@ -501,7 +503,7 @@ nnoremap <leader>M :UniteBookmarkAdd %<cr>
 " Unite outline
 " -------------
 if exists($XDG_CACHE_HOME)
-  let g:unite_data_directorgg/y = $XDG_CACHE_HOME + "/unite"
+  let g:unite_data_directorgg = $XDG_CACHE_HOME + "/unite"
 else
   let g:unite_data_directory = $HOME + ".cache/unite"
 endif
@@ -522,7 +524,7 @@ let s:default_highlight = {
   \ 'level_2' : 'PreProc',
   \ 'level_3' : 'Identifier',
   \ 'level_4' : 'Constant',
-   'level_5' : 'Special',
+  \ 'level_5' : 'Special',
   \ 'level_6' : g:unite_abbr_highlight,
   \ 'parameter_list': g:unite_abbr_highlight,
   \ }
