@@ -1,0 +1,68 @@
+﻿" vim: set ft=vim:
+
+" Leader
+
+" nnoremap <silent>[menu]g :Unite -silent -start-insert menu:git<CR>
+
+" Insert Mode
+
+" use TAB completion neocomplete
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" Normal Mode
+
+" xvlcwkhgfqß
+
+" uiaeosnrtdy
+nnoremap <silent> sm  :<C-u>Unite menu:test<CR>
+nnoremap <leader>n :cnext<cr>
+
+" üöäpzbm,.j
+nnoremap <leader>p :cprevious<cr>
+
+
+" ü = mapleader
+let mapleader = "ü"
+" xvlcwkhgfqß
+if has("gui_running")
+  nnoremap <leader>f :call ToggleFontSize()<cr>
+endif
+
+" uiaeosnrtdy
+nnoremap <leader>o :Unite outline<cr>
+
+" üöäpzbm,.j
+nnoremap <leader>b :Unite buffer<cr>
+nnoremap <leader>m :Unite bookmark<cr>
+nnoremap <leader>M :UniteBookmarkAdd %<cr>
+
+" ö = localleader
+let maplocalleader = "ö"
+
+" xvlcwkhgfqß
+nnoremap <localleader>f :setlocal spell spelllang=fr<cr>
+
+" uiaeosnrtdy
+nnoremap <localleader>u :setlocal spell spelllang=en_us<cr>
+nmap <localleader>o <Plug>(openbrowser-open)
+nnoremap <localleader>n :setlocal nospell<cr>
+nnoremap <localleader>r :MakeGreen<cr>
+nnoremap <localleader>d :setlocal spell spelllang=de<cr>
+" üöäpzbm,.j
+nnoremap <localleader>b :setlocal spell spelllang=en_gb<cr>
+
+" Normal Mode + Ctrl
+
+" xvlcwkhgfqß
+" nnoremap <C-g> :Unite grep -buffer-name=search -resume<cr>
+nnoremap <C-g> :Unite grep -resume<cr>
+" uiaeosnrtdy
+" üöäpzbm,.j
+nnoremap <C-p> :Unite file_rec/async
+
+" ö = localleader, Mod3
+" xvlcwkhgfqß = …_[]^!<>=&ſ
+nmap <localleader>_ :call Preserve("normal gg=G")<cr>
+" üöäpzbm,.j = #$|~`+%"';
+nmap <localleader>$ :call Preserve("%s/\s\+$//e")<cr>
+

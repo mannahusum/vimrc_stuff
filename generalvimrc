@@ -1,3 +1,4 @@
+set encoding=utf-8
 
 " Move Backup Files to ~/.vim/sessions
 " ------------------------------------
@@ -9,10 +10,6 @@ exec "set runtimepath^=" . g:vimdir . "dein/repos/github.com/Shougo/dein.vim"
 set nocompatible
 
 filetype off                  " required
-
-" Leader
-let mapleader = "ü"
-let maplocalleader = "ö"
 
 "dein Scripts-----------------------------
 if &compatible
@@ -28,53 +25,57 @@ call dein#begin(expand(g:vimdir . 'dein'))
 " Required:
 call dein#add('Shougo/dein.vim')
 
+call dein#add('s3rvac/AutoFenc')
+
 " call dein#add('Shougo/vimproc.vim', { 'build' : 'make -f make_unix.mak' })
-call dein#add('Shougo/vimproc.vim', { 'build' : 'make' })
-" call dein#add('sheerun/vim-polyglot')
-call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+" call dein#add('Shougo/vimproc.vim', { 'build' : 'make' })
+call dein#add('Shougo/vimproc.vim')
 
 call dein#add('Shougo/unite.vim')
+call dein#add('Shougo/denite.nvim')
+call dein#add('neoclide/denite-git')
+call dein#add('neoclide/denite-extra')
+call dein#add('Shougo/deol.nvim')
+call dein#add('Shougo/defx.nvim')
+call dein#add('Shougo/neomru.vim')
 
 call dein#add('davidhalter/jedi-vim')
 call dein#add('tpope/vim-fugitive')
 call dein#add('tpope/vim-rhubarb')
 call dein#add('gregsexton/gitv')
-call dein#add('scrooloose/syntastic')
+call dein#add('w0rp/ale')
 call dein#add('altercation/vim-colors-solarized')
 
 call dein#add('Shougo/vimshell')
 
 call dein#add('chrisbra/SudoEdit.vim')
-" call dein#add('vim-scripts/sudo.vim')
-call dein#add('Shougo/unite-sudo')
 call dein#add('Shougo/neossh.vim')
-call dein#add('Shougo/vimfiler.vim')
-call dein#add('ujihisa/vimshell-ssh')
 call dein#add('ujihisa/unite-locate')
-call dein#add('ujihisa/repl.vim')
+" call dein#add('ujihisa/repl.vim')
 call dein#add('mattn/webapi-vim')
 call dein#add('tyru/open-browser.vim')
 call dein#add('timcharper/textile.vim')
 call dein#add('vim-scripts/TwitVim')
-call dein#add('Shougo/neocomplete.vim')
+call dein#add('Shougo/deoplete.nvim')
+" call dein#add('Shougo/context_filetype.vim')
+" call dein#add('ujihisa/neco-look')
+call dein#add('roxma/nvim-yarp')
+call dein#add('roxma/vim-hug-neovim-rpc')
 call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
 
-"call dein#add('felipec/notmuch-vim')
 call dein#add('caio/querycommandcomplete.vim')
-call dein#add('daisuzu/unite-notmuch')
-call dein#add('h1mesuke/unite-outline')
 call dein#add('fweep/vim-tabber')
 
 call dein#add('bling/vim-airline')
-call dein#add('airblade/vim-gitgutter')
+" call dein#add('airblade/vim-gitgutter')
 call dein#add('mhinz/vim-signify')
-call dein#add('chrisbra/changesPlugin')
+" call dein#add('chrisbra/changesPlugin')
 
 call dein#add('bogado/file-line')
 
 " Python2 only
-call dein#add('etnadji/vim-epub')
+" call dein#add('etnadji/vim-epub')
 
 call dein#add('benjifisher/matchit.zip', { 'on_map': ['nxo', '%', 'g%'] })
 call dein#add('tell-k/vim-autopep8')
@@ -85,8 +86,9 @@ call dein#add('vim-latex/vim-latex')
 call dein#add('tpope/vim-commentary')
 
 call dein#add('okcompute/vim-python-tests-runner')
-call dein#add('kana/vim-textobj-user')
-call dein#add('bps/vim-textobj-python')
+" call dein#add('kana/vim-textobj-user')
+" call dein#add('bps/vim-textobj-python')
+call dein#add('hynek/vim-python-pep8-indent')
 call dein#add('5long/pytest-vim-compiler')
 call dein#add('tpope/vim-dispatch')
 call dein#add('tpope/vim-eunuch')
@@ -97,6 +99,9 @@ call dein#add('hashivim/vim-packer')
 
 call dein#add('daisuzu/facebook.vim')
 
+call dein#add('godlygeek/tabular')
+call dein#add('joker1007/vim-markdown-quote-syntax')
+call dein#add('rcmdnk/vim-markdown')
 call dein#add('JamshedVesuna/vim-markdown-preview')
 call dein#add('mrtazz/simplenote.vim')
 
@@ -107,18 +112,27 @@ call dein#add('1995parham/vim-spice')
 call dein#add('jansenm/vim-cmake')
 call dein#add('vivkin/vim-call-cmake')
 
-" Groovy stuff
-call dein#add('vim-scripts/groovy.vim--Ruley')
-call dein#add('rdolgushin/groovy.vim')
-call dein#add('https://gist.github.com/am4dr/4e6fc1bade7c1add02e5',
-      \{'script_type': 'plugin',
-       \'rev': '5456ad51b559c7b4c2dacc8640b8ab077cc5d595'})
+" " Groovy stuff
+" call dein#add('vim-scripts/groovy.vim--Ruley')
+" call dein#add('rdolgushin/groovy.vim')
+" call dein#add('https://gist.github.com/am4dr/4e6fc1bade7c1add02e5',
+"       \{'script_type': 'plugin',
+"        \'rev': '5456ad51b559c7b4c2dacc8640b8ab077cc5d595'})
 
 " Java stuff
 call dein#add('artur-shaik/vim-javacomplete2')
 
-" Todoist
-call dein#add('Siprah/vim-todoist')
+" VimL
+call dein#add('thinca/vim-themis')
+
+"  PowerShell
+call dein#add('PProvost/vim-ps1')
+" call dein#add('cd01/poshcomplete-vim')
+call dein#add('interleaved/vim-pester')
+
+if (filereadable("$HOME/.deinlocal"))
+  source "$HOME/.deinlocal"
+endif
 
 " Required:
 call dein#end()
@@ -139,58 +153,46 @@ let g:qcc_format_abbr = '${1} <${0}>'
 let g:jedi#completions_enabled = 0
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#smart_auto_mappings = 0
-let g:neocomplete#enable_at_startup = 1
-if !exists('g:neocomplete#force_omni_input_patterns')
-  let g:neocomplete#force_omni_input_patterns = {}
-endif
-let g:neocomplete#force_omni_input_patterns.python =
-  \'\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+" let g:neocomplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#look#words = 'C:\msys64\usr\share\dict\ngerman'
+" if !exists('g:neocomplete#force_omni_input_patterns')
+"   let g:neocomplete#force_omni_input_patterns = {}
+" endif
+" let g:neocomplete#force_omni_input_patterns.python =
+"   \'\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 " alternative pattern: '\h\w*\|[^. \t]\.\w*'
 "
 let g:jedi#popup_select_first = 0
-" use TAB completion neocomplete
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " open-browser
-let g:openbrowser_browser_commands =[
-    \ {"name": "xdg-open",
-    \  "args": ["{browser}", "{uri}"]},
-    \ {"name": "firefox",
-    \  "args": ["{browser}", "{uri}"]},
-    \ {"name": "w3m",
-    \  "args": ["{browser}", "{uri}"]},
-    \]
+if (has('unix') && !has('win32'))
+  let g:openbrowser_browser_commands =[
+      \ {"name": "xdg-open",
+      \  "args": ["{browser}", "{uri}"]},
+      \ {"name": "firefox",
+      \  "args": ["{browser}", "{uri}"]},
+      \ {"name": "w3m",
+      \  "args": ["{browser}", "{uri}"]},
+      \]
+endif
 let g:openbrowser_use_vimproc = 1
 
 " Airline:
 " --------
 set laststatus=2 " Always display the statusline in all windows
-let g:airline_powerline_fonts = 1
+if (has('unix') && !has('win32'))
+    let g:airline_powerline_fonts = 1
+endif
 let g:airline_detect_modified=1
 let g:airline_detect_paste=1
-let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#virtualenv#enabled = 1
-if has("gui_running")
-  let s:pattern = '^\(.* \)\([1-9][0-9]*\)$'
-  set guifont=Monaco\ for\ Powerline\ 8
-  nnoremap <leader>f :call ToggleFontSize()<cr>
 
-  function! ToggleFontSize()
-    if has("gui_running")
-      let fontname = substitute(&guifont, s:pattern, '\1', '')
-      let cursize = substitute(&guifont, s:pattern, '\2', '')
-      if cursize >= 20
-        let newsize = 8
-      else
-        let newsize = 20
-      endif
-      let newfont = fontname . newsize
-      let &guifont = newfont
-    else
-      echoerr "You need to run the GTK2 version of Vim to use this function."
-    endif
-  endfunction
+if has("gui_running") && !has('win32')
+  set guifont=Monaco\ for\ Powerline\ 8
 endif
+
 " configure the title text for quickfix buffers >
 let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
 " configure the title text for location list buffers >
@@ -206,6 +208,107 @@ let g:airline#extensions#whitespace#checks = [
     \ 'mixed-indent-file'
     \ ]
 
+let g:signify_vcs_list = [ 'git', 'tfs']
+let g:signify_realtime = 1
+
+let g:christian_albertsen_test_split_string =
+  \     '"C:\Users\z003zdaa\AppData\Local\Programs\Git\cmd\git.exe" '
+  \   . 'diff --no-color --no-ext-diff -U0 -- generalvimrc'
+
+let g:signify_vcs_cmds = {
+  \ 'git':
+  \     'C:\Users\z003zdaa\AppData\Local\Programs\Git\cmd\git.exe '
+  \   . 'diff --no-color --no-ext-diff -U0 -- %f',
+  \ 'tfs':
+  \   'C:\Users\z003zdaa\tf\tf.exe '
+  \ . 'diff -version:W -noprompt %f'
+  \ }
+
+let g:signify_vcs_cmds_diffmode = {
+  \ 'git':
+  \   'C:\Users\z003zdaa\AppData\Local\Programs\Git\cmd\git.exe '
+  \   . 'show HEAD:./%f',
+  \ }
+
+if has('win32')
+  let g:unite_locate_command='es -i -n {count} {query}'
+  " let g:unite_source_grep_encoding = 'utf-8'
+  " let g:unite_source_grep_command = 'C:\msys64\usr\bin\grep.exe'
+  if executable('ag')
+    " Ag command on grep source
+    call denite#custom#var('grep', 'command', ['ag'])
+    call denite#custom#var('grep', 'default_opts',
+      \ ['-i', '--vimgrep', '--nocolor', '--nogroup', '--hidden',
+      \  '--ignore', '.svn',
+      \  '--ignore', '.git',
+      \  '--ignore', '$tf',
+      \  '--ignore', '.tfignore',
+      \  '--ignore', 'tags',
+      \  '--ignore', 'Binaries',
+      \  '--ignore', 'Release',
+      \  '--ignore', '_Packages',
+      \  '--ignore', 'Binaries_PublishedWebsites'])
+    call denite#custom#var('grep', 'recursive_opts', [])
+    call denite#custom#var('grep', 'pattern_opt', [])
+    call denite#custom#var('grep', 'separator', ['--'])
+    call denite#custom#var('grep', 'final_opts', [])
+  endif
+endif
+
+autocmd FileType defx call s:defx_my_settings()
+function! s:defx_my_settings() abort
+  " Define mappings
+  nnoremap <silent><buffer><expr> <CR>
+  \ defx#do_action('open')
+  nnoremap <silent><buffer><expr> c
+  \ defx#do_action('copy')
+  nnoremap <silent><buffer><expr> m
+  \ defx#do_action('move')
+  nnoremap <silent><buffer><expr> p
+  \ defx#do_action('paste')
+  nnoremap <silent><buffer><expr> l
+  \ defx#do_action('open')
+  nnoremap <silent><buffer><expr> E
+  \ defx#do_action('open', 'vsplit')
+  nnoremap <silent><buffer><expr> P
+  \ defx#do_action('open', 'pedit')
+  nnoremap <silent><buffer><expr> K
+  \ defx#do_action('new_directory')
+  nnoremap <silent><buffer><expr> N
+  \ defx#do_action('new_file')
+  nnoremap <silent><buffer><expr> d
+  \ defx#do_action('remove')
+  nnoremap <silent><buffer><expr> r
+  \ defx#do_action('rename')
+  nnoremap <silent><buffer><expr> x
+  \ defx#do_action('execute_system')
+  nnoremap <silent><buffer><expr> yy
+  \ defx#do_action('yank_path')
+  nnoremap <silent><buffer><expr> .
+  \ defx#do_action('toggle_ignored_files')
+  nnoremap <silent><buffer><expr> h
+  \ defx#do_action('cd', ['..'])
+  nnoremap <silent><buffer><expr> ~
+  \ defx#do_action('cd')
+  nnoremap <silent><buffer><expr> q
+  \ defx#do_action('quit')
+  nnoremap <silent><buffer><expr> <Space>
+  \ defx#do_action('toggle_select') . 'j'
+  nnoremap <silent><buffer><expr> *
+  \ defx#do_action('toggle_select_all')
+  nnoremap <silent><buffer><expr> j
+  \ line('.') == line('$') ? 'gg' : 'j'
+  nnoremap <silent><buffer><expr> k
+  \ line('.') == 1 ? 'G' : 'k'
+  nnoremap <silent><buffer><expr> <C-l>
+  \ defx#do_action('redraw')
+  nnoremap <silent><buffer><expr> <C-g>
+  \ defx#do_action('print')
+  nnoremap <silent><buffer><expr> cd
+  \ defx#do_action('change_vim_cwd')
+endfunction
+
+let g:unite_source_menu_compatibility = 1
 let g:unite_source_menu_menus = {}
 let g:unite_source_menu_menus.shell = {
   \     'description' : 'Test menu3',
@@ -215,45 +318,41 @@ let g:unite_source_menu_menus.shell.command_candidates = [
   \   ['ipython', 'VimShellInteractive ipython'],
   \ ]
 
-nnoremap <silent> sm  :<C-u>Unite menu:test<CR>
-
 let g:unite_source_menu_menus.git = {
   \ 'description' : 'Git repositories',
   \}
 
 let g:unite_source_menu_menus.git.command_candidates = [
-  \['▷ tig                                                        ⌘ ,gt',
+  \['¿ tig                                                        ¿ ,gt',
     \'normal ,gt'],
-  \['▷ git status       (Fugitive)                                ⌘ ,gs',
+  \['¿ git status       (Fugitive)                                ¿ ,gs',
     \'Gstatus'],
-  \['▷ git diff         (Fugitive)                                ⌘ ,gd',
+  \['¿ git diff         (Fugitive)                                ¿ ,gd',
     \'Gdiff'],
-  \['▷ git commit       (Fugitive)                                ⌘ ,gc',
+  \['¿ git commit       (Fugitive)                                ¿ ,gc',
     \'Gcommit'],
-  \['▷ git log          (Fugitive)                                ⌘ ,gl',
+  \['¿ git log          (Fugitive)                                ¿ ,gl',
     \'exe "silent Glog | Unite quickfix"'],
-  \['▷ git blame        (Fugitive)                                ⌘ ,gb',
+  \['¿ git blame        (Fugitive)                                ¿ ,gb',
     \'Gblame'],
-  \['▷ git stage        (Fugitive)                                ⌘ ,gw',
+  \['¿ git stage        (Fugitive)                                ¿ ,gw',
     \'Gwrite'],
-  \['▷ git checkout     (Fugitive)                                ⌘ ,go',
+  \['¿ git checkout     (Fugitive)                                ¿ ,go',
     \'Gread'],
-  \['▷ git rm           (Fugitive)                                ⌘ ,gr',
+  \['¿ git rm           (Fugitive)                                ¿ ,gr',
     \'Gremove'],
-  \['▷ git mv           (Fugitive)                                ⌘ ,gm',
+  \['¿ git mv           (Fugitive)                                ¿ ,gm',
     \'exe "Gmove " input("destino: ")'],
-  \['▷ git push         (Fugitive, salida por buffer)             ⌘ ,gp',
+  \['¿ git push         (Fugitive, salida por buffer)             ¿ ,gp',
     \'Git! push'],
-  \['▷ git pull         (Fugitive, salida por buffer)             ⌘ ,gP',
+  \['¿ git pull         (Fugitive, salida por buffer)             ¿ ,gP',
     \'Git! pull'],
-  \['▷ git prompt       (Fugitive, salida por buffer)             ⌘ ,gi',
+  \['¿ git prompt       (Fugitive, salida por buffer)             ¿ ,gi',
     \'exe "Git! " input("comando git: ")'],
-  \['▷ git cd           (Fugitive)',
+  \['¿ git cd           (Fugitive)',
     \'Gcd'],
 \]
 
-
-nnoremap <silent>[menu]g :Unite -silent -start-insert menu:git<CR>
 
 " Less Menus
 " ----------
@@ -273,6 +372,7 @@ set incsearch		" do incremental searching
 " highlighting as well as numbers.
 " And disable the sucking pydoc preview window for the omni completion
 " also highlight current line and disable the blinking cursor.
+set colorcolumn=80
 set wildmenu
 set ruler
 set guioptions-=T
@@ -283,6 +383,12 @@ if has("autocmd")
 
   " My PC is fast enough, do syntax highlight syncing from start
   autocmd BufEnter * :syntax sync fromstart
+
+  autocmd BufEnter * :setlocal dictionary=
+  autocmd BufEnter * :setlocal dictionary+='C:\msys64\usr\share\dict\ngerman'
+  autocmd BufEnter *
+    \ :setlocal dictionary+='C:\msys64\usr\share\dict\british-english'
+  autocmd BufEnter * :setlocal dictionary+='C:\msys64\usr\share\dict\words'
 endif
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
@@ -343,15 +449,15 @@ if has("autocmd")
     autocmd FileType python setlocal omnifunc=jedi#completions
   augroup END
 
-  augroup groovy
-    autocmd!
+  " augroup groovy
+  "   autocmd!
 
-    autocmd BufReadPost,BufNewFile Jenkinsfile set syntax=groovy
-    autocmd BufReadPost,BufNewFile Jenkinsfile set filetype=groovy
+  "   autocmd BufReadPost,BufNewFile Jenkinsfile set syntax=groovy
+  "   autocmd BufReadPost,BufNewFile Jenkinsfile set filetype=groovy
 
-    autocmd BufReadPost,BufNewFile Jenkinsfile_* set syntax=groovy
-    autocmd BufReadPost,BufNewFile Jenkinsfile_* set filetype=groovy
-  augroup END
+  "   autocmd BufReadPost,BufNewFile Jenkinsfile_* set syntax=groovy
+  "   autocmd BufReadPost,BufNewFile Jenkinsfile_* set filetype=groovy
+  " augroup END
 
   augroup vimrc
     autocmd!
@@ -379,6 +485,28 @@ if has("autocmd")
     autocmd FileType java imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
   augroup END
 
+  augroup PowerShell
+    autocmd!
+
+    " autocmd FileType ps1 let &makeprg="cd /mnt/c && " .
+    " \ "powershell.exe 'Invoke-ScriptAnalyzer " .
+    " \ substitute(expand("%:p"), "/mnt/c/", "C:\\", "") .
+    " \ ' -EA SilentlyContinue \| ' .
+    " \ 'ForEach-Object { ' .
+    " \ '(\"/mnt/c$((Split-Path -NoQualifier $_.ScriptPath) ' .
+    " \   '-replace \"\\\\\", \"/\")\", ' .
+    " \   '$_.Line, ' .
+    " \   '$_.Column, ' .
+    " \   '$_.Severity.ToString()[0], ' .
+    " \   '\"[$($_.RuleName)] ' .
+    " \   '$($_.Message)' .
+    " \   '$(If ($_.SuggestedCorrections.Description) ' .
+    " \   '{ \" FIX: $($_.SuggestedCorrections.Description)\" })\") ' .
+    " \   '-join \":\"}' . "'"
+    " autocmd FileType ps1 set errorformat=%f:%l:%c:%t:%m
+    " autocmd FileType ps1 call poshcomplete#StartServer()
+    autocmd FileType ps1 set shiftwidth=4 tabstop=4
+  augroup END
 else
 
   set autoindent  " always set autoindenting on
@@ -427,12 +555,6 @@ set guioptions-=e
 " Spell-checking
 " --------------
 setlocal nospell
-
-nnoremap <localleader>n :setlocal nospell<cr>
-nnoremap <localleader>d :setlocal spell spelllang=de<cr>
-nnoremap <localleader>u :setlocal spell spelllang=en_us<cr>
-nnoremap <localleader>b :setlocal spell spelllang=en_gb<cr>
-nnoremap <localleader>f :setlocal spell spelllang=fr<cr>
 
 " Python
 " ------
@@ -489,16 +611,12 @@ let pylint_ignore_regexp =  '\(too-many-public-methods\)'
 " E301 => 1 lines warning inappropriate when using nested function
 let flake8_ignore_regexp =
   \'\(E501\|undefined name .ConnectionResetError\|E302\|E301\)'
-" Ignore 80 character width style warning
-let g:syntastic_python_flake8_quiet_messages =
-    \{ 'regex': flake8_ignore_regexp }
-let g:syntastic_python_pylint_quiet_messages =
-    \{ 'regex': pylint_ignore_regexp }
-" Programming in General
-nnoremap <localleader>r :MakeGreen<cr>
-nnoremap <leader>b :Unite buffer<cr>
-nnoremap <leader>m :Unite bookmark<cr>
-nnoremap <leader>M :UniteBookmarkAdd %<cr>
+
+" " Ignore 80 character width style warning
+" let g:syntastic_python_flake8_quiet_messages =
+"     \{ 'regex': flake8_ignore_regexp }
+" let g:syntastic_python_pylint_quiet_messages =
+"     \{ 'regex': pylint_ignore_regexp }
 
 " Unite outline
 " -------------
@@ -528,15 +646,10 @@ let s:default_highlight = {
   \ 'level_6' : g:unite_abbr_highlight,
   \ 'parameter_list': g:unite_abbr_highlight,
   \ }
-nnoremap <leader>o :Unite outline<cr>
-
-nnoremap <leader>n :cnext<cr>
-nnoremap <leader>p :cprevious<cr>
 
 " Open Browser
 " ------------
 let g:openbrowser_use_vimproc = 1
-nmap <localleader>o <Plug>(openbrowser-open)
 
 " Markdown Preview
 " ----------------
@@ -553,3 +666,34 @@ let g:vim_arduino_ino_cmd = 'ano'
 let g:vim_arduino_library_path = '/home/christian/Projekte/W48/arduino'
 "Default: result of `$(ls /dev/tty.* | grep usb)`
 let g:vim_arduino_serial_port = '/dev/ttyACM0'
+
+" Beautifying Sourcecode
+function! Preserve(command)
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+
+  execute a:command
+
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
+function! ToggleFontSize()
+  let s:pattern = '^\(.* \)\([1-9][0-9]*\)$'
+  if has("gui_running")
+    let fontname = substitute(&guifont, s:pattern, '\1', '')
+    let cursize = substitute(&guifont, s:pattern, '\2', '')
+    if cursize >= 20
+      let newsize = 8
+    else
+      let newsize = 20
+    endif
+    let newfont = fontname . newsize
+    let &guifont = newfont
+  else
+    echoerr "You need to run the GTK2 version of Vim to use this function."
+  endif
+endfunction
+
+exec "source " . g:vimdir . "/keybindings"
