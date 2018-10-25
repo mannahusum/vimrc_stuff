@@ -85,7 +85,6 @@ call dein#add('tpope/vim-surround')
 call dein#add('vim-latex/vim-latex')
 call dein#add('tpope/vim-commentary')
 
-call dein#add('okcompute/vim-python-tests-runner')
 " call dein#add('kana/vim-textobj-user')
 " call dein#add('bps/vim-textobj-python')
 call dein#add('hynek/vim-python-pep8-indent')
