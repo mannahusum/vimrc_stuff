@@ -58,7 +58,7 @@ call dein#add('timcharper/textile.vim')
 call dein#add('vim-scripts/TwitVim')
 call dein#add('Shougo/deoplete.nvim')
 " call dein#add('Shougo/context_filetype.vim')
-" call dein#add('ujihisa/neco-look')
+call dein#add('ujihisa/neco-look')
 call dein#add('roxma/nvim-yarp')
 call dein#add('roxma/vim-hug-neovim-rpc')
 call dein#add('Shougo/neosnippet')
@@ -154,7 +154,9 @@ let g:jedi#auto_vim_configuration = 0
 let g:jedi#smart_auto_mappings = 0
 " let g:neocomplete#enable_at_startup = 1
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#look#words = 'C:\msys64\usr\share\dict\ngerman'
+if has('win32')
+  let g:deoplete#look#words = 'C:\msys64\usr\share\dict\ngerman'
+endif
 " if !exists('g:neocomplete#force_omni_input_patterns')
 "   let g:neocomplete#force_omni_input_patterns = {}
 " endif
@@ -210,10 +212,6 @@ let g:airline#extensions#whitespace#checks = [
 let g:signify_vcs_list = [ 'git', 'tfs']
 let g:signify_realtime = 1
 
-let g:christian_albertsen_test_split_string =
-  \     '"C:\Users\z003zdaa\AppData\Local\Programs\Git\cmd\git.exe" '
-  \   . 'diff --no-color --no-ext-diff -U0 -- generalvimrc'
-
 let g:signify_vcs_cmds = {
   \ 'git':
   \     'C:\Users\z003zdaa\AppData\Local\Programs\Git\cmd\git.exe '
@@ -232,7 +230,6 @@ let g:signify_vcs_cmds_diffmode = {
 if has('win32')
   let g:unite_locate_command='es -i -n {count} {query}'
   " let g:unite_source_grep_encoding = 'utf-8'
-  " let g:unite_source_grep_command = 'C:\msys64\usr\bin\grep.exe'
   if executable('ag')
     " Ag command on grep source
     call denite#custom#var('grep', 'command', ['ag'])
@@ -384,10 +381,10 @@ if has("autocmd")
   autocmd BufEnter * :syntax sync fromstart
 
   autocmd BufEnter * :setlocal dictionary=
-  autocmd BufEnter * :setlocal dictionary+='C:\msys64\usr\share\dict\ngerman'
-  autocmd BufEnter *
-    \ :setlocal dictionary+='C:\msys64\usr\share\dict\british-english'
-  autocmd BufEnter * :setlocal dictionary+='C:\msys64\usr\share\dict\words'
+  autocmd BufEnter * :setlocal dictionary+=g:deoplete#look#words
+  " autocmd BufEnter *
+  "   \ :setlocal dictionary+='C:\msys64\usr\share\dict\british-english'
+  " autocmd BufEnter * :setlocal dictionary+='C:\msys64\usr\share\dict\words'
 endif
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
