@@ -74,8 +74,6 @@ if has('gui_running')
    set guioptions=Mc
 endif
 
-cd C:\WS\IuT_Team
-
 let g:loaded_2html_plugin      = 1
 let g:loaded_logiPat           = 1
 let g:loaded_getscriptPlugin   = 1

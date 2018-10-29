@@ -2,7 +2,7 @@
 repo = 'Shougo/vimproc.vim'
 on_source = ['vimfiler.vim']
 hook_post_update = '''
-if has('win32') || hasn('win64')
+if IsWindows()
     system('tools\update-dll-mingw.bat')
 elseif has('unix')
     system('make')
@@ -219,7 +219,7 @@ hook_source = '''
   let s:bin = dein#get('vim-themis').rtp . '/bin'
 
   function! s:split_envpath(path) abort
-    let delimiter = has('win32') ? ';' : ':'
+    let delimiter = IsWindows() ? ';' : ':'
     if stridx(a:path, '\' . delimiter) < 0
       return split(a:path, delimiter)
     endif
@@ -229,7 +229,7 @@ hook_source = '''
   endfunction
 
   function! s:join_envpath(list, orig_path, add_path) abort
-    let delimiter = has('win32') ? ';' : ':'
+    let delimiter = IsWindows() ? ';' : ':'
     return (stridx(a:orig_path, '\' . delimiter) < 0
           \ && stridx(a:add_path, delimiter) < 0) ?
           \   join(a:list, delimiter) :
@@ -370,15 +370,5 @@ repo = 'lambdalisue/suda.vim'
 on_path = 'suda://'
 
 [[plugins]]
-repo = 'neoclide/vim-node-rpc'
-build = 'yarn install'
-
-[[plugins]]
-repo = 'neoclide/coc.nvim'
-hook_post_update = '''
-system('yarn install')
-call coc#util#install()
-'''
-depends = 'neoclide/vim-node-rpc'
-merged = 0
-on_ft = 'ps1'
+repo = 'tpope/vim-fugitive'
+on_cmd = ['Gstatus']

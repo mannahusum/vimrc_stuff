@@ -67,3 +67,22 @@ repo = 'vim-airline/vim-airline'
 
 [[plugins]]
 repo = 'PProvost/vim-ps1'
+
+[[plugins]]
+repo = 'neoclide/vim-node-rpc'
+build = 'yarn install'
+
+# [[plugins]]
+# repo = 'neoclide/coc.nvim'
+# hook_post_update = '''
+# call system('yarn install')
+# '''
+
+# [[plugins]]
+# repo = 'neoclide/coc.nvim'
+# hook_post_update = '''
+# system('yarn install')
+# call coc#util#install()
+# '''
+# depends = 'neoclide/vim-node-rpc'
+# on_ft = 'ps1'
