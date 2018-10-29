@@ -1,0 +1,181 @@
+hook_add = '''
+" Python
+let g:python_highlight_all = 1
+
+" Vim
+let g:vimsyntax_noerror = 1
+"let g:vim_indent_cont = 0
+
+" Bash
+let g:is_bash = 1
+
+" JavaScript
+let g:SimpleJsIndenter_BriefMode = 1
+let g:SimpleJsIndenter_CaseIndentLevel = -1
+
+" Markdown
+let g:markdown_fenced_languages = []
+
+" Tex
+let g:tex_flavor = 'latex'
+
+" python.vim
+let python_highlight_all = 1
+
+" http://mattn.kaoriya.net/software/vim/20140523124903.htm
+let g:markdown_fenced_languages = [
+      \  'coffee',
+      \  'css',
+      \  'erb=eruby',
+      \  'javascript',
+      \  'js=javascript',
+      \  'json=javascript',
+      \  'ruby',
+      \  'sass',
+      \  'xml',
+      \  'vim',
+      \]
+
+" Folding
+let g:tex_fold_enabled = 1
+let g:xml_syntax_folding = 1
+let g:php_folding = 1
+let g:perl_fold = 1
+
+" Update filetype.
+autocmd MyAutoCmd BufWritePost * nested
+\ if &l:filetype ==# '' || exists('b:ftdetect')
+\ |   unlet! b:ftdetect
+\ |   filetype detect
+\ | endif
+
+" Reload .vimrc automatically.
+autocmd MyAutoCmd BufWritePost .vimrc,vimrc,*.rc.vim,*.toml source $MYVIMRC | redraw
+
+" Auto reload VimScript.
+autocmd MyAutoCmd BufWritePost,FileWritePost *.vim nested
+\ if &l:autoread > 0 | source <afile> |
+\   echo 'source ' . bufname('%') |
+\ endif
+
+" Nice commenting
+let g:caw_operator_keymappings  =  1
+
+" Airline:
+" --------
+set laststatus=2 " Always display the statusline in all windows
+let g:airline_powerline_fonts = 1
+let g:airline_detect_modified=1
+let g:airline_detect_paste=1
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#virtualenv#enabled = 1
+
+" configure the title text for quickfix buffers >
+let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
+" configure the title text for location list buffers >
+let g:airline#extensions#quickfix#location_text = 'Location'
+" enable fugitive integration
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#branch#format = 2
+let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#whitespace#checks = [
+    \ 'indent',
+    \ 'trailing',
+    \ 'long',
+    \ 'mixed-indent-file'
+    \ ]
+
+" Solarized
+" ---------
+let g:solarized_termcolors=256 " color depth
+let g:solarized_termtrans=0 " 1|0 background transparent
+let g:solarized_bold=1 " 1|0 show bold fonts
+let g:solarized_italic=1 " 1|0 show italic fonts
+let g:solarized_underline=1 " 1|0 show underlines
+let g:solarized_contrast="high" " normal|high|low contrast
+" normal|high|low effect on whitespace characters
+let g:solarized_visibility="high"
+set background=dark
+silent! colorscheme solarized
+
+" Vim Tabber
+" ----------
+set tabline=%!tabber#TabLine()
+set guioptions-=e
+
+" PowerShell
+  augroup PowerShell
+    autocmd FileType ps1 set colorcolumn=80
+    autocmd FileType ps1 set shiftwidth=4 tabstop=4
+  augroup END
+
+" OpenBrowser
+nmap <localleader>o <Plug>(openbrowser-open)
+'''
+
+[ftplugin]
+
+_ = '''
+  " Disable automatically insert comment.
+  setl formatoptions-=ro
+  setl formatoptions+=mMBl
+
+  " Disable auto wrap.
+  if &l:textwidth != 70 && &filetype !=# 'help'
+    setlocal textwidth=0
+  endif
+
+  if !&l:modifiable
+    setlocal nofoldenable
+    setlocal foldcolumn=0
+    setlocal colorcolumn=
+  endif
+'''
+
+python = '''
+" Indent settings.
+setlocal foldmethod=indent
+setlocal softtabstop=4
+setlocal shiftwidth=4
+setlocal textwidth=80
+setlocal smarttab
+setlocal expandtab
+setlocal nosmartindent
+'''
+
+html = '''
+setlocal includeexpr=substitute(v:fname,'^\\/','','')
+setlocal path+=./;/
+'''
+
+go = '''
+highlight default link goErr WarningMsg
+match goErr /\<err\>/
+'''
+
+vim = '''
+if line('$') > 1000
+  syntax sync minlines=200
+endif
+
+setlocal foldmethod=indent
+setlocal shiftwidth=2 softtabstop=2
+setlocal iskeyword+=:,#
+'''
+
+qfreplace = 'setlocal nofoldenable'
+
+toml = 'syntax sync minlines=500'
+
+help = '''
+setlocal iskeyword+=:
+setlocal iskeyword+=#
+setlocal iskeyword+=-
+'''
+
+ruby = '''
+setlocal iskeyword+=!
+setlocal iskeyword+=?
+setlocal omnifunc=
+setlocal shiftwidth=2 softtabstop=2 tabstop=2
+'''
