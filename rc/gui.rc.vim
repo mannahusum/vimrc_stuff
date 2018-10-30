@@ -6,7 +6,7 @@ if has('win32') || has('win64')
   " set guifontwide=VL\ Gothic:h11
    " set guifontwide=Ricty:h12
 
-   set guifont=Monaco_for_Powerline:h8:cANSI:qDRAFT
+   set guifont=Fira_Code:h8:cANSI:cDRAFT
   " set guifont=Courier\ New:h11
   " set guifont=VL\ Gothic:h11
   " set guifont=Consolas:h12
@@ -30,7 +30,7 @@ else
 endif
 
 "---------------------------------------------------------------------------
-" Window:
+" Windows:
 "
 if has('win32') || has('win64')
   if &columns < 120
