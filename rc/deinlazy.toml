@@ -254,14 +254,14 @@ let g:vinarise_enable_auto_detect = 1
 let g:vinarise_guifont = 'Courier\ 10\ Pitch:h14'
 '''
 
-[[plugins]]
-repo = 'thinca/vim-fontzoom'
-on_if = "has('gui_running')"
-on_map = {n = '<Plug>'}
-hook_add = '''
-  nmap + <Plug>(fontzoom-larger)
-  nmap _ <Plug>(fontzoom-smaller)
-'''
+# [[plugins]]
+# repo = 'thinca/vim-fontzoom'
+# on_if = "has('gui_running')"
+# on_map = {n = '<Plug>'}
+# hook_add = '''
+#   nmap + <Plug>(fontzoom-larger)
+#   nmap _ <Plug>(fontzoom-smaller)
+# '''
 
 [[plugins]]
 repo = 'rhysd/accelerated-jk'

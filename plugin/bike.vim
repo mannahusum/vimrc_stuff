@@ -296,7 +296,7 @@ row2, col2 = vim.current.buffer.mark('>')
 newname = vim.eval("newname")
 if newname:
     try:
-		bikectx.extractMethod(fn, row1, col1, row2, col2, newname)
+                bikectx.extractMethod(fn, row1, col1, row2, col2, newname)
     except:
         show_exc()
     saveChanges()

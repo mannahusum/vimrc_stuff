@@ -13,16 +13,12 @@ endfunction
 " Setting of the encoding to use for a save and reading.
 " Make it normal in UTF-8 in Unix.
 if has('vim_starting') && &encoding !=# 'utf-8'
-  if IsWindows() && !has('gui_running')
-    set encoding=latin1
-  else
-    set encoding=utf-8
-  endif
+  set encoding=utf-8
 endif
 
 " Build encodings.
 let &fileencodings = join([
-      \ 'ucs-bom', 'iso-2022-jp-3', 'utf-8', 'euc-jp', 'cp932'])
+      \ 'ucs-bom', 'utf-8', 'utf-16le', 'latin1'])
 
 if has('multi_byte_ime')
   set iminsert=0 imsearch=0
@@ -39,7 +35,8 @@ let maplocalleader = nr2char(0x00f6, 1)
 
 if IsWindows()
   " Exchange path separator.
-   set shellslash
+  set shellslash
+  set renderoptions=type:directx
 endif
 
 let $CACHE = expand('~/.cache')
@@ -71,7 +68,7 @@ set packpath=
 
 " Disable menu.vim
 if has('gui_running')
-   set guioptions=Mc
+   set guioptions=mc
 endif
 
 let g:loaded_2html_plugin      = 1
