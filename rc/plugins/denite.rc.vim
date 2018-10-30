@@ -33,8 +33,6 @@ call denite#custom#map('insert', '<BS>',
   \ '<denite:smart_delete_char_before_caret>', 'noremap')
 call denite#custom#map('insert', '<C-h>',
   \ '<denite:smart_delete_char_before_caret>', 'noremap')
-call denite#custom#map('insert', ';',
-  \ 'vimrc#sticky_func()', 'expr')
 
 call denite#custom#alias('source', 'file/rec/git', 'file/rec')
 call denite#custom#var('file/rec/git', 'command',

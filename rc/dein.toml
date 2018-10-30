@@ -22,8 +22,8 @@ repo = 'kana/vim-textobj-user'
 [[plugins]]
 repo = 'kana/vim-operator-user'
 
-[[plugins]]
-repo  = 'kana/vim-repeat'
+# [[plugins]]
+# repo  = 'kana/vim-repeat'
 
 [[plugins]]
 repo = 'rcmdnk/vim-markdown'
@@ -68,16 +68,6 @@ repo = 'vim-airline/vim-airline'
 [[plugins]]
 repo = 'PProvost/vim-ps1'
 
-[[plugins]]
-repo = 'neoclide/vim-node-rpc'
-build = 'yarn install'
-
-# [[plugins]]
-# repo = 'neoclide/coc.nvim'
-# hook_post_update = '''
-# call system('yarn install')
-# '''
-
 # [[plugins]]
 # repo = 'neoclide/coc.nvim'
 # hook_post_update = '''
@@ -86,3 +76,16 @@ build = 'yarn install'
 # '''
 # depends = 'neoclide/vim-node-rpc'
 # on_ft = 'ps1'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+# on_cmd = [
+#     'Git', 'Git!', 'Gcd', 'Glcd', 'Gstatus', 'Gcommit', 'Gmerge', 'Gpull',
+#     'Grebase', 'Gpush', 'Gfetch', 'Ggrep', 'Glgrep', 'Glog', 'Gllog', 'Gedit',
+#     'Gsplit', 'Gvsplit', 'Gtabedit', 'Gpedit', 'Gsplit!', 'Gvsplit!',
+#     'Gtabedit!', 'Gpedit!', 'Gread', 'Gread!', 'Gwrite', 'Gwq', 'Gwq!',
+#     'Gdiff', 'Gsdiff', 'Gvdiff', 'Gmove', 'Grename', 'Gdelete', 'Gremove',
+#     'Gblame', 'Gbrowse'
+# ]
+#on_map = {'n': '<Plug>'}

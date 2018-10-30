@@ -3,9 +3,9 @@ repo = 'Shougo/vimproc.vim'
 on_source = ['vimfiler.vim']
 hook_post_update = '''
 if IsWindows()
-    system('tools\update-dll-mingw.bat')
+    call system('tools\update-dll-mingw.bat')
 elseif has('unix')
-    system('make')
+    call system('make')
 endif
 '''
 
@@ -124,12 +124,6 @@ repo = 'Shougo/denite.nvim'
 on_cmd = ['Denite', 'DeniteBufferDir', 'DeniteCursorWord',  'DeniteProjectDir']
 hook_source = 'execute "source ".g:vimdir."/rc/plugins/denite.rc.vim"'
 hook_add = '''
-  nnoremap <silent> ;r
-        \ :<C-u>Denite -buffer-name=register
-        \ register neoyank<CR>
-  xnoremap <silent> ;r
-        \ :<C-u>Denite -default-action=replace -buffer-name=register
-        \ register neoyank<CR>
 
   nnoremap <silent> [Window]<Space>
         \ :<C-u>Denite file/rec:~/.vim/rc<CR>
@@ -150,18 +144,12 @@ hook_add = '''
 
   nnoremap <silent> [Window]n :<C-u>Denite dein<CR>
   nnoremap <silent> [Window]g :<C-u>Denite ghq<CR>
-  nnoremap <silent> ;g :<C-u>Denite -buffer-name=search
-        \ -no-empty -mode=normal grep<CR>
   nnoremap <silent> n :<C-u>Denite -buffer-name=search
         \ -resume -mode=normal -refresh<CR>
   nnoremap <silent> ft :<C-u>Denite filetype<CR>
-  nnoremap <silent> <C-t> :<C-u>Denite
-        \ -select=`tabpagenr()-1` -mode=normal deol:zsh<CR>
   nnoremap <silent> <C-k> :<C-u>Denite -mode=normal change jump<CR>
 
   nnoremap <silent> [Space]gs :<C-u>Denite gitstatus<CR>
-  nnoremap <silent> ;;
-        \ :<C-u>Denite command command_history<CR>
 '''
 
 
@@ -370,5 +358,18 @@ repo = 'lambdalisue/suda.vim'
 on_path = 'suda://'
 
 [[plugins]]
-repo = 'tpope/vim-fugitive'
-on_cmd = ['Gstatus']
+repo = 'neoclide/vim-node-rpc'
+hook_post_update = '''
+call system('yarn install')
+'''
+merge = 0
+on_if = 1
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+hook_post_update = '''
+call system('yarn install')
+'''
+merge = 0
+on_if = 1
+
