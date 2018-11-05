@@ -37,7 +37,7 @@ endfunction
 augroup MyAutoCmd
   autocmd!
   autocmd FileType,Syntax,BufNewFile,BufNew,BufRead *?
-    \ call vimrc#on_filetype()
+    \ call vimrc_ca#on_filetype()
   autocmd CursorHold *.toml syntax sync minlines=300
 augroup END
 
@@ -48,7 +48,7 @@ endif
 call s:source_rc('dein.rc.vim')
 
 if has('vim_starting') && !empty(argv())
-  call vimrc#on_filetype()
+  call vimrc_ca#on_filetype()
 endif
 
 if !has('vim_starting')
@@ -61,23 +61,21 @@ endif
 
 
 
-call s:source_rc('encoding.rc.vim')
+" call s:source_rc('encoding.rc.vim')
 
-call s:source_rc('options.rc.vim')
+" call s:source_rc('options.rc.vim')
 
-call s:source_rc('mappings.rc.vim')
+" call s:source_rc('mappings.rc.vim')
 
 
 if IsWindows()
-"  call s:source_rc('windows.rc.vim')
+  call s:source_rc('windows.rc.vim')
 else
   call s:source_rc('unix.rc.vim')
 endif
 
 if !has('nvim') && has('gui_running')
-"  call s:source_rc('gui.rc.vim')
+  call s:source_rc('gui.rc.vim')
 endif
 
 
-
-" set secure

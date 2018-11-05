@@ -1,4 +1,4 @@
-﻿" dein configurations.
+" dein configurations.
 
 let g:dein#install_progress_type = 'title'
 let g:dein#enable_notification = 1
@@ -15,16 +15,16 @@ call dein#load_toml(g:vimdir . '/rc/dein.toml', {'lazy': 0})
 call dein#load_toml(g:vimdir . '/rc/deinlazy.toml', {'lazy' : 1})
 call dein#load_toml(g:vimdir . '/rc/deinft.toml')
 
-" let s:vimrc_local = findfile('vimrc_local.vim', '.;')
-" if s:vimrc_local !=# ''
+let s:vimrc_local = findfile('vimrc_local.vim', '.;')
+if s:vimrc_local !=# ''
   " Load develop version plugins.
-  " call dein#local(fnamemodify(s:vimrc_local, ':h'),
-  call dein#local("~/Documents/vim_plugins",
-    \ {'frozen': 0, 'merged': 1})
-  " call dein#local(fnamemodify(s:vimrc_local, ':h'),
-  "      \ {'frozen': 1, 'merged': 0},
-  "      \ ['deoplete-*', '*.nvim'])
-" endif
+  call dein#local(fnamemodify(s:vimrc_local, ':h'),
+  call dein#local(fnamemodify(s:vimrc_local, ':h'),
+       \ {'frozen': 1, 'merged': 0},
+       \ ['deoplete-*', '*.nvim'])
+  " call dein#local("~/Documents/vim_plugins",
+  "  \ {'frozen': 0, 'merged': 1})
+endif
 
 if dein#tap('deoplete.nvim') && has('nvim')
   call dein#disable('neocomplete.vim')

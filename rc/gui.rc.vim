@@ -24,9 +24,8 @@ elseif has('mac')
    set guifont=Osaka－等幅:h14
 else
   " For Linux.
-   set guifontwide=VL\ Gothic\ 13
-   set guifont=Courier\ 10\ Pitch\ 14
-   set guifont=Monaco_for_Powerline 8
+   " set guifontwide=VL\ Gothic\ 13
+   set guifont="Fira Code weight=453 10"
 endif
 
 "---------------------------------------------------------------------------
@@ -54,6 +53,18 @@ endif
 
 " Don't override colorscheme.
 if !exists('g:colors_name')
+  " && dein#check_install('altercation/vim-colors-solarized')
+  " Solarized
+  " ---------
+  let g:solarized_termcolors=256 " color depth
+  let g:solarized_termtrans=0 " 1|0 background transparent
+  let g:solarized_bold=1 " 1|0 show bold fonts
+  let g:solarized_italic=1 " 1|0 show italic fonts
+  let g:solarized_underline=1 " 1|0 show underlines
+  let g:solarized_contrast="high" " normal|high|low contrast
+  " normal|high|low effect on whitespace characters
+  let g:solarized_visibility="high"
+  set background=dark
   colorscheme solarized
 endif
 

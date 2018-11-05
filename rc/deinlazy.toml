@@ -1,15 +1,4 @@
 ﻿[[plugins]]
-repo = 'Shougo/vimproc.vim'
-on_source = ['vimfiler.vim']
-hook_post_update = '''
-if IsWindows()
-    call system('tools\update-dll-mingw.bat')
-elseif has('unix')
-    call system('make')
-endif
-'''
-
-[[plugins]]
 repo = 'tyru/caw.vim'
 on_map = {nx = '<Plug>'}
 hook_add = '''
@@ -124,7 +113,6 @@ repo = 'Shougo/denite.nvim'
 on_cmd = ['Denite', 'DeniteBufferDir', 'DeniteCursorWord',  'DeniteProjectDir']
 hook_source = 'execute "source ".g:vimdir."/rc/plugins/denite.rc.vim"'
 hook_add = '''
-
   nnoremap <silent> [Window]<Space>
         \ :<C-u>Denite file/rec:~/.vim/rc<CR>
   nnoremap <silent> / :<C-u>Denite -buffer-name=search -auto-highlight
@@ -300,6 +288,7 @@ repo = 'lambdalisue/vim-findent'
 
 [[plugins]]
 repo = 'kana/vim-smartchr'
+if = 0
 on_event = 'InsertCharPre'
 hook_source = '''
   inoremap <expr> , smartchr#one_of(', ', ',')
@@ -363,7 +352,7 @@ hook_post_update = '''
 call system('yarn install')
 '''
 merge = 0
-on_if = 1
+on_if = '!has("nvim")'
 
 [[plugins]]
 repo = 'neoclide/coc.nvim'
@@ -372,4 +361,16 @@ call system('yarn install')
 '''
 merge = 0
 on_if = 1
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+merged = 0
+on_cmd = [
+    'Git', 'Git!', 'Gcd', 'Glcd', 'Gstatus', 'Gcommit', 'Gmerge', 'Gpull',
+    'Grebase', 'Gpush', 'Gfetch', 'Ggrep', 'Glgrep', 'Glog', 'Gllog', 'Gedit',
+    'Gsplit', 'Gvsplit', 'Gtabedit', 'Gpedit', 'Gsplit!', 'Gvsplit!',
+    'Gtabedit!', 'Gpedit!', 'Gread', 'Gread!', 'Gwrite', 'Gwq', 'Gwq!',
+    'Gdiff', 'Gsdiff', 'Gvdiff', 'Gmove', 'Grename', 'Gdelete', 'Gremove',
+    'Gblame', 'Gbrowse'
+]
 

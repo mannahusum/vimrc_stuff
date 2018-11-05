@@ -1,4 +1,18 @@
 ﻿[[plugins]]
+repo = 'tpope/vim-fugitive'
+merged = 0
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+hook_post_update = '''
+if IsWindows()
+    call system('tools\update-dll-mingw.bat')
+elseif has('unix')
+    call system('make')
+endif
+'''
+
+[[plugins]]
 repo = 'tyru/open-browser.vim'
 
 [[plugins]]
@@ -43,15 +57,14 @@ on_if = '!has("nvim")'
 
 [[plugins]]
 repo = 'altercation/vim-colors-solarized'
+merged = 0
 
 [[plugins]]
 repo = 'roxma/nvim-yarp'
+on_if = '!has("nvim")'
 
 [[plugins]]
 repo = 'thinca/vim-themis'
-
-[[plugins]]
-repo  = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'tpope/vim-rhubarb'
@@ -77,9 +90,6 @@ repo = 'PProvost/vim-ps1'
 # depends = 'neoclide/vim-node-rpc'
 # on_ft = 'ps1'
 
-[[plugins]]
-repo = 'tpope/vim-fugitive'
-
 # on_cmd = [
 #     'Git', 'Git!', 'Gcd', 'Glcd', 'Gstatus', 'Gcommit', 'Gmerge', 'Gpull',
 #     'Grebase', 'Gpush', 'Gfetch', 'Ggrep', 'Glgrep', 'Glog', 'Gllog', 'Gedit',
@@ -88,4 +98,5 @@ repo = 'tpope/vim-fugitive'
 #     'Gdiff', 'Gsdiff', 'Gvdiff', 'Gmove', 'Grename', 'Gdelete', 'Gremove',
 #     'Gblame', 'Gbrowse'
 # ]
-#on_map = {'n': '<Plug>'}
+
+# on_map = {'n': '<Plug>'}

@@ -1,77 +1,21 @@
-set encoding=utf-8
-
-" Move Backup Files to ~/.vim/sessions
-" ------------------------------------
-let backupdir=g:vimdir . "sessions"
-let dir=g:vimdir . "sessions"
-
-exec "set runtimepath^=" . g:vimdir . "dein/repos/github.com/Shougo/dein.vim"
-
-set nocompatible
-
-filetype off                  " required
-
-"dein Scripts-----------------------------
-if &compatible
-  set nocompatible               " Be iMproved
-endif
-
-let g:dein#install_process_timeout=960
-
-" Required:
-call dein#begin(expand(g:vimdir . 'dein'))
-
-" Let dein manage dein
-" Required:
-call dein#add('Shougo/dein.vim')
-
-call dein#add('s3rvac/AutoFenc')
-
-" call dein#add('Shougo/vimproc.vim', { 'build' : 'make -f make_unix.mak' })
-" call dein#add('Shougo/vimproc.vim', { 'build' : 'make' })
-call dein#add('Shougo/vimproc.vim')
-
-call dein#add('Shougo/unite.vim')
-call dein#add('Shougo/denite.nvim')
-call dein#add('neoclide/denite-git')
-call dein#add('neoclide/denite-extra')
-call dein#add('Shougo/deol.nvim')
-call dein#add('Shougo/defx.nvim')
-call dein#add('Shougo/neomru.vim')
-
-call dein#add('davidhalter/jedi-vim')
-call dein#add('tpope/vim-fugitive')
 call dein#add('tpope/vim-rhubarb')
 call dein#add('gregsexton/gitv')
-call dein#add('w0rp/ale')
-call dein#add('altercation/vim-colors-solarized')
 
-call dein#add('Shougo/vimshell')
-
-call dein#add('chrisbra/SudoEdit.vim')
 call dein#add('Shougo/neossh.vim')
 call dein#add('ujihisa/unite-locate')
-" call dein#add('ujihisa/repl.vim')
 call dein#add('mattn/webapi-vim')
-call dein#add('tyru/open-browser.vim')
 call dein#add('timcharper/textile.vim')
 call dein#add('vim-scripts/TwitVim')
 call dein#add('Shougo/deoplete.nvim')
-" call dein#add('Shougo/context_filetype.vim')
+call dein#add('Shougo/context_filetype.vim')
 call dein#add('roxma/nvim-yarp')
-call dein#add('roxma/vim-hug-neovim-rpc')
-call dein#add('ujihisa/neco-look')
 call dein#add('zchee/deoplete-jedi')
-call dein#add('Shougo/neosnippet')
-call dein#add('Shougo/neosnippet-snippets')
 
 call dein#add('caio/querycommandcomplete.vim')
 call dein#add('fweep/vim-tabber')
 
 call dein#add('bling/vim-airline')
-" call dein#add('airblade/vim-gitgutter')
 call dein#add('mhinz/vim-signify')
-" call dein#add('chrisbra/changesPlugin')
 
 call dein#add('bogado/file-line')
 
@@ -82,12 +26,8 @@ call dein#add('benjifisher/matchit.zip', { 'on_map': ['nxo', '%', 'g%'] })
 call dein#add('tell-k/vim-autopep8')
 call dein#add('tpope/vim-surround')
 
-
 call dein#add('vim-latex/vim-latex')
-call dein#add('tpope/vim-commentary')
 
-" call dein#add('kana/vim-textobj-user')
-" call dein#add('bps/vim-textobj-python')
 call dein#add('hynek/vim-python-pep8-indent')
 call dein#add('5long/pytest-vim-compiler')
 call dein#add('tpope/vim-dispatch')
@@ -112,12 +52,12 @@ call dein#add('1995parham/vim-spice')
 call dein#add('jansenm/vim-cmake')
 call dein#add('vivkin/vim-call-cmake')
 
-" " Groovy stuff
-" call dein#add('vim-scripts/groovy.vim--Ruley')
-" call dein#add('rdolgushin/groovy.vim')
-" call dein#add('https://gist.github.com/am4dr/4e6fc1bade7c1add02e5',
-"       \{'script_type': 'plugin',
-"        \'rev': '5456ad51b559c7b4c2dacc8640b8ab077cc5d595'})
+" Groovy stuff
+call dein#add('vim-scripts/groovy.vim--Ruley')
+call dein#add('rdolgushin/groovy.vim')
+call dein#add('https://gist.github.com/am4dr/4e6fc1bade7c1add02e5',
+      \{'script_type': 'plugin',
+       \'rev': '5456ad51b559c7b4c2dacc8640b8ab077cc5d595'})
 
 " Java stuff
 call dein#add('artur-shaik/vim-javacomplete2')
@@ -130,28 +70,6 @@ call dein#add('PProvost/vim-ps1')
 " call dein#add('cd01/poshcomplete-vim')
 call dein#add('interleaved/vim-pester')
 
-call dein#add('mhinz/vim-signify')
-call dein#add('caio/querycommandcomplete.vim')
-call dein#add('mattn/webapi-vim')
-call dein#add('w0rp/ale')
-
-if (filereadable("$HOME/.deinlocal"))
-  source "$HOME/.deinlocal"
-endif
-
-" Required:
-call dein#end()
-
-" Required:
-filetype plugin indent on
-
-" If you want to install not installed plugins on startup.
-if dein#check_install()
-  call dein#install()
-endif
-
-"End dein Scripts-------------------------
-
 " deoplete
 " --------
 let g:qcc_format_abbr = '${1} <${0}>'
@@ -161,31 +79,11 @@ let g:jedi#smart_auto_mappings = 0
 let g:deoplete#enable_at_startup = 1
 let g:jedi#popup_select_first = 0
 
-" open-browser
-if (has('unix') && !has('win32'))
-  let g:openbrowser_browser_commands =[
-      \ {"name": "xdg-open",
-      \  "args": ["{browser}", "{uri}"]},
-      \ {"name": "firefox",
-      \  "args": ["{browser}", "{uri}"]},
-      \ {"name": "w3m",
-      \  "args": ["{browser}", "{uri}"]},
-      \]
-endif
-let g:openbrowser_use_vimproc = 1
-
 " Airline:
 " --------
-set laststatus=2 " Always display the statusline in all windows
-let g:airline_powerline_fonts = 1
 let g:airline_detect_modified=1
 let g:airline_detect_paste=1
-let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#virtualenv#enabled = 1
-
-if has("gui_running") && !has('win32')
-  set guifont=Monaco\ for\ Powerline\ 8
-endif
 
 " configure the title text for quickfix buffers >
 let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
@@ -208,25 +106,6 @@ let g:signify_realtime = 1
 if has('win32')
   let g:unite_locate_command='es -i -n {count} {query}'
   " let g:unite_source_grep_encoding = 'utf-8'
-  if executable('ag')
-    " Ag command on grep source
-    call denite#custom#var('grep', 'command', ['ag'])
-    call denite#custom#var('grep', 'default_opts',
-      \ ['-i', '--vimgrep', '--nocolor', '--nogroup', '--hidden',
-      \  '--ignore', '.svn',
-      \  '--ignore', '.git',
-      \  '--ignore', '$tf',
-      \  '--ignore', '.tfignore',
-      \  '--ignore', 'tags',
-      \  '--ignore', 'Binaries',
-      \  '--ignore', 'Release',
-      \  '--ignore', '_Packages',
-      \  '--ignore', 'Binaries_PublishedWebsites'])
-    call denite#custom#var('grep', 'recursive_opts', [])
-    call denite#custom#var('grep', 'pattern_opt', [])
-    call denite#custom#var('grep', 'separator', ['--'])
-    call denite#custom#var('grep', 'final_opts', [])
-  endif
 endif
 
 autocmd FileType defx call s:defx_my_settings()
@@ -282,52 +161,6 @@ function! s:defx_my_settings() abort
   \ defx#do_action('change_vim_cwd')
 endfunction
 
-let g:unite_source_menu_compatibility = 1
-let g:unite_source_menu_menus = {}
-let g:unite_source_menu_menus.shell = {
-  \     'description' : 'Test menu3',
-  \ }
-let g:unite_source_menu_menus.shell.command_candidates = [
-  \   ['bash', 'VimShellInteractive bash'],
-  \   ['ipython', 'VimShellInteractive ipython'],
-  \ ]
-
-let g:unite_source_menu_menus.git = {
-  \ 'description' : 'Git repositories',
-  \}
-
-let g:unite_source_menu_menus.git.command_candidates = [
-  \['¿ tig                                                        ¿ ,gt',
-    \'normal ,gt'],
-  \['¿ git status       (Fugitive)                                ¿ ,gs',
-    \'Gstatus'],
-  \['¿ git diff         (Fugitive)                                ¿ ,gd',
-    \'Gdiff'],
-  \['¿ git commit       (Fugitive)                                ¿ ,gc',
-    \'Gcommit'],
-  \['¿ git log          (Fugitive)                                ¿ ,gl',
-    \'exe "silent Glog | Unite quickfix"'],
-  \['¿ git blame        (Fugitive)                                ¿ ,gb',
-    \'Gblame'],
-  \['¿ git stage        (Fugitive)                                ¿ ,gw',
-    \'Gwrite'],
-  \['¿ git checkout     (Fugitive)                                ¿ ,go',
-    \'Gread'],
-  \['¿ git rm           (Fugitive)                                ¿ ,gr',
-    \'Gremove'],
-  \['¿ git mv           (Fugitive)                                ¿ ,gm',
-    \'exe "Gmove " input("destino: ")'],
-  \['¿ git push         (Fugitive, salida por buffer)             ¿ ,gp',
-    \'Git! push'],
-  \['¿ git pull         (Fugitive, salida por buffer)             ¿ ,gP',
-    \'Git! pull'],
-  \['¿ git prompt       (Fugitive, salida por buffer)             ¿ ,gi',
-    \'exe "Git! " input("comando git: ")'],
-  \['¿ git cd           (Fugitive)',
-    \'Gcd'],
-\]
-
-
 " Less Menus
 " ----------
 " This must happen before the syntax system is enabled
@@ -346,7 +179,6 @@ set incsearch		" do incremental searching
 " highlighting as well as numbers.
 " And disable the sucking pydoc preview window for the omni completion
 " also highlight current line and disable the blinking cursor.
-set colorcolumn=80
 set wildmenu
 set ruler
 set guioptions-=T
@@ -359,38 +191,6 @@ if has("autocmd")
   autocmd BufEnter * :syntax sync fromstart
 
 endif
-
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
-
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
-
-  filetype on
-
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  filetype plugin indent on
-
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-    autocmd!
-
-    " For all text files set 'textwidth' to 78 characters.
-    autocmd FileType text setlocal textwidth=78
-
-    " When editing a file, always jump to the last known cursor position.
-    " Don't do it when the position is invalid or when inside an event handler
-    " (happens when dropping a file on gvim).
-    " Also don't do it when the mark is in the first line, that is the default
-    " position when opening a file.
-    autocmd BufReadPost *
-      \ if line("'\"") > 1 && line("'\"") <= line("$") |
-      \   exe "normal! g`\"" |
-      \ endif
-  augroup END
 
   " Highlight NBSP
   " --------------
@@ -418,15 +218,15 @@ if has("autocmd")
     autocmd FileType python setlocal omnifunc=jedi#completions
   augroup END
 
-  " augroup groovy
-  "   autocmd!
+  augroup groovy
+    autocmd!
 
-  "   autocmd BufReadPost,BufNewFile Jenkinsfile set syntax=groovy
-  "   autocmd BufReadPost,BufNewFile Jenkinsfile set filetype=groovy
+    autocmd BufReadPost,BufNewFile Jenkinsfile set syntax=groovy
+    autocmd BufReadPost,BufNewFile Jenkinsfile set filetype=groovy
 
-  "   autocmd BufReadPost,BufNewFile Jenkinsfile_* set syntax=groovy
-  "   autocmd BufReadPost,BufNewFile Jenkinsfile_* set filetype=groovy
-  " augroup END
+    autocmd BufReadPost,BufNewFile Jenkinsfile_* set syntax=groovy
+    autocmd BufReadPost,BufNewFile Jenkinsfile_* set filetype=groovy
+  augroup END
 
   augroup vimrc
     autocmd!
@@ -478,52 +278,12 @@ if has("autocmd")
   augroup END
 else
 
-  set autoindent  " always set autoindenting on
-
 endif " has("autocmd")
-
-" Indention-Options
-" -----------------
-" General
-set tabstop=4
-set shiftwidth=4
-set shiftround
-set expandtab
-"set smartindent
-
-" use 256 colors in Console mode if we think the terminal supports it
-if &term =~? 'mlterm\|xterm'
-  set t_Co=256
-endif
-
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
-endif
-
-" Solarized
-" ---------
-let g:solarized_termcolors=256 " color depth
-let g:solarized_termtrans=0 " 1|0 background transparent
-let g:solarized_bold=1 " 1|0 show bold fonts
-let g:solarized_italic=1 " 1|0 show italic fonts
-let g:solarized_underline=1 " 1|0 show underlines
-let g:solarized_contrast="high" " normal|high|low contrast
-" normal|high|low effect on whitespace characters
-let g:solarized_visibility="high"
-set background=dark
-silent! colorscheme solarized
 
 " Vim Tabber
 " ----------
 set tabline=%!tabber#TabLine()
 set guioptions-=e
-
-" Spell-checking
-" --------------
-setlocal nospell
 
 " Python
 " ------
@@ -538,54 +298,9 @@ let g:jedi#usages_command = "<leader>u"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
 
-" Copied from azyr
- " ==== Ignoring certain errors/warnings ====
-" - Pylint is checking the modules against python2,
-"   don't know how to change that.
-" - Disabling import checks.
-" - Disabling 80 character width style warning.
-" - I don't care about missing module docstrings.
-" - Don't complain if I use dashes in my filenames for example
-"   (invalid-name).
-" - Parens are neccessary after print keyword in python3.
-" - Ignored too-many-* warnings make no sense to me.
-" - ConnectionResetError is only on python3 namespace.
-" - I like to use strings as comments (pointless-string-statements).
-" - too-few-public-methods makes no sense.
-" - global-variable-not-assigned does not detect if some properties
-"   of the variable are changed.
-" - Python 3 automatically supports unicode (invalid-encoded-data)
-" - [syntax-error] pylint gets python3 syntax wrong sometimes
-" - [-bad-builtin] hardly makes any sense??
-" - [-star-args] why???
-" - [-global-statements] i do like to use them sometimes ...
-" - FileNotFoundError is introduced in python3 i believe
 let pylint_ignore_regexp =  '\(too-many-public-methods\)'
-  " \'\(invalid-name\|
-  " \Missing module docstring\|line-too-long\|no-name-in-module\|
-  " \import-error\|redefined-outer-name\|no-member\|
-  " \too-many-instance-attributes\|
-  " \too-many-locals\|too-many-branches\|too-many-statements\|
-  " \Unnecessary parens after .print. keyword\|
-  " \Undefined variable .ConnectionResetError\|
-  " \pointless-string-statement\|too-few-public-methods\|
-  " \global-variable-not-assigned\|invalid-encoded-data\|
-  " \Used builtin function .filter.\|Used builtin function .map.\|
-  " \syntax-error\|bad-builtin\|star-args\|global-statement\|
-  " \FileNotFoundError\)'
-" E501 = 80 character width style warning
-" ConnectionResetError is only on python3 namespace
-" E302 => sometimes i like to use nested functions
-"         (2 lines warning not appropriate there)
-" E301 => 1 lines warning inappropriate when using nested function
 let flake8_ignore_regexp =
   \'\(E501\|undefined name .ConnectionResetError\|E302\|E301\)'
-
-" " Ignore 80 character width style warning
-" let g:syntastic_python_flake8_quiet_messages =
-"     \{ 'regex': flake8_ignore_regexp }
-" let g:syntastic_python_pylint_quiet_messages =
-"     \{ 'regex': pylint_ignore_regexp }
 
 " Unite outline
 " -------------
@@ -616,10 +331,6 @@ let s:default_highlight = {
   \ 'parameter_list': g:unite_abbr_highlight,
   \ }
 
-" Open Browser
-" ------------
-let g:openbrowser_use_vimproc = 1
-
 " Markdown Preview
 " ----------------
 let vim_markdown_preview_github=1
@@ -628,7 +339,6 @@ let vim_markdown_preview_preview_hotkey='<localleader>p'
 
 " arduino
 " -------
-
 let g:vim_arduino_ino_cmd = 'ano'
 
 "Default: /Applications/Arduino.app/Contents/Resources/Java
