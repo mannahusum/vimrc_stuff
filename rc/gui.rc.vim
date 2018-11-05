@@ -6,7 +6,7 @@ if has('win32') || has('win64')
   " set guifontwide=VL\ Gothic:h11
    " set guifontwide=Ricty:h12
 
-   set guifont=Fira_Code:h8:cANSI:cDRAFT
+   set guifont=Fira_Code:h8:cANSI
   " set guifont=Courier\ New:h11
   " set guifont=VL\ Gothic:h11
   " set guifont=Consolas:h12
@@ -65,7 +65,7 @@ if !exists('g:colors_name')
   " normal|high|low effect on whitespace characters
   let g:solarized_visibility="high"
   set background=dark
-  colorscheme solarized
+  colorscheme desert
 endif
 
 "---------------------------------------------------------------------------

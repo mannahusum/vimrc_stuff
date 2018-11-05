@@ -36,9 +36,6 @@ repo = 'kana/vim-textobj-user'
 [[plugins]]
 repo = 'kana/vim-operator-user'
 
-# [[plugins]]
-# repo  = 'kana/vim-repeat'
-
 [[plugins]]
 repo = 'rcmdnk/vim-markdown'
 
@@ -54,10 +51,6 @@ repo = 'Shougo/neomru.vim'
 [[plugins]]
 repo = 'roxma/vim-hug-neovim-rpc'
 on_if = '!has("nvim")'
-
-[[plugins]]
-repo = 'altercation/vim-colors-solarized'
-merged = 0
 
 [[plugins]]
 repo = 'roxma/nvim-yarp'
@@ -81,22 +74,11 @@ repo = 'vim-airline/vim-airline'
 [[plugins]]
 repo = 'PProvost/vim-ps1'
 
-# [[plugins]]
-# repo = 'neoclide/coc.nvim'
-# hook_post_update = '''
-# system('yarn install')
-# call coc#util#install()
-# '''
-# depends = 'neoclide/vim-node-rpc'
-# on_ft = 'ps1'
+[[plugins]]
+repo = 'altercation/vim-colors-solarized'
+merged = 0
+on_if = 1
 
-# on_cmd = [
-#     'Git', 'Git!', 'Gcd', 'Glcd', 'Gstatus', 'Gcommit', 'Gmerge', 'Gpull',
-#     'Grebase', 'Gpush', 'Gfetch', 'Ggrep', 'Glgrep', 'Glog', 'Gllog', 'Gedit',
-#     'Gsplit', 'Gvsplit', 'Gtabedit', 'Gpedit', 'Gsplit!', 'Gvsplit!',
-#     'Gtabedit!', 'Gpedit!', 'Gread', 'Gread!', 'Gwrite', 'Gwq', 'Gwq!',
-#     'Gdiff', 'Gsdiff', 'Gvdiff', 'Gmove', 'Grename', 'Gdelete', 'Gremove',
-#     'Gblame', 'Gbrowse'
-# ]
+[[plugins]]
+repo = 'mhinz/vim-signify'
 
-# on_map = {'n': '<Plug>'}
