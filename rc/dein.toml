@@ -5,7 +5,7 @@ merged = 0
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
 hook_post_update = '''
-if IsWindows()
+if has('win32') || has('win64')
     call system('tools\update-dll-mingw.bat')
 elseif has('unix')
     call system('make')
@@ -82,3 +82,17 @@ on_if = 1
 [[plugins]]
 repo = 'mhinz/vim-signify'
 
+[[plugins]]
+repo = 'junegunn/fzf'
+merged = 0
+hook_post_update = '''
+if IsWindows()
+    call system('go get -u github.com/junegunn/fzf')
+elseif has('unix')
+    call system('./install --all')
+endif
+'''
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = 'fzf'

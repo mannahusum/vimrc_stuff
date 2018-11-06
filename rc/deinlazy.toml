@@ -346,21 +346,21 @@ call deoplete#enable()
 repo = 'lambdalisue/suda.vim'
 on_path = 'suda://'
 
-[[plugins]]
-repo = 'neoclide/vim-node-rpc'
-hook_post_update = '''
-call system('yarn install')
-'''
-merge = 0
-on_if = '!has("nvim")'
 
-[[plugins]]
-repo = 'neoclide/coc.nvim'
-hook_post_update = '''
-call system('yarn install')
-'''
-merge = 0
-on_if = 1
+# repo = 'neoclide/vim-node-rpc'
+# hook_post_update = '''
+# call system('yarn install')
+# '''
+# merge = 0
+# on_if = '!has("nvim")'
+
+# [[plugins]]
+# repo = 'neoclide/coc.nvim'
+# hook_post_update = '''
+# call system('yarn install')
+# '''
+# merge = 0
+# on_if = 1
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'

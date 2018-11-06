@@ -17,7 +17,7 @@ if has('win32') || has('win64')
 
   if has('patch-7.4.394')
     " Use DirectWrite
-     "set renderoptions=type:directx
+     set renderoptions=type:directx
   endif
 elseif has('mac')
   " For Mac.
@@ -25,6 +25,7 @@ elseif has('mac')
 else
   " For Linux.
    " set guifontwide=VL\ Gothic\ 13
+   echo "Christians Font war hier"
    set guifont="Fira Code weight=453 10"
 endif
 
