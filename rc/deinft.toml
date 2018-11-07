@@ -179,3 +179,8 @@ setlocal iskeyword+=?
 setlocal omnifunc=
 setlocal shiftwidth=2 softtabstop=2 tabstop=2
 '''
+
+ps1pester = '''
+let &makeprg = 'powershell.exe -c "Invoke-Pester -Script % -Show Fails"'
+'''
+

@@ -13,6 +13,12 @@ endif
 '''
 
 [[plugins]]
+repo = 'tpope/vim-eunuch'
+
+[[plugins]]
+repo = 'tpope/vim-scriptease'
+
+[[plugins]]
 repo = 'tyru/open-browser.vim'
 
 [[plugins]]
@@ -73,6 +79,9 @@ repo = 'vim-airline/vim-airline'
 
 [[plugins]]
 repo = 'PProvost/vim-ps1'
+
+[[plugins]]
+repo = 'interleaved/vim-pester'
 
 [[plugins]]
 repo = 'altercation/vim-colors-solarized'
