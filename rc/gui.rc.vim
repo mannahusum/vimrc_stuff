@@ -25,7 +25,6 @@ elseif has('mac')
 else
   " For Linux.
    " set guifontwide=VL\ Gothic\ 13
-   echo "Christians Font war hier"
    set guifont="Fira Code weight=453 10"
 endif
 

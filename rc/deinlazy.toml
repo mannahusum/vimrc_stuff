@@ -374,3 +374,45 @@ on_cmd = [
     'Gblame', 'Gbrowse'
 ]
 
+[[plugins]]
+repo = 'autozimu/LanguageClient-neovim'
+rev = 'next'
+hook_post_update = '''
+  if dein#util#_is_windows()
+    let cmd = 'powershell install.ps1'
+  else
+    let cmd = 'bash install.sh''
+  endif
+  let g:dein#plugin.build = cmd
+'''
+hook_add = '''
+set hidden
+
+if exists('g:powershell_editor_services')
+  if IsWindows()
+    let s:powershell = 'powershell
+  elseif has('unix')
+    let s:powershell = 'pwsh'
+  endif
+
+  if exists('s:powershell')
+    let g:LanguageClient_serverCommands = {
+      \ 'ps1': [
+      \   s:powershell,
+      \   g:powershell_editor_services .
+	  \     'module/PowerShellEditorServices/Start-EditorServices.ps1',
+      \   '-HostName', 'nvim',
+      \   '-HostProfileId', '0',
+      \   '-HostVersion', '1.0.0',
+      \   '-EditorServicesVersion', '1.9.0',
+      \   '-LogPath', '~/pses.log.txt',
+      \   '-LogLevel', 'Diagnostic',
+      \   '-BundledModulesPath', g:powershell_editor_services . 'module',
+      \   '-Stdio',
+      \   '-SessionDetailsPath', '~/.pses_session']
+    \ }
+
+  endif
+endif
+'''
+on_ft = ['ps1', 'ps1pester']
