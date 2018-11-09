@@ -113,8 +113,6 @@ repo = 'Shougo/denite.nvim'
 on_cmd = ['Denite', 'DeniteBufferDir', 'DeniteCursorWord',  'DeniteProjectDir']
 hook_source = 'execute "source ".g:vimdir."/rc/plugins/denite.rc.vim"'
 hook_add = '''
-  nnoremap <silent> [Window]<Space>
-        \ :<C-u>Denite file/rec:~/.vim/rc<CR>
   nnoremap <silent> / :<C-u>Denite -buffer-name=search -auto-highlight
         \ line<CR>
   nnoremap <silent> * :<C-u>DeniteCursorWord -buffer-name=search
@@ -338,7 +336,7 @@ repo = 'Shougo/deoplete.nvim'
 depends = 'context_filetype.vim'
 on_event = 'InsertEnter'
 hook_source = '''
-source ~/.vim/rc/plugins/deoplete.rc.vim
+execute 'source ' . g:vimdir . '/rc/plugins/deoplete.rc.vim'
 call deoplete#enable()
 '''
 
@@ -386,11 +384,15 @@ hook_post_update = '''
   let g:dein#plugin.build = cmd
 '''
 hook_add = '''
-set hidden
+let g:LanguageClient_windowLogMessageLevel = 'Log'
+let g:LanguageClient_loggingLevel = 'DEBUG'
+let g:LanguageClient_serverStderr = 'C:\Users\z003zdaa\pses.stderr.txt'
 
 if exists('g:powershell_editor_services')
+  set hidden
+
   if IsWindows()
-    let s:powershell = 'powershell
+    let s:powershell = 'powershell'
   elseif has('unix')
     let s:powershell = 'pwsh'
   endif
@@ -399,18 +401,21 @@ if exists('g:powershell_editor_services')
     let g:LanguageClient_serverCommands = {
       \ 'ps1': [
       \   s:powershell,
+      \   '-ExecutionPolicy', 'Unrestricted',
+      \   '-File',
       \   g:powershell_editor_services .
-	  \     'module/PowerShellEditorServices/Start-EditorServices.ps1',
+      \     'Start-EditorServices.ps1',
       \   '-HostName', 'nvim',
       \   '-HostProfileId', '0',
-      \   '-HostVersion', '1.0.0',
-      \   '-EditorServicesVersion', '1.9.0',
-      \   '-LogPath', '~/pses.log.txt',
+      \   '-HostVersion', '1.9.0',
+      \   '-LogPath', 'C:\Users\z003zdaa\pses.log\log.txt',
       \   '-LogLevel', 'Diagnostic',
-      \   '-BundledModulesPath', g:powershell_editor_services . 'module',
+      \   '-BundledModulesPath', g:powershell_editor_services . '..',
+      \   '-AdditionalModules', "@('PowerShellEditorServices.VSCode')",
       \   '-Stdio',
-      \   '-SessionDetailsPath', '~/.pses_session']
+      \   '-SessionDetailsPath', 'c:\Users\z003zdaa\pses_session']
     \ }
+"      \   '-EditorServicesVersion', '1.9.1',
 
   endif
 endif

@@ -92,8 +92,6 @@ set guioptions-=e
 
 " PowerShell
   augroup PowerShell
-    autocmd FileType ps1 set colorcolumn=80
-    autocmd FileType ps1 set shiftwidth=4 tabstop=4
   augroup END
 
 " OpenBrowser
@@ -165,7 +163,10 @@ setlocal iskeyword+=:,#
 
 qfreplace = 'setlocal nofoldenable'
 
-toml = 'syntax sync minlines=500'
+toml = '''
+set shiftwidth=2 tabstop=2 expandtab
+syntax sync minlines=500
+'''
 
 help = '''
 setlocal iskeyword+=:
@@ -178,6 +179,11 @@ setlocal iskeyword+=!
 setlocal iskeyword+=?
 setlocal omnifunc=
 setlocal shiftwidth=2 softtabstop=2 tabstop=2
+'''
+
+ps1 = '''
+  set colorcolumn=80
+  set shiftwidth=4 tabstop=4 expandtab
 '''
 
 ps1pester = '''

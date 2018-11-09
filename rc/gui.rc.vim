@@ -15,10 +15,10 @@ if has('win32') || has('win64')
   " Number of pixel lines inserted between characters.
    set linespace=2
 
-  if has('patch-7.4.394')
+  " if has('patch-7.4.394')
     " Use DirectWrite
-     set renderoptions=type:directx
-  endif
+     " set renderoptions=type:directx
+  " endif
 elseif has('mac')
   " For Mac.
    set guifont=Osaka－等幅:h14
