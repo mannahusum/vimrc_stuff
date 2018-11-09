@@ -90,10 +90,6 @@ let g:airline#extensions#whitespace#checks = [
 set tabline=%!tabber#TabLine()
 set guioptions-=e
 
-" PowerShell
-  augroup PowerShell
-  augroup END
-
 " OpenBrowser
 nmap <localleader>o <Plug>(openbrowser-open)
 
