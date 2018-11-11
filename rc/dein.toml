@@ -4,18 +4,7 @@ merged = 0
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
-hook_post_update = '''
-  if dein#util#_is_windows()
-    let cmd = 'tools\\update-dll-mingw'
-  elseif dein#util#_is_cygwin()
-    let cmd = 'make -f make_cygwin.mak'
-  elseif executable('gmake')
-    let cmd = 'gmake'
-  else
-    let cmd = 'make'
-  endif
-  let g:dein#plugin.build = cmd
-'''
+hook_post_update= 'call vimrc_ca#install_vimproc()'
 
 [[plugins]]
 repo = 'tpope/vim-eunuch'
@@ -110,3 +99,7 @@ endif
 [[plugins]]
 repo = 'junegunn/fzf.vim'
 depends = 'fzf'
+
+[[plugins]]
+repo = 'thinca/vim-prettyprint'
+
