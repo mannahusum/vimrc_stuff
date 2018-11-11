@@ -375,49 +375,6 @@ on_cmd = [
 [[plugins]]
 repo = 'autozimu/LanguageClient-neovim'
 rev = 'next'
-hook_post_update = '''
-  if dein#util#_is_windows()
-    let cmd = 'powershell install.ps1'
-  else
-    let cmd = 'bash install.sh''
-  endif
-  let g:dein#plugin.build = cmd
-'''
-hook_add = '''
-let g:LanguageClient_windowLogMessageLevel = 'Log'
-let g:LanguageClient_loggingLevel = 'DEBUG'
-let g:LanguageClient_serverStderr = 'C:\Users\z003zdaa\pses.stderr.txt'
-
-if exists('g:powershell_editor_services')
-  set hidden
-
-  if IsWindows()
-    let s:powershell = 'powershell'
-  elseif has('unix')
-    let s:powershell = 'pwsh'
-  endif
-
-  if exists('s:powershell')
-    let g:LanguageClient_serverCommands = {
-      \ 'ps1': [
-      \   s:powershell,
-      \   '-ExecutionPolicy', 'Unrestricted',
-      \   '-File',
-      \   g:powershell_editor_services .
-      \     'Start-EditorServices.ps1',
-      \   '-HostName', 'nvim',
-      \   '-HostProfileId', '0',
-      \   '-HostVersion', '1.9.0',
-      \   '-LogPath', 'C:\Users\z003zdaa\pses.log\log.txt',
-      \   '-LogLevel', 'Diagnostic',
-      \   '-BundledModulesPath', g:powershell_editor_services . '..',
-      \   '-AdditionalModules', "@('PowerShellEditorServices.VSCode')",
-      \   '-Stdio',
-      \   '-SessionDetailsPath', 'c:\Users\z003zdaa\pses_session']
-    \ }
-"      \   '-EditorServicesVersion', '1.9.1',
-
-  endif
-endif
-'''
+hook_post_update = 'call vimrc_ca#install_languageclient_neovim()'
+hook_add = 'call vimrc_ca#add_languageclient_neovim()'
 on_ft = ['ps1', 'ps1pester']
