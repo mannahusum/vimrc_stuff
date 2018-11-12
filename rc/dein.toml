@@ -10,6 +10,12 @@ hook_post_update= 'call vimrc_ca#install_vimproc()'
 repo = 'tpope/vim-eunuch'
 
 [[plugins]]
+repo = 'tpope/vim-abolish'
+
+[[plugins]]
+repo = 'junegunn/vim-emoji'
+
+[[plugins]]
 repo = 'tpope/vim-scriptease'
 
 [[plugins]]

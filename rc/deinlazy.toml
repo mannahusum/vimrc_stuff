@@ -115,8 +115,8 @@ hook_source = 'execute "source ".g:vimdir."/rc/plugins/denite.rc.vim"'
 hook_add = '''
   nnoremap <silent> / :<C-u>Denite -buffer-name=search -auto-highlight
         \ line<CR>
-  nnoremap <silent> * :<C-u>DeniteCursorWord -buffer-name=search
-        \ -auto-highlight -mode=normal line<CR>
+  " nnoremap <silent> * :<C-u>DeniteCursorWord -buffer-name=search
+  "       \ -auto-highlight -mode=normal line<CR>
   nnoremap <silent> [Window]s :<C-u>Denite file/point file/old
         \ -sorters=sorter/rank
         \ `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`
@@ -130,8 +130,8 @@ hook_add = '''
 
   nnoremap <silent> [Window]n :<C-u>Denite dein<CR>
   nnoremap <silent> [Window]g :<C-u>Denite ghq<CR>
-  nnoremap <silent> n :<C-u>Denite -buffer-name=search
-        \ -resume -mode=normal -refresh<CR>
+  " nnoremap <silent> n :<C-u>Denite -buffer-name=search
+  "       \ -resume -mode=normal -refresh<CR>
   nnoremap <silent> ft :<C-u>Denite filetype<CR>
   nnoremap <silent> <C-k> :<C-u>Denite -mode=normal change jump<CR>
 

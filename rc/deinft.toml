@@ -120,9 +120,9 @@ _ = '''
   endif
 
   if !&l:modifiable
+    setlocal foldcolumn=0
     setlocal nofoldenable
     setlocal foldcolumn=0
-    setlocal colorcolumn=
   endif
 '''
 
@@ -135,16 +135,19 @@ setlocal textwidth=80
 setlocal smarttab
 setlocal expandtab
 setlocal nosmartindent
+setlocal colorcolumn=
 '''
 
 html = '''
 setlocal includeexpr=substitute(v:fname,'^\\/','','')
 setlocal path+=./;/
+setlocal colorcolumn=
 '''
 
 go = '''
 highlight default link goErr WarningMsg
 match goErr /\<err\>/
+setlocal colorcolumn=
 '''
 
 vim = '''
@@ -155,19 +158,25 @@ endif
 setlocal foldmethod=indent
 setlocal shiftwidth=2 softtabstop=2
 setlocal iskeyword+=:,#
+setlocal colorcolumn=
 '''
 
-qfreplace = 'setlocal nofoldenable'
+qfreplace = '''
+setlocal nofoldenable
+setlocal colorcolumn=
+'''
 
 toml = '''
 set shiftwidth=2 tabstop=2 expandtab
 syntax sync minlines=500
+setlocal colorcolumn=
 '''
 
 help = '''
 setlocal iskeyword+=:
 setlocal iskeyword+=#
 setlocal iskeyword+=-
+setlocal colorcolumn=
 '''
 
 ruby = '''
@@ -175,14 +184,16 @@ setlocal iskeyword+=!
 setlocal iskeyword+=?
 setlocal omnifunc=
 setlocal shiftwidth=2 softtabstop=2 tabstop=2
+setlocal colorcolumn=
 '''
 
 ps1 = '''
-  set colorcolumn=80
-  set shiftwidth=4 tabstop=4 expandtab
+setlocal colorcolumn=80
+setlocal softtabstop=2 shiftwidth=4 tabstop=4 expandtab
+call vimrc_ca#keybindings_ps1()
 '''
 
 ps1pester = '''
-let &makeprg = 'powershell.exe -c "Invoke-Pester -Script % -Show Fails"'
+let &makeprg = vimrc_ca#find_powershell() . ' -c "Invoke-Pester -Script % -Show Fails"'
 '''
 
