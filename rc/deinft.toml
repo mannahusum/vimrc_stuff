@@ -105,6 +105,13 @@ let g:solarized_contrast="high" " normal|high|low contrast
 let g:solarized_visibility="high"
 set background=dark
 silent! colorscheme solarized
+
+autocmd FileType ps1,ps1pester call vimrc_ca#keybindings_ps1()
+
+
+" Simpler Diff View
+" -----------------
+set diffopt+=iwhite,vertical
 '''
 
 [ftplugin]
@@ -189,8 +196,8 @@ setlocal colorcolumn=
 
 ps1 = '''
 setlocal colorcolumn=80
-setlocal softtabstop=2 shiftwidth=4 tabstop=4 expandtab
-call vimrc_ca#keybindings_ps1()
+setlocal softtabstop=4 shiftwidth=4 tabstop=4 expandtab
+setlocal textwidth=80 formatoptions-=t wrapmargin=40
 '''
 
 ps1pester = '''

@@ -84,7 +84,7 @@ function! vimrc_ca#add_languageclient_neovim() abort
     \ 1: {
     \   "name": "Error",
     \   "texthl": "SpellBad",
-    \   "signText": emoji#for('heavy_multiplication'),
+    \   "signText": emoji#for('heavy_multiplication_x'),
     \   "signTexthl": "error",
     \ },
     \ 2: {
@@ -106,7 +106,7 @@ function! vimrc_ca#add_languageclient_neovim() abort
     \   "signTexthl": "todo",
     \ },
   \ }
-  let g:LanguageClient_diagnosticsList = "Quickfix" 
+  let g:LanguageClient_diagnosticsList = "Quickfix"
   let g:LanguageClient_documentHighlightDisplay = {
     \ 1: {
     \   "name": "Text",
@@ -170,6 +170,8 @@ function! vimrc_ca#keybindings_ps1() abort
   set formatexpr=LanguageClient_textDocument_rangeFormatting()
   vnoremap = :call LanguageClient_textDocument_rangeFormatting()<CR>
   nnoremap <C-e><C-d> :call LanguageClient_textDocument_formatting()<CR>
+  vnoremap <silent> <F8> :call vimrc_ca#langclient_evaluate()<CR>
+
   autocmd! CursorHold * call LanguageClient_textDocument_hover()
 
   autocmd! VimLeave * :LanguageClientStop
