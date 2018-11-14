@@ -157,22 +157,54 @@ endfunction
 
 function! vimrc_ca#keybindings_ps1() abort
   " Rename - rn => rename
-  noremap <leader>rn :call LanguageClient#textDocument_rename()<CR>
+  noremap <buffer> <leader>rn :call LanguageClient#textDocument_rename()<CR>
 
   " Rename - rm => rename camelCase
-  noremap <leader>rm :call LanguageClient#textDocument_rename(
+  noremap <buffer> <leader>rm :call LanguageClient#textDocument_rename(
     \ {'newName': Abolish.mixedcase(expand('<cword>'))})<CR>
 
-  nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-  let &keywordprg = vimrc_ca#find_powershell() . ' -c Get-Help'
-  nnoremap <C-k><C-r> :call LanguageClient_textDocument_references()<CR>
+  nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
+  " codepage 65001 = UTF8
+  let &keywordprg = 'chcp 65001 '
+    \ . '& ' . vimrc_ca#find_powershell() . ' -c Get-Help'
+  nnoremap <buffer> <C-k><C-r> :call LanguageClient_textDocument_references()<CR>
 
-  set formatexpr=LanguageClient_textDocument_rangeFormatting()
-  vnoremap = :call LanguageClient_textDocument_rangeFormatting()<CR>
-  nnoremap <C-e><C-d> :call LanguageClient_textDocument_formatting()<CR>
-  vnoremap <silent> <F8> :call vimrc_ca#langclient_evaluate()<CR>
+  setlocal formatexpr=LanguageClient_textDocument_rangeFormatting()
+  vnoremap <buffer> = :call LanguageClient_textDocument_rangeFormatting()<CR>
+  nnoremap <buffer> <C-e><C-d> :call LanguageClient_textDocument_formatting()<CR>
+  vnoremap <buffer> <silent> <F8> :call vimrc_ca#langclient_evaluate()<CR>
 
-  autocmd! CursorHold * call LanguageClient_textDocument_hover()
-
-  autocmd! VimLeave * :LanguageClientStop
+  augroup LanguageClient_ps1
+    autocmd! CursorHold *.ps1 call LanguageClient_textDocument_hover()
+    autocmd! VimLeave *.ps1 :LanguageClientStop 
+  augroup END
 endfunction
+
+function! vimrc_ca#special_K(count, keyword) abort
+  let l:result=''
+  if &keywordprg == ''
+    execute 'vertical botright help ' . a:keyword
+  elseif &keywordprg =~ "^:"
+    execute 'vertical botright ' . (a:count?a:count:'') . &keywordprg . ' ' . a:keyword
+  elseif &keywordprg == "man"
+    let l:result = system(&keywordprg . ' ' . (a:count?a:count:'') . ' ' . a:keyword)
+  elseif &keywordprg == "man -s"
+    let l:result = system(&keywordprg . ' ' . a:count . ' ' . a:keyword)
+  else
+    let l:result = system(&keywordprg . ' ' . a:keyword)
+  endif
+
+  if l:result != ''
+    botright vnew
+    setlocal fileencoding=utf8
+    setlocal buftype=nofile
+    setlocal bufhidden=hide
+    setlocal noswapfile
+    setlocal nobuflisted
+    put =l:result
+    setlocal nomodifiable
+    norm gg
+  endif
+endfunction
+
+nnoremap <silent> K :<C-U>call vimrc_ca#special_K(v:count,expand('<cword>'))<CR>
