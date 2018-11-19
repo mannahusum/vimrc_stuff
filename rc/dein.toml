@@ -125,3 +125,24 @@ let g:autofenc_ext_prog_path="C:\\msys64\\mingw64\\bin\\enca.exe"
 let g:autofenc_ext_prog_args="-i -L none"
 '''
 
+[[plugins]]
+repo = 'tpope/vim-git'
+
+[[plugins]]
+repo = 'tpope/vim-sleuth'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'tpope/vim-repeat'
+
+[[plugins]]
+repo = 'tpope/vim-unimpaired'
+
+[[plugins]]
+repo = 'tpope/vim-speeddating'
+
+[[plugins]]
+repo = 'tpope/vim-dispatch'
+
