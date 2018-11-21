@@ -146,3 +146,6 @@ repo = 'tpope/vim-speeddating'
 [[plugins]]
 repo = 'tpope/vim-dispatch'
 
+[[plugins]]
+repo = 'tpope/vim-commentary'
+

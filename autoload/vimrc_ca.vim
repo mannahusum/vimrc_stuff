@@ -11,28 +11,28 @@ function! vimrc_ca#on_filetype() abort
 endfunction
 
 function! vimrc_ca#_plugindir_run(cmd) abort
-  call system('cd ' . shellescape(g:dein#plugin.path) . '; '. s:cmd)
+  call system('cd ' . shellescape(g:dein#plugin.path) . '; '. l:cmd)
 endfunction
 
 function! vimrc_ca#install_languageclient_neovim() abort
   if dein#util#_is_windows()
-    let s:cmd = 'powershell install.ps1'
+    let l:cmd = 'powershell install.ps1'
   else
-    let s:cmd = 'bash install.sh'
+    let l:cmd = 'bash install.sh'
   endif
-  call vimrc_ca#_plugindir_run(s:cmd)
+  call vimrc_ca#_plugindir_run(l:cmd)
 endfunction
 
 function! vimrc_ca#install_vimproc() abort
   if dein#tap('vimproc.vim')
     if dein#util#_is_windows()
-      let s:cmd = 'tools\\update-dll-mingw'
+      let l:cmd = 'tools\\update-dll-mingw'
     elseif executable('gmake')
-      let s:cmd = 'gmake'
+      let l:cmd = 'gmake'
     else
-      let s:cmd = 'make'
+      let l:cmd = 'make'
     endif
-    call vimrc_ca#_plugindir_run(s:cmd)
+    call vimrc_ca#_plugindir_run(l:cmd)
   endif
 endfunction
 
@@ -45,18 +45,18 @@ function! vimrc_ca#find_powershell() abort
 endfunction
 
 function! s:get_visual_selection() abort
-    let [line_start, column_start] = getpos("'<")[1:2]
-    let [line_end, column_end] = getpos("'>")[1:2]
-    let lines = getline(line_start, line_end)
+    let [l:line_start, l:column_start] = getpos("'<")[1:2]
+    let [l:line_end, l:column_end] = getpos("'>")[1:2]
+    let l:lines = getline(l:line_start, l:line_end)
 
-    if len(lines) == 0
+    if len(l:lines) == 0
         return ''
     endif
 
-    let lines[-1] = lines[-1][: column_end - (&selection == 'inclusive' ? 1 : 2)]
-    let lines[0] = lines[0][column_start - 1:]
+    let l:lines[-1] = l:lines[-1][: l:column_end - (&selection == 'inclusive' ? 1 : 2)]
+    let l:lines[0] = l:lines[0][l:column_start - 1:]
 
-    return join(lines, "\n")
+    return join(l:lines, "\n")
 endfunction
 
 function! vimrc_ca#PS1OutputHandle(output) abort
@@ -72,14 +72,14 @@ function! vimrc_ca#langclient_evaluate() abort
 endfunction
 
 function! vimrc_ca#add_languageclient_neovim() abort
-  let s:statedir = expand('~/.local/state/languageclient')
-  if !isdirectory(expand(s:statedir))
-    call mkdir(expand(s:statedir), 'p')
+  let l:statedir = expand('~/.local/state/languageclient')
+  if !isdirectory(expand(l:statedir))
+    call mkdir(expand(l:statedir), 'p')
   endif
 
   let g:LanguageClient_windowLogMessageLevel = 'Log'
   let g:LanguageClient_loggingLevel = 'DEBUG'
-  let g:LanguageClient_serverStderr = expand(s:statedir . '/stderr.txt')
+  let g:LanguageClient_serverStderr = expand(l:statedir . '/stderr.txt')
   let g:LanguageClient_diagnosticsDisplay = {
     \ 1: {
     \   "name": "Error",
@@ -106,7 +106,8 @@ function! vimrc_ca#add_languageclient_neovim() abort
     \   "signTexthl": "todo",
     \ },
   \ }
-  let g:LanguageClient_diagnosticsList = "Quickfix"
+  " let g:LanguageClient_diagnosticsList = "Quickfix"
+  let g:LanguageClient_diagnosticsList = "Disable"
   let g:LanguageClient_documentHighlightDisplay = {
     \ 1: {
     \   "name": "Text",
@@ -125,17 +126,17 @@ function! vimrc_ca#add_languageclient_neovim() abort
   if isdirectory(g:powershell_editor_services)
     set hidden
 
-    let s:powershell = vimrc_ca#find_powershell()
-    if executable(s:powershell)
+    let l:powershell = vimrc_ca#find_powershell()
+    if executable(l:powershell)
 
-      let s:pslogdir = expand(s:statedir . '/pses.log')
-      if !isdirectory(expand(s:pslogdir))
-          call mkdir(expand(s:pslogdir))
+      let l:pslogdir = expand(l:statedir . '/pses.log')
+      if !isdirectory(expand(l:pslogdir))
+          call mkdir(expand(l:pslogdir))
       endif
 
       let g:LanguageClient_serverCommands = {
        \ 'ps1': [
-       \   s:powershell,
+       \   l:powershell,
        \   '-ExecutionPolicy', 'Unrestricted',
        \   '-File',
        \   g:powershell_editor_services .
@@ -143,12 +144,12 @@ function! vimrc_ca#add_languageclient_neovim() abort
        \   '-HostName', 'nvim',
        \   '-HostProfileId', '0',
        \   '-HostVersion', '1.9.0',
-       \   '-LogPath', expand(s:pslogdir . '/log.txt'),
+       \   '-LogPath', expand(l:pslogdir . '/log.txt'),
        \   '-LogLevel', 'Diagnostic',
        \   '-BundledModulesPath', expand(g:powershell_editor_services . '/..'),
        \   '-AdditionalModules', "@('PowerShellEditorServices.VSCode')",
        \   '-Stdio',
-       \   '-SessionDetailsPath', expand(s:statedir . '/pses_session')]
+       \   '-SessionDetailsPath', expand(l:statedir . '/pses_session')]
       \ }
 
     endif
@@ -156,6 +157,7 @@ function! vimrc_ca#add_languageclient_neovim() abort
 endfunction
 
 function! vimrc_ca#keybindings_ps1() abort
+  " setlocal errorformat="%EIn\ %f:%l\ Zeichen:%c,%.%#,%Z%\\W%#+%\\W%#CategoryInfo%\\W%#:%\\W%#%m"
   " Rename - rn => rename
   noremap <buffer> <leader>rn :call LanguageClient#textDocument_rename()<CR>
 
@@ -165,7 +167,7 @@ function! vimrc_ca#keybindings_ps1() abort
 
   nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
   " codepage 65001 = UTF8
-  let &keywordprg = 'chcp 65001 '
+  let &l:keywordprg = 'chcp 65001 '
     \ . '& ' . vimrc_ca#find_powershell() . ' -c Get-Help'
   nnoremap <buffer> <C-k><C-r> :call LanguageClient_textDocument_references()<CR>
 
@@ -176,7 +178,8 @@ function! vimrc_ca#keybindings_ps1() abort
 
   augroup LanguageClient_ps1
     autocmd! CursorHold *.ps1 call LanguageClient_textDocument_hover()
-    autocmd! VimLeave *.ps1 :LanguageClientStop 
+    autocmd! VimEnter *.ps1 :LanguageClientStart
+    autocmd! VimLeave *.ps1 :LanguageClientStop
   augroup END
 endfunction
 

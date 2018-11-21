@@ -58,9 +58,6 @@ autocmd MyAutoCmd BufWritePost,FileWritePost *.vim nested
 \   echo 'source ' . bufname('%') |
 \ endif
 
-" Nice commenting
-let g:caw_operator_keymappings  =  1
-
 " Airline:
 " --------
 set laststatus=2 " Always display the statusline in all windows
@@ -198,9 +195,10 @@ ps1 = '''
 setlocal colorcolumn=80
 setlocal softtabstop=4 shiftwidth=4 tabstop=4 expandtab
 setlocal textwidth=80 formatoptions-=t wrapmargin=40
+let &l:errorformat='At %f:%l char:%c'
 '''
 
 ps1pester = '''
-let &makeprg = vimrc_ca#find_powershell() . ' -c "Invoke-Pester -Script % -Show Fails"'
+let &makeprg = vimrc_ca#find_powershell() . ' -NonInteractive -NoProfile -Command "' . "[Threading.Thread]::CurrentThread.CurrentUICulture = 'en-US' ; Invoke-Pester -Script ./% -Show Fails" . '"'
 '''
 
