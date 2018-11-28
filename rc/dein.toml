@@ -149,3 +149,5 @@ repo = 'tpope/vim-dispatch'
 [[plugins]]
 repo = 'tpope/vim-commentary'
 
+[[plugins]]
+repo = 'chrisbra/SudoEdit.vim'

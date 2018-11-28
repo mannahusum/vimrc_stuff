@@ -11,7 +11,7 @@ function! vimrc_ca#on_filetype() abort
 endfunction
 
 function! vimrc_ca#_plugindir_run(cmd) abort
-  call system('cd ' . shellescape(g:dein#plugin.path) . '; '. l:cmd)
+  call system('cd ' . shellescape(g:dein#plugin.path) . '; '. a:cmd)
 endfunction
 
 function! vimrc_ca#install_languageclient_neovim() abort
@@ -107,7 +107,8 @@ function! vimrc_ca#add_languageclient_neovim() abort
     \ },
   \ }
   " let g:LanguageClient_diagnosticsList = "Quickfix"
-  let g:LanguageClient_diagnosticsList = "Disable"
+  " let g:LanguageClient_diagnosticsList = "Disabled"
+  let g:LanguageClient_diagnosticsList = "Location"
   let g:LanguageClient_documentHighlightDisplay = {
     \ 1: {
     \   "name": "Text",

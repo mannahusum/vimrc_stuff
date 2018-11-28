@@ -92,8 +92,8 @@ repo = 'Shougo/denite.nvim'
 on_cmd = ['Denite', 'DeniteBufferDir', 'DeniteCursorWord',  'DeniteProjectDir']
 hook_source = 'execute "source ".g:vimdir."/rc/plugins/denite.rc.vim"'
 hook_add = '''
-  nnoremap <silent> / :<C-u>Denite -buffer-name=search -auto-highlight
-        \ line<CR>
+  " nnoremap <silent> / :<C-u>Denite -buffer-name=search -auto-highlight
+  "       \ line<CR>
   " nnoremap <silent> * :<C-u>DeniteCursorWord -buffer-name=search
   "       \ -auto-highlight -mode=normal line<CR>
   nnoremap <silent> [Window]s :<C-u>Denite file/point file/old

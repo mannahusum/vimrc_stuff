@@ -195,10 +195,15 @@ ps1 = '''
 setlocal colorcolumn=80
 setlocal softtabstop=4 shiftwidth=4 tabstop=4 expandtab
 setlocal textwidth=80 formatoptions-=t wrapmargin=40
-let &l:errorformat='At %f:%l char:%c'
+setlocal iskeyword=A-Z,a-z,48-57,_,-
 '''
 
 ps1pester = '''
-let &makeprg = vimrc_ca#find_powershell() . ' -NonInteractive -NoProfile -Command "' . "[Threading.Thread]::CurrentThread.CurrentUICulture = 'en-US' ; Invoke-Pester -Script ./% -Show Fails" . '"'
+let &l:makeprg = vimrc_ca#find_powershell() . ' -NonInteractive -NoProfile -Command "' . "[Threading.Thread]::CurrentThread.CurrentUICulture = 'en-US' ; Invoke-Pester -Script %:p:S -Show Fails". '"'
+" *>H:\\RemoteExecute\\PesterErrors.txt" . '"'
+setl errorformat=%+GDescribing\ %.%#,%+G[-]%.%#,%+G[+]%.%#,%+GTests\ completed\ in%.%#,%+GPassed:\ %*\\d\\,\ Failed:\ %*\\d\\,\ Skipped:\ %*\\d\\,\ Pending:\ %*\\d\\,\ Inconclusive:\ %*\\d
+setl errorformat+=%+E\ [-]\ %m,%+C\ \ \ Expected:\ %.%#,%+C\ \ \ But\ was:\ %.%#,%C\ \ \ %*\\d:\ %m,%Z\ \ \ at\ %.ScriptBlock%.\\,\ %f:\ line\ %l
+setl errorformat+=%+E%*\\k\ :\ %.%#,%CAt\ %f:%l\ char:%c,%-C%.%#,%-G%.%#
+# setl errorformat=%+GDescribing\ %.%#,%+G[-]%.%#,%+G[+]%.%#,%+GTests\ completed\ in%.%#,%+GPassed:\ %*\\d\\,\ Failed:\ %*\\d\\,\ Skipped:\ %*\\d\\,\ Pending:\ %*\\d\\,\ Inconclusive:\ %*\\d,%+E\ [-]\ %m,%+C\ \ \ Expected:\ %.%#,%+C\ \ \ But\ was:\ %.%#,%C\ \ \ %*\\d:\ %m,%Z\ \ \ at\ %.ScriptBlock%.\\,\ %f:\ line\ %l,%+E%*\\k\ :\ %.%#,%CAt\ %f:%l\ char:%c,%-C%.%#,%-G%.%#
 '''
 
