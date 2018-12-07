@@ -24,35 +24,35 @@ repo = 'tyru/open-browser.vim'
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
-[[plugins]]
-repo = 'thinca/vim-ft-diff_fold'
+# [[plugins]]
+# repo = 'thinca/vim-ft-diff_fold'
 
-[[plugins]]
-repo = 'thinca/vim-ft-help_fold'
+# [[plugins]]
+# repo = 'thinca/vim-ft-help_fold'
 
 [[plugins]]
 repo = 'cespare/vim-toml'
 
-[[plugins]]
-repo = 'Vimjas/vim-python-pep8-indent'
+# [[plugins]]
+# repo = 'Vimjas/vim-python-pep8-indent'
 
-[[plugins]]
-repo = 'kana/vim-textobj-user'
+# [[plugins]]
+# repo = 'kana/vim-textobj-user'
 
-[[plugins]]
-repo = 'kana/vim-operator-user'
+# [[plugins]]
+# repo = 'kana/vim-operator-user'
 
-[[plugins]]
-repo = 'rcmdnk/vim-markdown'
+# [[plugins]]
+# repo = 'rcmdnk/vim-markdown'
 
-[[plugins]]
-repo = 'Shougo/neossh.vim'
+# [[plugins]]
+# repo = 'Shougo/neossh.vim'
 
-[[plugins]]
-repo = 'ujihisa/neco-look'
+# [[plugins]]
+# repo = 'ujihisa/neco-look'
 
-[[plugins]]
-repo = 'Shougo/neomru.vim'
+# [[plugins]]
+# repo = 'Shougo/neomru.vim'
 
 [[plugins]]
 repo = 'roxma/vim-hug-neovim-rpc'
@@ -62,14 +62,14 @@ on_if = '!has("nvim")'
 repo = 'roxma/nvim-yarp'
 on_if = '!has("nvim")'
 
-[[plugins]]
-repo = 'thinca/vim-themis'
+# [[plugins]]
+# repo = 'thinca/vim-themis'
 
-[[plugins]]
-repo = 'tpope/vim-rhubarb'
+# [[plugins]]
+# repo = 'tpope/vim-rhubarb'
 
-[[plugins]]
-repo = 'gregsexton/gitv'
+# [[plugins]]
+# repo = 'gregsexton/gitv'
 
 [[plugins]]
 repo = 'fweep/vim-tabber'
@@ -91,23 +91,23 @@ on_if = 1
 [[plugins]]
 repo = 'mhinz/vim-signify'
 
-[[plugins]]
-repo = 'junegunn/fzf'
-merged = 0
-hook_post_update = '''
-if IsWindows()
-    call system('go get -u github.com/junegunn/fzf')
-elseif has('unix')
-    call system('./install --all')
-endif
-'''
+# [[plugins]]
+# repo = 'junegunn/fzf'
+# merged = 0
+# hook_post_update = '''
+# if IsWindows()
+#     call system('go get -u github.com/junegunn/fzf')
+# elseif has('unix')
+#     call system('./install --all')
+# endif
+# '''
 
-[[plugins]]
-repo = 'junegunn/fzf.vim'
-depends = 'fzf'
+# [[plugins]]
+# repo = 'junegunn/fzf.vim'
+# depends = 'fzf'
 
-[[plugins]]
-repo = 'thinca/vim-prettyprint'
+# [[plugins]]
+# repo = 'thinca/vim-prettyprint'
 
 [[plugins]]
 repo = 's3rvac/AutoFenc'
@@ -140,8 +140,8 @@ repo = 'tpope/vim-repeat'
 [[plugins]]
 repo = 'tpope/vim-unimpaired'
 
-[[plugins]]
-repo = 'tpope/vim-speeddating'
+# [[plugins]]
+# repo = 'tpope/vim-speeddating'
 
 [[plugins]]
 repo = 'tpope/vim-dispatch'
