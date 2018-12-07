@@ -151,3 +151,6 @@ repo = 'tpope/vim-commentary'
 
 [[plugins]]
 repo = 'chrisbra/SudoEdit.vim'
+
+[[plugins]]
+repo = 'mrtazz/simplenote.vim'
