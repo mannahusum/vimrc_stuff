@@ -154,3 +154,6 @@ repo = 'chrisbra/SudoEdit.vim'
 
 [[plugins]]
 repo = 'kchmck/vim-coffee-script'
+
+[[plugins]]
+repo = 'mrtazz/simplenote.vim'
