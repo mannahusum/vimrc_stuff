@@ -1,6 +1,6 @@
 ﻿[[plugins]]
 repo = 'tpope/vim-fugitive'
-merged = 0
+# merged = 0
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
@@ -151,3 +151,6 @@ repo = 'tpope/vim-commentary'
 
 [[plugins]]
 repo = 'chrisbra/SudoEdit.vim'
+
+[[plugins]]
+repo = 'kchmck/vim-coffee-script'
