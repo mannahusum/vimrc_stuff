@@ -355,3 +355,16 @@ rev = 'next'
 hook_post_update = 'call vimrc_ca#install_languageclient_neovim()'
 hook_add = 'call vimrc_ca#add_languageclient_neovim()'
 on_ft = ['ps1', 'ps1pester']
+
+[[plugins]]
+repo = 'l04m33/vim-skuld'
+on_cmd = [
+  'SkuldStartTimer', 'SkuldStopTimer', 'SkuldStartTask', 'SkuldSwitchTask',
+  'SkuldGetState', 'SkuldBufOpen', 'SkuldTaskUpdate'
+]
+hook_source = '''
+  if IsWindows()
+    let g:skuld_notify_cmd = 'msg "%username%"'
+  endif
+'''
+
