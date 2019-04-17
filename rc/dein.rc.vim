@@ -19,11 +19,12 @@ let s:vimrc_local = findfile('vimrc_local.vim', '.;')
 if s:vimrc_local !=# ''
   " Load develop version plugins.
   call dein#local(fnamemodify(s:vimrc_local, ':h'),
-  call dein#local(fnamemodify(s:vimrc_local, ':h'),
        \ {'frozen': 1, 'merged': 0},
        \ ['deoplete-*', '*.nvim'])
-  " call dein#local("~/Documents/vim_plugins",
-  "  \ {'frozen': 0, 'merged': 1})
+endif
+
+if isdirectory(expand('~/Documents/vim_plugins'))
+  call dein#local(expand("~/Documents/vim_plugins"), {'frozen': 0, 'merged': 1})
 endif
 
 if dein#tap('deoplete.nvim') && has('nvim')
