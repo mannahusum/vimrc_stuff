@@ -23,13 +23,17 @@ if s:vimrc_local !=# ''
        \ ['deoplete-*', '*.nvim'])
 endif
 
-if isdirectory(expand('~/Documents/vim_plugins'))
-  call dein#local(expand("~/Documents/vim_plugins"), {'frozen': 0, 'merged': 1})
+if IsWindows()
+  let s:syncplicitydir = substitute(system('for /f "tokens=3" %a in (''reg query "HKCU\Software\Classes\CLSID\{b8debcc1-b8f5-4129-8599-6b54b747daf9}\Instance\InitPropertyBag"  /V TargetFolderPath'') do echo %a'), '[\n[:space:]]*$', '', '')
+  let s:plugin_dir = s:syncplicitydir . 'Documents\vim_plugins'
+  if isdirectory(expand(s:plugin_dir))
+    call dein#local(expand(s:plugin_dir), {'frozen': 1})
+  endif
 endif
 
-if dein#tap('deoplete.nvim') && has('nvim')
-  call dein#disable('neocomplete.vim')
-endif
+" if dein#tap('deoplete.nvim') && has('nvim')
+"   call dein#disable('neocomplete.vim')
+" endif
 call dein#disable('neobundle.vim')
 call dein#disable('neopairs.vim')
 

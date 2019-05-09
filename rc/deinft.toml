@@ -74,6 +74,7 @@ let g:airline#extensions#quickfix#location_text = 'Location'
 " enable fugitive integration
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#format = 2
+let g:airline#extensions#coc#enabled = 1
 let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#whitespace#checks = [
     \ 'indent',
@@ -81,6 +82,9 @@ let g:airline#extensions#whitespace#checks = [
     \ 'long',
     \ 'mixed-indent-file'
     \ ]
+" let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+" let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+
 
 " Vim Tabber
 " ----------
@@ -103,12 +107,17 @@ let g:solarized_visibility="high"
 set background=dark
 silent! colorscheme solarized
 
-autocmd FileType ps1,ps1pester call vimrc_ca#keybindings_ps1()
+" autocmd FileType ps1,ps1pester call vimrc_ca#keybindings_ps1()
 
 
 " Simpler Diff View
 " -----------------
 set diffopt+=iwhite,vertical
+
+" Easier Terminal for neo-layout
+" ------------------------------
+tnoremap <Esc> <C-\><C-n>
+tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 '''
 
 [ftplugin]

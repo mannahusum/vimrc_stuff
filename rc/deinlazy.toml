@@ -87,40 +87,40 @@
 # repo = 'chemzqm/denite-extra'
 # on_source = ['denite.nvim']
 
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-on_cmd = ['Denite', 'DeniteBufferDir', 'DeniteCursorWord',  'DeniteProjectDir']
-hook_source = 'execute "source ".g:vimdir."/rc/plugins/denite.rc.vim"'
-hook_add = '''
-  nnoremap <silent> <localleader>b :<C-u>Denite buffer<CR>
-  " nnoremap <silent> / :<C-u>Denite -buffer-name=search -auto-highlight
-  "       \ line<CR>
-  " nnoremap <silent> * :<C-u>DeniteCursorWord -buffer-name=search
-  "       \ -auto-highlight -mode=normal line<CR>
-  nnoremap <silent> [Window]s :<C-u>Denite file/point file/old
-        \ -sorters=sorter/rank
-        \ `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`
-        \ file file:new<CR>
+# [[plugins]]
+# repo = 'Shougo/denite.nvim'
+# on_cmd = ['Denite', 'DeniteBufferDir', 'DeniteCursorWord',  'DeniteProjectDir']
+# hook_source = 'execute "source ".g:vimdir."/rc/plugins/denite.rc.vim"'
+# hook_add = '''
+#   nnoremap <silent> <localleader>b :<C-u>Denite buffer<CR>
+#   " nnoremap <silent> / :<C-u>Denite -buffer-name=search -auto-highlight
+#   "       \ line<CR>
+#   " nnoremap <silent> * :<C-u>DeniteCursorWord -buffer-name=search
+#   "       \ -auto-highlight -mode=normal line<CR>
+#   nnoremap <silent> [Window]s :<C-u>Denite file/point file/old
+#         \ -sorters=sorter/rank
+#         \ `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`
+#         \ file file:new<CR>
 
-"   nnoremap <silent><expr> tt  &filetype == 'help' ?  "g\<C-]>" :
-"         \ ":\<C-u>DeniteCursorWord -buffer-name=tag -immediately
-"         \  tag:include\<CR>"
-"   nnoremap <silent><expr> tp  &filetype == 'help' ?
-"         \ ":\<C-u>pop\<CR>" : ":\<C-u>Denite -mode=normal jump\<CR>"
+# "   nnoremap <silent><expr> tt  &filetype == 'help' ?  "g\<C-]>" :
+# "         \ ":\<C-u>DeniteCursorWord -buffer-name=tag -immediately
+# "         \  tag:include\<CR>"
+# "   nnoremap <silent><expr> tp  &filetype == 'help' ?
+# "         \ ":\<C-u>pop\<CR>" : ":\<C-u>Denite -mode=normal jump\<CR>"
 
-"   nnoremap <silent> [Window]n :<C-u>Denite dein<CR>
-"   nnoremap <silent> [Window]g :<C-u>Denite ghq<CR>
-"   " nnoremap <silent> n :<C-u>Denite -buffer-name=search
-"   "       \ -resume -mode=normal -refresh<CR>
-"   nnoremap <silent> ft :<C-u>Denite filetype<CR>
-"   nnoremap <silent> <C-k> :<C-u>Denite -mode=normal change jump<CR>
+# "   nnoremap <silent> [Window]n :<C-u>Denite dein<CR>
+# "   nnoremap <silent> [Window]g :<C-u>Denite ghq<CR>
+# "   " nnoremap <silent> n :<C-u>Denite -buffer-name=search
+# "   "       \ -resume -mode=normal -refresh<CR>
+# "   nnoremap <silent> ft :<C-u>Denite filetype<CR>
+# "   nnoremap <silent> <C-k> :<C-u>Denite -mode=normal change jump<CR>
 
-"   nnoremap <silent> [Space]gs :<C-u>Denite gitstatus<CR>
-'''
+# "   nnoremap <silent> [Space]gs :<C-u>Denite gitstatus<CR>
+# '''
 
 
-[[plugins]]
-repo = 'Shougo/context_filetype.vim'
+# [[plugins]]
+# repo = 'Shougo/context_filetype.vim'
 
 # [[plugins]]
 # repo = 'Shougo/unite.vim'
@@ -157,53 +157,58 @@ repo = 'Shougo/context_filetype.vim'
 # endfunction
 # '''
 
-# [[plugins]]
-# repo = 'Shougo/deol.nvim'
-# on_cmd = 'Deol'
-# depends = 'denite.nvim'
-# hook_add = '''
-#   " nnoremap <silent> N :<C-u>call deol#new({'command': 'zsh'})<CR>
-#   " nnoremap <silent> [Space]s :<C-u>Deol zsh<CR>
-#   " nnoremap <silent> [Window]D  :<C-u>call deol#kill_editor()<CR>
-# '''
-# hook_source = '''
-#   " let g:deol#prompt_pattern = '\w*%'
+[[plugins]]
+repo = 'Shougo/deol.nvim'
+on_cmd = 'Deol'
+depends = 'denite.nvim'
+hook_add = '''
+  if IsWindows() 
+    nnoremap <silent> N :<C-u>call deol#new({'command': 'powershell'})<CR>
+    nnoremap <silent> [Space]s :<C-u>Deol powershell<CR>
+  else
+    nnoremap <silent> N :<C-u>call deol#new({'command': 'zsh'})<CR>
+    nnoremap <silent> [Space]s :<C-u>Deol zsh<CR>
+  endif
+  " nnoremap <silent> [Window]D  :<C-u>call deol#kill_editor()<CR>
+'''
+hook_source = '''
+  " let g:deol#prompt_pattern = '\w*%'
 
-#   " Set to $PATH.
-#   " let s:bin = dein#get('vim-themis').rtp . '/bin'
+  " Set to $PATH.
+  " let s:bin = dein#get('vim-themis').rtp . '/bin'
 
-#   " function! s:split_envpath(path) abort
-#   "   let delimiter = IsWindows() ? ';' : ':'
-#   "   if stridx(a:path, '\' . delimiter) < 0
-#   "     return split(a:path, delimiter)
-#   "   endif
-#   "   let split = split(a:path, '\\\@<!\%(\\\\\)*\zs' . delimiter)
-#   "   return map(split,'substitute(v:val, ''\\\([\\'
-#   "        \ . delimiter . ']\)'', "\\1", "g")')
-#   " endfunction
+  " function! s:split_envpath(path) abort
+  "   let delimiter = IsWindows() ? ';' : ':'
+  "   if stridx(a:path, '\' . delimiter) < 0
+  "     return split(a:path, delimiter)
+  "   endif
+  "   let split = split(a:path, '\\\@<!\%(\\\\\)*\zs' . delimiter)
+  "   return map(split,'substitute(v:val, ''\\\([\\'
+  "        \ . delimiter . ']\)'', "\\1", "g")')
+  " endfunction
 
-#   " function! s:join_envpath(list, orig_path, add_path) abort
-#   "   let delimiter = IsWindows() ? ';' : ':'
-#   "   return (stridx(a:orig_path, '\' . delimiter) < 0
-#   "        \ && stridx(a:add_path, delimiter) < 0) ?
-#   "        \   join(a:list, delimiter) :
-#   "        \   join(map(copy(a:list),
-#   "        \        delimiter)
-#   " endfunction
+  " function! s:join_envpath(list, orig_path, add_path) abort
+  "   let delimiter = IsWindows() ? ';' : ':'
+  "   return (stridx(a:orig_path, '\' . delimiter) < 0
+  "        \ && stridx(a:add_path, delimiter) < 0) ?
+  "        \   join(a:list, delimiter) :
+  "        \   join(map(copy(a:list),
+  "        \        delimiter)
+  " endfunction
 
-#   " let $PATH = s:join_envpath(
-#   "      \ dein#util#_uniq(insert(
-#   "      \    s:split_envpath($PATH), s:bin)), $PATH, s:bin)
-#   " let $THEMIS_HOME = dein#get('vim-themis').rtp
+  " let $PATH = s:join_envpath(
+  "      \ dein#util#_uniq(insert(
+  "      \    s:split_envpath($PATH), s:bin)), $PATH, s:bin)
+  " let $THEMIS_HOME = dein#get('vim-themis').rtp
 
-#   " unlet s:bin
+  " unlet s:bin
 
-#   " autocmd FileType deol call s:on_deol()
-#   " function! s:on_deol() abort
-#   "   nnoremap <buffer><silent> [Space]gc :<C-u>call deol#send('git commit')<CR>
-#   "   nnoremap <buffer><silent> [Space]gA :<C-u>call deol#send('git commit --amend')<CR>
-#   " endfunction
-# '''
+  " autocmd FileType deol call s:on_deol()
+  " function! s:on_deol() abort
+  "   nnoremap <buffer><silent> [Space]gc :<C-u>call deol#send('git commit')<CR>
+  "   nnoremap <buffer><silent> [Space]gA :<C-u>call deol#send('git commit --amend')<CR>
+  " endfunction
+'''
 
 # [[plugins]]
 # repo = 'Shougo/neco-vim'
@@ -308,14 +313,14 @@ repo = 'Shougo/context_filetype.vim'
 # repo = 'Shougo/deoplete-clangx'
 # on_ft = ['c', 'cpp']
 
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-depends = 'context_filetype.vim'
-on_event = 'InsertEnter'
-hook_source = '''
-execute 'source ' . g:vimdir . '/rc/plugins/deoplete.rc.vim'
-call deoplete#enable()
-'''
+# [[plugins]]
+# repo = 'Shougo/deoplete.nvim'
+# depends = 'context_filetype.vim'
+# on_event = 'InsertEnter'
+# hook_source = '''
+# execute 'source ' . g:vimdir . '/rc/plugins/deoplete.rc.vim'
+# call deoplete#enable()
+# '''
 
 [[plugins]]
 repo = 'lambdalisue/suda.vim'
@@ -329,13 +334,135 @@ on_path = 'suda://'
 # merge = 0
 # on_if = '!has("nvim")'
 
-# [[plugins]]
-# repo = 'neoclide/coc.nvim'
-# hook_post_update = '''
-# call system('yarn install')
-# '''
-# merge = 0
-# on_if = 1
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+hook_post_update = '''
+call system('yarn install --frozen-lockfile')
+call coc#util#install()
+'''
+hook_add = '''
+" if hidden is not set, TextEdit might fail.
+set hidden
+
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
+
+" Better display for messages
+set cmdheight=2
+
+" Smaller updatetime for CursorHold & CursorHoldI
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+'''
+hook_source = '''
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[c` and `]c` to navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+vmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+'''
+merge = 0
+on_if = 1
+
+[[plugins]]
+repo = 'yatli/coc-powershell'
+hook_post_update = '''
+call coc#powershell#install()
+'''
+merge = 0
+on_if = 1
 
 # [[plugins]]
 # repo = 'tpope/vim-fugitive'
@@ -349,12 +476,12 @@ on_path = 'suda://'
 #     'Gblame', 'Gbrowse'
 # ]
 
-[[plugins]]
-repo = 'autozimu/LanguageClient-neovim'
-rev = 'next'
-hook_post_update = 'call vimrc_ca#install_languageclient_neovim()'
-hook_add = 'call vimrc_ca#add_languageclient_neovim()'
-on_ft = ['ps1', 'ps1pester']
+# [[plugins]]
+# repo = 'autozimu/LanguageClient-neovim'
+# rev = 'next'
+# hook_post_update = 'call vimrc_ca#install_languageclient_neovim()'
+# hook_add = 'call vimrc_ca#add_languageclient_neovim()'
+# on_ft = ['ps1', 'ps1pester']
 
 [[plugins]]
 repo = 'l04m33/vim-skuld'
@@ -367,4 +494,3 @@ hook_source = '''
     let g:skuld_notify_cmd = 'msg "%username%"'
   endif
 '''
-

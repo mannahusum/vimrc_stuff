@@ -78,4 +78,3 @@ if has('gui_running') && !has('nvim')
   call s:source_rc('gui.rc.vim')
 endif
 
-
