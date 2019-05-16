@@ -7,16 +7,7 @@ repo = 'Shougo/vimproc.vim'
 hook_post_update= 'call vimrc_ca#install_vimproc()'
 
 [[plugins]]
-repo = 'tpope/vim-eunuch'
-
-[[plugins]]
-repo = 'tpope/vim-abolish'
-
-[[plugins]]
 repo = 'junegunn/vim-emoji'
-
-[[plugins]]
-repo = 'tpope/vim-scriptease'
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
@@ -24,58 +15,50 @@ repo = 'tyru/open-browser.vim'
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
-# [[plugins]]
-# repo = 'thinca/vim-ft-diff_fold'
-
-# [[plugins]]
-# repo = 'thinca/vim-ft-help_fold'
-
 [[plugins]]
 repo = 'cespare/vim-toml'
-
-# [[plugins]]
-# repo = 'Vimjas/vim-python-pep8-indent'
-
-# [[plugins]]
-# repo = 'kana/vim-textobj-user'
-
-# [[plugins]]
-# repo = 'kana/vim-operator-user'
 
 # [[plugins]]
 # repo = 'rcmdnk/vim-markdown'
 
 # [[plugins]]
-# repo = 'Shougo/neossh.vim'
-
-# [[plugins]]
-# repo = 'ujihisa/neco-look'
-
-# [[plugins]]
-# repo = 'Shougo/neomru.vim'
-
-[[plugins]]
-repo = 'roxma/vim-hug-neovim-rpc'
-on_if = '!has("nvim")'
-
-[[plugins]]
-repo = 'roxma/nvim-yarp'
-on_if = '!has("nvim")'
-
-# [[plugins]]
-# repo = 'thinca/vim-themis'
-
-# [[plugins]]
-# repo = 'tpope/vim-rhubarb'
-
-# [[plugins]]
-# repo = 'gregsexton/gitv'
-
-[[plugins]]
-repo = 'fweep/vim-tabber'
+# repo = 'fweep/vim-tabber'
 
 [[plugins]]
 repo = 'vim-airline/vim-airline'
+hook_add = '''
+set laststatus=2 " Always display statusline in all windows
+set ambiwidth=single " needed for powerfonts
+
+let g:airline_powerline_fonts = 1
+let g:airline_detect_modified = 1
+let g:airline_detect_paste = 1
+
+" Extensions
+let g:airline#extensions#virtualenv#enabled = 1
+let g:airline#extensions#coc#enabled = 1
+
+" Whitespace warnings
+let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#whitespace#checks = [
+  \ 'indent',
+  \ 'trailing',
+  \ 'long',
+  \ 'mixed-indent-file',
+  \ ]
+
+" Titles for special buffers
+let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
+let g:airline#extensions#quickfix#location_text = 'Location'
+
+" Fugitive integration
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#branch#format = 2
+
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
 
 [[plugins]]
 repo = 'PProvost/vim-ps1'
@@ -84,30 +67,21 @@ repo = 'PProvost/vim-ps1'
 repo = 'interleaved/vim-pester'
 
 [[plugins]]
-repo = 'altercation/vim-colors-solarized'
+repo = 'lifepillar/vim-solarized8'
 merged = 0
 on_if = 1
+hook_source = '''
+colorscheme desert
+colorscheme solarized8
+set background=light
+'''
 
 [[plugins]]
 repo = 'mhinz/vim-signify'
-
-# [[plugins]]
-# repo = 'junegunn/fzf'
-# merged = 0
-# hook_post_update = '''
-# if IsWindows()
-#     call system('go get -u github.com/junegunn/fzf')
-# elseif has('unix')
-#     call system('./install --all')
-# endif
-# '''
-
-# [[plugins]]
-# repo = 'junegunn/fzf.vim'
-# depends = 'fzf'
-
-# [[plugins]]
-# repo = 'thinca/vim-prettyprint'
+hook_add = '''
+let g:signify_vcs_list = [ 'git', 'tfs' ]
+let g:signify_realtime = 1
+'''
 
 [[plugins]]
 repo = 's3rvac/AutoFenc'
@@ -126,34 +100,7 @@ let g:autofenc_ext_prog_args="-i -L none"
 '''
 
 [[plugins]]
-repo = 'tpope/vim-git'
-
-[[plugins]]
-repo = 'tpope/vim-sleuth'
-
-[[plugins]]
-repo = 'tpope/vim-surround'
-
-[[plugins]]
-repo = 'tpope/vim-repeat'
-
-[[plugins]]
-repo = 'tpope/vim-unimpaired'
-
-# [[plugins]]
-# repo = 'tpope/vim-speeddating'
-
-[[plugins]]
-repo = 'tpope/vim-dispatch'
-
-[[plugins]]
 repo = 'tpope/vim-commentary'
-
-[[plugins]]
-repo = 'chrisbra/SudoEdit.vim'
-
-[[plugins]]
-repo = 'kchmck/vim-coffee-script'
 
 [[plugins]]
 repo = 'mrtazz/simplenote.vim'

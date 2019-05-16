@@ -4,12 +4,6 @@ function! IsWindows() abort
   return s:is_windows
 endfunction
 
-function! IsMac() abort
-  return !s:is_windows && !has('win32unix')
-      \ && (has('mac') || has('macunix') || has('gui_macvim')
-      \     || (!executable('xdg-open') && system('uname') =~? '^darwin'))
-endfunction
-
 " Setting of the encoding to use for a save and reading.
 " Make it normal in UTF-8 in Unix.
 if has('vim_starting') && &encoding !=# 'utf-8'
@@ -21,16 +15,15 @@ let &fileencodings = join([
       \ 'ucs-bom', 'utf-8', 'utf-16le', 'latin1'])
 
 if has('multi_byte_ime')
-  set iminsert=0 imsearch=0
+  set iminsert=2 imsearch=2
 endif
 
 " Use English interface.
 language message C
 
-" Use ',' instead of '\'.
-" Use <Leader> in global plugin.
+" German umlaut u
 let mapleader = nr2char(0x00fc, 1)
-" Use <LocalLeader> in filetype plugin.
+" German umlaut o
 let maplocalleader = nr2char(0x00f6, 1)
 
 if IsWindows()
@@ -78,21 +71,3 @@ if has('nvim') && !IsWindows()
   let g:python3_host_prog = get(g:, 'python3_host_prog', "/usr/bin/python3.6")
   let g:python_host_prog = get(g:, 'python_host_prog', "/usr/bin/python2.7")
 endif
-
-let g:loaded_2html_plugin      = 1
-let g:loaded_logiPat           = 1
-let g:loaded_getscriptPlugin   = 1
-let g:loaded_gzip              = 1
-let g:loaded_man               = 1
-let g:loaded_matchit           = 1
-let g:loaded_matchparen        = 1
-let g:loaded_netrwFileHandlers = 1
-let g:loaded_netrwPlugin       = 1
-let g:loaded_netrwSettings     = 1
-let g:loaded_rrhelper          = 1
-let g:loaded_shada_plugin      = 1
-" let g:loaded_spellfile_plugin  = 1
-let g:loaded_tarPlugin         = 1
-let g:loaded_tutor_mode_plugin = 1
-let g:loaded_vimballPlugin     = 1
-let g:loaded_zipPlugin         = 1

@@ -1,16 +1,9 @@
-﻿set ambiwidth=single
+﻿
 
 if has('win32') || has('win64')
   " For Windows.
 
-  " set guifontwide=VL\ Gothic:h11
-   " set guifontwide=Ricty:h12
-
-   set guifont=Fira_Code:h8:cANSI
-  " set guifont=Courier\ New:h11
-  " set guifont=VL\ Gothic:h11
-  " set guifont=Consolas:h12
-  " set guifont=Inconsolata:h12
+   set guifont=FuraCode_Nerd_Font_Mono:h8:cANSI
 
   " Number of pixel lines inserted between characters.
    set linespace=2
@@ -53,19 +46,12 @@ endif
 
 " Don't override colorscheme.
 if !exists('g:colors_name')
-  " && dein#check_install('altercation/vim-colors-solarized')
-  " Solarized
-  " ---------
-  let g:solarized_termcolors=256 " color depth
-  let g:solarized_termtrans=0 " 1|0 background transparent
-  let g:solarized_bold=1 " 1|0 show bold fonts
-  let g:solarized_italic=1 " 1|0 show italic fonts
-  let g:solarized_underline=1 " 1|0 show underlines
-  let g:solarized_contrast="high" " normal|high|low contrast
-  " normal|high|low effect on whitespace characters
-  let g:solarized_visibility="high"
   set background=dark
   colorscheme desert
+  if dein#check_install('lifepillar/vim-solarized8')
+    colorscheme solarized8
+    set background=light
+  endif
 endif
 
 "---------------------------------------------------------------------------
@@ -78,11 +64,17 @@ set nomousefocus
 " Hide mouse pointer on insert mode.
 set mousehide
 
+" Execute commands without a new window
+set guioptions+=!
+" Link visual mode to clipboard
+set guioptions+=a
 " Hide toolbar and menus.
-set guioptions-=Tt
+set guioptions-=T
+set guioptions-=t
 set guioptions-=m
 " Scrollbar is always off.
-set guioptions-=rL
+set guioptions-=r
+set guioptions-=L
 " Not guitablabel.
 set guioptions-=e
 " Confirm without window.
