@@ -18,7 +18,8 @@ elseif has('mac')
 else
   " For Linux.
    " set guifontwide=VL\ Gothic\ 13
-   set guifont="Fira Code weight=453 10"
+   " set guifont="FuraCode Nerd Font weight=453 10"
+   set guifont="FuraCode Nerd Font Mono 9"
 endif
 
 "---------------------------------------------------------------------------
@@ -48,7 +49,7 @@ endif
 if !exists('g:colors_name')
   set background=dark
   colorscheme desert
-  if dein#check_install('lifepillar/vim-solarized8')
+  if dein#tap('vim-solarized8')
     colorscheme solarized8
     set background=light
   endif

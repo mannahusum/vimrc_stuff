@@ -58,6 +58,14 @@ let g:airline#extensions#branch#format = 2
 '''
 
 [[plugins]]
+repo = 'chrisbra/SudoEdit.vim'
+hook_add = '''
+if IsWindows()
+  let g:sudoAuth="uac"
+endif
+'''
+
+[[plugins]]
 repo = 'vim-airline/vim-airline-themes'
 
 [[plugins]]
@@ -68,12 +76,12 @@ repo = 'interleaved/vim-pester'
 
 [[plugins]]
 repo = 'lifepillar/vim-solarized8'
-merged = 0
-on_if = 1
 hook_source = '''
-colorscheme desert
 colorscheme solarized8
 set background=light
+'''
+hook_add = '''
+let g:solarized_extra_hi_groups = 1
 '''
 
 [[plugins]]
