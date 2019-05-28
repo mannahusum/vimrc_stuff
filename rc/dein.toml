@@ -21,8 +21,8 @@ repo = 'cespare/vim-toml'
 # [[plugins]]
 # repo = 'rcmdnk/vim-markdown'
 
-# [[plugins]]
-# repo = 'fweep/vim-tabber'
+[[plugins]]
+repo = 'fweep/vim-tabber'
 
 [[plugins]]
 repo = 'vim-airline/vim-airline'
@@ -104,8 +104,9 @@ let g:autofenc_autodetect_xml = 1
 let g:autofenc_autodetect_css = 1
 let g:autofenc_autodetect_comment = 1
 let g:autofenc_autodetect_ext_prog = 1
-let g:autofenc_ext_prog_path="C:\\msys64\\mingw64\\bin\\enca.exe"
-let g:autofenc_ext_prog_path="C:\\msys64\\mingw64\\bin\\enca.exe"
+if IsWindows()
+  let g:autofenc_ext_prog_path="C:\\msys64\\mingw64\\bin\\enca.exe"
+endif
 let g:autofenc_ext_prog_args="-i -L none"
 '''
 
@@ -129,3 +130,10 @@ hook_add = '''
   let g:unite_source_everything_case_sensitive_search = 1
   let g:unite_source_everything_async_minimum_length = 3
 '''
+
+[[plugins]]
+repo = 'tpope/vim-scriptease'
+
+[[plugins]]
+repo = 'tpope/vim-git'
+
