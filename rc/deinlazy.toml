@@ -6,9 +6,7 @@ call coc#util#install()
 '''
 hook_add = '''
 " Some servers have issues with backup files, see #649
-set nobackup
-set nowritebackup
-
+" set nobackup
 " Smaller updatetime for CursorHold & CursorHoldI
 set updatetime=300
 

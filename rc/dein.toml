@@ -137,3 +137,12 @@ repo = 'tpope/vim-scriptease'
 [[plugins]]
 repo = 'tpope/vim-git'
 
+[[plugins]]
+repo = 'vim-pandoc/vim-pandoc'
+
+[[plugins]]
+repo = 'vim-pandoc/vim-pandoc-syntax'
+
+[[plugins]]
+repo = 'wsdjeg/dein-ui.vim'
+
