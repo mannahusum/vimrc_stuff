@@ -3,6 +3,9 @@ repo = 'tpope/vim-fugitive'
 # merged = 0
 
 [[plugins]]
+repo = 'jreybert/vimagit'
+
+[[plugins]]
 repo = 'Shougo/vimproc.vim'
 hook_post_update= 'call vimrc_ca#install_vimproc()'
 
