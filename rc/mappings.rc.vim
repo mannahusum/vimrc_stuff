@@ -19,3 +19,10 @@ noremap <silent> <M-6> :e ++enc=utf-16le<cr>
 noremap <silent> <M-8> :e ++enc=utf-8<cr>
 noremap <silent> <M-d> :e ++ff=dos<cr>
 noremap <silent> <M-u> :e ++ff=unix<cr>
+
+if IsWindows()
+  nnoremap <silent> N :vertical botright terminal powershell<cr>
+else
+  nnoremap <silent> N :vertical botright terminal sh<cr>
+endif
+
