@@ -121,6 +121,44 @@ repo = 'mrtazz/simplenote.vim'
 
 [[plugins]]
 repo = 'Shougo/unite.vim'
+hook_add = '''
+  if executable('rg')
+    let unite_ignores = ["!CMakeFiles",
+          \"!*.dSYM",
+          \"!*.dat",
+          \"!*.pdf",
+          \"!*.bib"]
+    let unite_globs = []
+    for ig in unite_ignores
+      call add(unite_globs, "--glob '" . ig . "'")
+    endfor
+    " Use rg in unite grep source.
+    let g:unite_source_grep_command = 'rg'
+    let g:unite_source_grep_default_opts =
+      \ ' --smart-case -n --no-heading --color never --no-messages ' .
+      \ join(unite_globs) . ' -e '
+
+    " avoid having unite add '--' where it doesn't go
+    let g:unite_source_grep_separator = ""
+    let g:unite_source_grep_recursive_opt = ''
+    " The empty perens set the pattern, all files should match
+    let unite_globs2 = []
+    for ig in unite_ignores
+      call add(unite_globs2, '--glob')
+      call add(unite_globs2, ig)
+    endfor
+    let g:unite_source_rec_async_command =
+      \ ['rg', '--color', 'never', '--no-heading', '--files'] + unite_globs2
+  endif
+  nnoremap <leader>ur  :<C-u>Unite -start-insert file_rec/async:!<CR>
+  nnoremap <leader>ub  :<C-u>Unite buffer        file_mru bookmark<CR>
+  nnoremap <leader>uB  :<C-u>Unite bookmark<CR>
+  nnoremap <leader>uY  :<C-u>Unite history/yank<CR>
+  nnoremap <leader>uf  :<C-u>Unite -start-insert file<CR>
+  nnoremap <leader>un  :<C-u>Unite -start-insert file_rec:~/Projects/notes/<CR>
+  nnoremap <leader>ug  :<C-u>Unite grep:.<CR>
+  nnoremap <leader>uG  :<C-u>Unite grep:.:-i<CR>
+'''
 
 [[plugins]]
 repo = 'sgur/unite-everything'
