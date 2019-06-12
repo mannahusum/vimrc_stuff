@@ -187,3 +187,23 @@ repo = 'vim-pandoc/vim-pandoc-syntax'
 [[plugins]]
 repo = 'wsdjeg/dein-ui.vim'
 
+[[plugins]]
+repo = 'michaeljsmith/vim-indent-object'
+
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+hook_add = '''
+  xmap <localleader>a <Plug>(EasyAlign)
+  nmap <localleader>a <Plug>(EasyAlign)
+'''
+
+[[plugins]]
+repo = 'Shougo/neoyank.vim'
+
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+if = '''! has('nvim') '''
+
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+if = '''!has('nvim') '''

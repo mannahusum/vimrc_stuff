@@ -131,3 +131,7 @@ hook_source = '''
     let g:skuld_notify_cmd = 'msg "%username%"'
   endif
 '''
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+on_cmd = [ 'Denite' ]
