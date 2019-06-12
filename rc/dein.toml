@@ -99,18 +99,18 @@ let g:signify_realtime = 1
 [[plugins]]
 repo = 's3rvac/AutoFenc'
 hook_add = '''
-let g:autofenc_enable = 1
-let g:autofenc_emit_messages = 0
-let g:autofenc_autodetect_bom = 1
-let g:autofenc_autodetect_html = 1
-let g:autofenc_autodetect_xml = 1
-let g:autofenc_autodetect_css = 1
-let g:autofenc_autodetect_comment = 1
-let g:autofenc_autodetect_ext_prog = 1
-if IsWindows()
-  let g:autofenc_ext_prog_path="C:\\msys64\\mingw64\\bin\\enca.exe"
-endif
-let g:autofenc_ext_prog_args="-i -L none"
+  let g:autofenc_enable = 1
+  let g:autofenc_emit_messages = 0
+  let g:autofenc_autodetect_bom = 1
+  let g:autofenc_autodetect_html = 1
+  let g:autofenc_autodetect_xml = 1
+  let g:autofenc_autodetect_css = 1
+  let g:autofenc_autodetect_comment = 1
+  let g:autofenc_autodetect_ext_prog = 1
+  if IsWindows()
+    let g:autofenc_ext_prog_path="C:\\msys64\\mingw64\\bin\\enca.exe"
+  endif
+  let g:autofenc_ext_prog_args="-i -L none"
 '''
 
 [[plugins]]

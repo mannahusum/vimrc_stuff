@@ -63,13 +63,13 @@ endif
 setlocal foldmethod=indent
 setlocal shiftwidth=2 softtabstop=2
 setlocal iskeyword+=:,#
-setlocal colorcolumn=
+setlocal colorcolumn=80
 '''
 
 toml = '''
 set shiftwidth=2 tabstop=2 expandtab
 syntax sync minlines=500
-setlocal colorcolumn=
+setlocal colorcolumn=80
 '''
 
 ps1 = '''
