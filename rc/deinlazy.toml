@@ -135,3 +135,7 @@ hook_source = '''
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 on_cmd = [ 'Denite' ]
+
+[[plugins]]
+repo = 'neoclide/coc-denite'
+depends = [ 'coc.nvim', 'denite.nvim' ]
