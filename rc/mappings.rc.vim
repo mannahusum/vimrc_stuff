@@ -21,8 +21,8 @@ noremap <silent> <M-d> :e ++ff=dos<cr>
 noremap <silent> <M-u> :e ++ff=unix<cr>
 
 if IsWindows()
-  nnoremap <silent> N :vertical botright terminal powershell<cr>
+  nnoremap <silent> <localleader>N :vertical botright terminal powershell<cr>
 else
-  nnoremap <silent> N :vertical botright terminal sh<cr>
+  nnoremap <silent> <localleader>N :vertical botright terminal sh<cr>
 endif
 
