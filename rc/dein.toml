@@ -92,9 +92,12 @@ let g:solarized_extra_hi_groups = 1
 [[plugins]]
 repo = 'mhinz/vim-signify'
 hook_add = '''
-let g:signify_vcs_list = [ 'git', 'tfs' ]
+let g:signify_vcs_list = [ 'tfs' ]
 let g:signify_realtime = 1
 '''
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
 
 [[plugins]]
 repo = 's3rvac/AutoFenc'
@@ -206,4 +209,8 @@ if = '''! has('nvim') '''
 
 [[plugins]]
 repo = 'roxma/vim-hug-neovim-rpc'
+if = '''!has('nvim') '''
+
+[[plugins]]
+repo = 'dodie/vim-disapprove-deep-indentation'
 if = '''!has('nvim') '''
