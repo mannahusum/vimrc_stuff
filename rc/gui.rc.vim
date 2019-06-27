@@ -1,25 +1,18 @@
 ﻿
+if has("gui_gtk2") || has("gui_gtk3")
+  set guifont=FuraCode\ Nerd\ Font\ Mono\ 10
+elseif has("gui_photon")
+  set guifont=FuraCode\ Nerd\ Font\ Mono:s9
+elseif has("gui_kde")
+  set guifont=FuraCode\ Nerd\ Font\ Mono/9/5/50/0/0/0/1/0
+elseif has("x11")
+  set guifont=-*-courier-medium-r-normal-*-*-180-*-*-m-*-*
+else
+  set guifont=FuraCode_Nerd_Font_Mono:h8:cANSI
+endif
 
 if has('win32') || has('win64')
-  " For Windows.
-
-   set guifont=FuraCode_Nerd_Font_Mono:h8:cANSI
-
-  " Number of pixel lines inserted between characters.
    set linespace=2
-
-  " if has('patch-7.4.394')
-    " Use DirectWrite
-     " set renderoptions=type:directx
-  " endif
-elseif has('mac')
-  " For Mac.
-   set guifont=Osaka－等幅:h14
-else
-  " For Linux.
-   " set guifontwide=VL\ Gothic\ 13
-   " set guifont="FuraCode Nerd Font weight=453 10"
-   set guifont="FuraCode Nerd Font Mono 9"
 endif
 
 "---------------------------------------------------------------------------
