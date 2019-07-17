@@ -26,3 +26,10 @@ else
   nnoremap <silent> <localleader>N :vertical botright terminal sh<cr>
 endif
 
+nnoremap <localleader>f :setlocal spell spelllang=fr<cr>
+nnoremap <localleader>u :setlocal spell spelllang=en_us<cr>
+nnoremap <localleader>s :setlocal spell spelllang=sp<cr>
+nnoremap <localleader>n :setlocal nospell<cr>
+nnoremap <localleader>d :setlocal spell spelllang=de<cr>
+nnoremap <localleader>p :setlocal spell spelllang=pl<cr>
+nnoremap <localleader>b :setlocal spell spelllang=en_gb<cr>
