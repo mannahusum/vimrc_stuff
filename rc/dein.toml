@@ -1,5 +1,11 @@
 ﻿[[plugins]]
 repo = 'tpope/vim-fugitive'
+hook_source = '''
+" Fugitive Conflict Resolution
+nnoremap <leader>gd :Gvdiff<CR>
+nnoremap gdh :diffget //2<CR>
+nnoremap gdl :diffget //3<CR>
+'''
 # merged = 0
 
 [[plugins]]
@@ -214,3 +220,7 @@ if = '''!has('nvim') '''
 [[plugins]]
 repo = 'dodie/vim-disapprove-deep-indentation'
 if = '''!has('nvim') '''
+
+[[plugins]]
+repo = 'junegunn/gv.vim'
+
