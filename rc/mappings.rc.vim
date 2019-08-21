@@ -12,7 +12,7 @@ endfunction
 
 nnoremap <localleader>_ :call Preserve("normal gg=G")<cr>
 " üöäpzbm,.j = #$|~`+%"';
-nnoremap <localleader>$ :call Preserve("%s/\s\+$//e")<cr>
+nnoremap <localleader>$ :call Preserve("%s/\\s\\+$//e")<cr>
 nnoremap <localleader>- :call Preserve("retab")<cr>
 
 noremap <silent> <C-s> :exec "tag " . expand('<cword>')<cr>
