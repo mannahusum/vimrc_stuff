@@ -227,3 +227,5 @@ if = '''!has('nvim') '''
 [[plugins]]
 repo = 'junegunn/gv.vim'
 
+[[plugins]]
+repo = 'lervag/vimtex'
