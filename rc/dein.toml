@@ -3,8 +3,8 @@ repo = 'tpope/vim-fugitive'
 hook_source = '''
 " Fugitive Conflict Resolution
 nnoremap <leader>gd :Gvdiff<CR>
-nnoremap gdh :diffget //2<CR>
-nnoremap gdl :diffget //3<CR>
+nnoremap gDh :diffget //2<CR>
+nnoremap gDl :diffget //3<CR>
 '''
 # merged = 0
 
@@ -81,6 +81,9 @@ repo = 'vim-airline/vim-airline-themes'
 
 [[plugins]]
 repo = 'PProvost/vim-ps1'
+
+[[plugins]]
+repo = 'vim-scripts/Windows-PowerShell-indent-enhanced.git'
 
 [[plugins]]
 repo = 'interleaved/vim-pester'
@@ -211,7 +214,7 @@ repo = 'Shougo/neoyank.vim'
 
 [[plugins]]
 repo = 'roxma/nvim-yarp'
-if = '''! has('nvim') '''
+if = '''!has('nvim') '''
 
 [[plugins]]
 repo = 'roxma/vim-hug-neovim-rpc'
