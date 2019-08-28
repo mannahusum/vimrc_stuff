@@ -235,3 +235,7 @@ let g:vimtex_view_method = 'zathura'
 
 [[plugins]]
 repo = 'caio/querycommandcomplete.vim'
+hook_add = '''
+let g:qcc_format_abbr = '${1} <${0}>'
+let g:qcc_query_command = "querycommand.sh %s"
+'''
