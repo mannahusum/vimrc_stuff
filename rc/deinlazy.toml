@@ -144,8 +144,20 @@ hook_source = '''
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 on_cmd = [ 'Denite' ]
+hook_add = '''
+'''
 hook_source = '''
-  " Define mappings
+  " Configuration
+  call denite#custom#option('_', 'root_markers', '.git,.gitignore,.tfignore')
+  call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
+    \ [ '.git/', '.ropeproject/', '__pycache__/',
+    \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/'])
+
+  " Aliases
+  call denite#custom#alias('source', 'file/rec/git', 'file/rec')
+  call denite#custom#var('file/rec/git', 'command',
+    \ ['git', 'ls-files', '-co', '--exclude-standard'])
+
   autocmd FileType denite call s:denite_my_settings()
   function! s:denite_my_settings() abort
     nnoremap <silent><buffer><expr> <CR>
