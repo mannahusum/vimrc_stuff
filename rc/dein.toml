@@ -233,6 +233,5 @@ hook_add = '''
 let g:vimtex_view_method = 'zathura'
 '''
 
-
 [[plugins]]
 repo = 'caio/querycommandcomplete.vim'
