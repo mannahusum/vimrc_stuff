@@ -1,6 +1,6 @@
 ﻿[[plugins]]
 repo = 'neoclide/coc.nvim'
-rev = "release"
+rev = 'master'
 hook_post_update = '''
 call system('yarn install --frozen-lockfile')
 call coc#util#install()
@@ -23,7 +23,9 @@ let g:coc_global_extensions=[
   \ 'coc-json',
   \ 'coc-lists',
   \ 'coc-snippets',
-  \ 'coc-ultisnips'
+  \ 'coc-ultisnips',
+  \ 'coc-emoji',
+  \ 'coc-vimtex'
   \ ]
 
 function! s:check_back_space() abort
