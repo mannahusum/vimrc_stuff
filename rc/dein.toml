@@ -79,6 +79,9 @@ endif
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
 
+# [[plugins]]
+# repo = 'sheerun/vim-polyglot'
+
 [[plugins]]
 repo = 'PProvost/vim-ps1'
 

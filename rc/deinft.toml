@@ -79,12 +79,12 @@ setlocal textwidth=80 formatoptions-=t wrapmargin=40
 setlocal iskeyword=A-Z,a-z,48-57,_,-
 '''
 
-ps1pester = '''
-let &l:makeprg = vimrc_ca#find_powershell() . ' -NonInteractive -NoProfile -Command "' . "[Threading.Thread]::CurrentThread.CurrentUICulture = 'en-US' ; Invoke-Pester -Script %:p:S -Show Fails". '"'
-" *>H:\\RemoteExecute\\PesterErrors.txt" . '"'
-setl errorformat=%+GDescribing\ %.%#,%+G[-]%.%#,%+G[+]%.%#,%+GTests\ completed\ in%.%#,%+GPassed:\ %*\\d\\,\ Failed:\ %*\\d\\,\ Skipped:\ %*\\d\\,\ Pending:\ %*\\d\\,\ Inconclusive:\ %*\\d
-setl errorformat+=%+E\ [-]\ %m,%+C\ \ \ Expected:\ %.%#,%+C\ \ \ But\ was:\ %.%#,%C\ \ \ %*\\d:\ %m,%Z\ \ \ at\ %.ScriptBlock%.\\,\ %f:\ line\ %l
-setl errorformat+=%+E%*\\k\ :\ %.%#,%CAt\ %f:%l\ char:%c,%-C%.%#,%-G%.%#
-" setl errorformat=%+GDescribing\ %.%#,%+G[-]%.%#,%+G[+]%.%#,%+GTests\ completed\ in%.%#,%+GPassed:\ %*\\d\\,\ Failed:\ %*\\d\\,\ Skipped:\ %*\\d\\,\ Pending:\ %*\\d\\,\ Inconclusive:\ %*\\d,%+E\ [-]\ %m,%+C\ \ \ Expected:\ %.%#,%+C\ \ \ But\ was:\ %.%#,%C\ \ \ %*\\d:\ %m,%Z\ \ \ at\ %.ScriptBlock%.\\,\ %f:\ line\ %l,%+E%*\\k\ :\ %.%#,%CAt\ %f:%l\ char:%c,%-C%.%#,%-G%.%#
-'''
+# ps1pester = '''
+# let &l:makeprg = vimrc_ca#find_powershell() . ' -NonInteractive -NoProfile -Command "' . "[Threading.Thread]::CurrentThread.CurrentUICulture = 'en-US' ; Invoke-Pester -Script %:p:S -Show Fails". '"'
+# " *>H:\\RemoteExecute\\PesterErrors.txt" . '"'
+# setl errorformat=%+GDescribing\ %.%#,%+G[-]%.%#,%+G[+]%.%#,%+GTests\ completed\ in%.%#,%+GPassed:\ %*\\d\\,\ Failed:\ %*\\d\\,\ Skipped:\ %*\\d\\,\ Pending:\ %*\\d\\,\ Inconclusive:\ %*\\d
+# setl errorformat+=%+E\ [-]\ %m,%+C\ \ \ Expected:\ %.%#,%+C\ \ \ But\ was:\ %.%#,%C\ \ \ %*\\d:\ %m,%Z\ \ \ at\ %.ScriptBlock%.\\,\ %f:\ line\ %l
+# setl errorformat+=%+E%*\\k\ :\ %.%#,%CAt\ %f:%l\ char:%c,%-C%.%#,%-G%.%#
+# " setl errorformat=%+GDescribing\ %.%#,%+G[-]%.%#,%+G[+]%.%#,%+GTests\ completed\ in%.%#,%+GPassed:\ %*\\d\\,\ Failed:\ %*\\d\\,\ Skipped:\ %*\\d\\,\ Pending:\ %*\\d\\,\ Inconclusive:\ %*\\d,%+E\ [-]\ %m,%+C\ \ \ Expected:\ %.%#,%+C\ \ \ But\ was:\ %.%#,%C\ \ \ %*\\d:\ %m,%Z\ \ \ at\ %.ScriptBlock%.\\,\ %f:\ line\ %l,%+E%*\\k\ :\ %.%#,%CAt\ %f:%l\ char:%c,%-C%.%#,%-G%.%#
+# '''
 

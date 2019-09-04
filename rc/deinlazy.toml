@@ -19,13 +19,7 @@ set signcolumn=yes
 '''
 hook_source = '''
 let g:coc_global_extensions=[
-  \ 'coc-powershell',
-  \ 'coc-json',
-  \ 'coc-lists',
-  \ 'coc-snippets',
-  \ 'coc-ultisnips',
-  \ 'coc-emoji',
-  \ 'coc-vimtex'
+  \ 'coc-json'
   \ ]
 
 function! s:resolve_executable_path(path) abort
@@ -38,20 +32,36 @@ endfunction
 
 if exists("g:powershellPath") && executable(g:powershellPath)
   call coc#config(
+    \ 'powershell.pwshPath',
+    \ g:powershellPath
+    \ )
+  call coc#config(
     \ 'powershell.powerShellExePath',
-    \ s:resolve_executable_path(g:powershellPath)
+    \ g:powershellPath
     \ )
 elseif executable("powershell.exe")
+  call coc#config(
+    \ 'powershell.pwshPath',
+    \ s:resolve_executable_path("powershell.exe")
+    \ )
   call coc#config(
     \ 'powershell.powerShellExePath',
     \ s:resolve_executable_path("powershell.exe")
     \ )
 elseif executable("pwsh")
   call coc#config(
+    \ 'powershell.pwshPath',
+    \ s:resolve_executable_path("pwsh")
+    \ )
+  call coc#config(
     \ 'powershell.powerShellExePath',
     \ s:resolve_executable_path("pwsh")
     \ )
 endif
+
+" if IsWindows()
+"   call coc#config("powershell.integratedConsole.showOnStartup", 0)
+" endif
 
 let languageserver = {}
 
@@ -66,7 +76,7 @@ let clangConfig = {
     \ "filetypes": ["c", "cpp", "objc", "objcpp"]
   \ }
 if exists("g:clangdPath")
-  let clangConfig.command = s:resolve_executable_path(g:clangdPath)
+  let clangConfig.command = g:clangdPath
   let languageserver.clangd = clangConfig
 elseif executable("clangd")
   let clangConfig.command = s:resolve_executable_path("clangd")
@@ -80,9 +90,9 @@ let bashConfig = {
 \ }
 
 if exists("g:bashLSPPath")
-  let bashConfig.command = s:resolve_executable_path(g:bashLSPPath)
+  let bashConfig.command = g:bashLSPPath
   let languageserver.bash = bashConfig
-elseif executable("clangd")
+elseif executable("bash-language-server")
   let bashConfig.command = s:resolve_executable_path("bash-language-server")
   let languageserver.bash = bashConfig
 endif
@@ -185,13 +195,13 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 merge = 0
 on_if = 1
 
-# [[plugins]]
-# repo = 'yatli/coc-powershell'
-# hook_post_update = '''
-# call coc#powershell#install()
-# '''
-# merge = 0
-# on_if = 1
+[[plugins]]
+repo = 'TylerLeonhardt/coc-powershell'
+hook_post_update = '''
+call coc#powershell#install()
+'''
+merge = 0
+on_if = 1
 
 [[plugins]]
 repo = 'l04m33/vim-skuld'
