@@ -11,6 +11,6 @@
             "args": ["start"],
             "filetypes": ["sh"],
             "ignoredRootPaths": ["~"]
-        },
-    },
+        }
+    }
 }
