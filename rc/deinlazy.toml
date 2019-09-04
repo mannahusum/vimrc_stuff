@@ -28,7 +28,6 @@ let g:coc_global_extensions=[
   \ 'coc-vimtex'
   \ ]
 
-
 function! s:resolve_executable_path(path) abort
   if IsWindows()
     return trim(system("where " . a:path))
@@ -53,6 +52,43 @@ elseif executable("pwsh")
     \ s:resolve_executable_path("pwsh")
     \ )
 endif
+
+let languageserver = {}
+
+let clangConfig = {
+    \ "rootPatterns": [
+      \ "compile_flags.txt",
+      \ "compile_commands.json",
+      \ ".vim/",
+      \ ".git/",
+      \ ".hg/"
+    \ ],
+    \ "filetypes": ["c", "cpp", "objc", "objcpp"]
+  \ }
+if exists("g:clangdPath")
+  let clangConfig.command = s:resolve_executable_path(g:clangdPath)
+  let languageserver.clangd = clangConfig
+elseif executable("clangd")
+  let clangConfig.command = s:resolve_executable_path("clangd")
+  let languageserver.clangd = clangConfig
+endif
+
+let bashConfig = {
+  \ "args": ["start"],
+  \ "filetypes": ["sh"],
+  \ "ignoredRootPaths": ["~"]
+\ }
+
+if exists("g:bashLSPPath")
+  let bashConfig.command = s:resolve_executable_path(g:bashLSPPath)
+  let languageserver.bash = bashConfig
+elseif executable("clangd")
+  let bashConfig.command = s:resolve_executable_path("bash-language-server")
+  let languageserver.bash = bashConfig
+endif
+call coc#config('languageserver', languageserver)
+
+call coc#config('coc.preferences.useQuickfixForLocations', 1)
 
 function! s:check_back_space() abort
   let col = col('.') - 1
