@@ -63,7 +63,8 @@ let g:airline#extensions#quickfix#location_text = 'Location'
 " Fugitive integration
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#format = 2
-
+'''
+hook_source = '''
 let s:spc =  nr2char(0x20, 1)
 let g:airline_section_z = airline#section#create(['windowswap', 'obsession', '0x%B'.s:spc, '%3p%%'.s:spc, 'linenr', 'maxlinenr', s:spc.':%3v'])
 '''
@@ -85,8 +86,8 @@ repo = 'vim-airline/vim-airline-themes'
 [[plugins]]
 repo = 'PProvost/vim-ps1'
 
-[[plugins]]
-repo = 'vim-scripts/Windows-PowerShell-indent-enhanced.git'
+# [[plugins]]
+# repo = 'vim-scripts/Windows-PowerShell-indent-enhanced.git'
 
 [[plugins]]
 repo = 'interleaved/vim-pester'

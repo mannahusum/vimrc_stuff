@@ -3,7 +3,6 @@ repo = 'neoclide/coc.nvim'
 rev = 'master'
 hook_post_update = '''
 call system('yarn install --frozen-lockfile')
-call coc#util#install()
 '''
 hook_add = '''
 " Some servers have issues with backup files, see #649
@@ -12,7 +11,8 @@ hook_add = '''
 set updatetime=300
 
 " don't give |ins-completion-menu| messages.
-set shortmess+=c
+" set shortmess+=ca
+set shortmess=ca
 
 " always show signcolumns
 set signcolumn=yes
@@ -198,8 +198,111 @@ on_if = 1
 [[plugins]]
 repo = 'TylerLeonhardt/coc-powershell'
 hook_post_update = '''
+call system('yarn install --frozen-lockfile')
 call coc#powershell#install()
 '''
+depends = 'coc.nvim'
+merge = 0
+on_if = 1
+if = '''IsWindows() '''
+
+[[plugins]]
+repo = 'yatli/coc-powershell'
+hook_post_update = '''
+if exists("g:powershellPath") && executable(g:powershellPath)
+  let s:powershellPath = g:powershellPath
+elseif executable("powershell.exe")
+  let s:powershellPath = "powershell.exe"
+elseif executable("pwsh")
+  let s:powershellPath = "pwsh"
+endif
+
+if exists("s:powershellPath")
+  call system(s:powershellPath . " .\build.ps1")
+endif
+'''
+depends = 'coc.nvim'
+merge = 0
+on_if = 1
+if = '''!IsWindows() '''
+
+[[plugins]]
+repo = 'neoclide/coc-json'
+hook_post_update = '''
+call system('yarn install --frozen-lockfile')
+'''
+depends = 'coc.nvim'
+merge = 0
+on_if = 1
+
+[[plugins]]
+repo = 'neoclide/coc-css'
+hook_post_update = '''
+call system('yarn install --frozen-lockfile')
+'''
+depends = 'coc.nvim'
+merge = 0
+on_if = 1
+
+[[plugins]]
+repo = 'neoclide/coc-html'
+hook_post_update = '''
+call system('yarn install --frozen-lockfile')
+'''
+depends = 'coc.nvim'
+merge = 0
+on_if = 1
+
+[[plugins]]
+repo = 'SirVer/ultisnips'
+hook_post_update = '''
+call system('yarn install --frozen-lockfile')
+'''
+merge = 0
+on_if = 1
+
+[[plugins]]
+repo = 'neoclide/coc-sources'
+hook_post_update = '''
+call system('yarn install --frozen-lockfile')
+'''
+depends = ['coc.nvim', 'ultisnips']
+merge = 0
+on_if = 1
+
+[[plugins]]
+repo = 'neoclide/coc-python'
+hook_post_update = '''
+call system('yarn install --frozen-lockfile')
+'''
+depends = 'coc.nvim'
+merge = 0
+on_if = 1
+
+[[plugins]]
+repo = 'neoclide/coc-vimtex'
+hook_post_update = '''
+call system('yarn install --frozen-lockfile')
+'''
+depends = ['coc.nvim', 'vimtex']
+merge = 0
+on_if = 1
+
+[[plugins]]
+repo = 'josa42/coc-sh'
+hook_post_update = '''
+call system('yarn install --frozen-lockfile')
+'''
+depends = 'coc.nvim'
+merge = 0
+on_if = 1
+
+[[plugins]]
+repo = 'josa42/coc-lua'
+hook_post_update = '''
+call system('yarn install --frozen-lockfile')
+'''
+depends = 'coc.nvim'
 merge = 0
 on_if = 1
 
