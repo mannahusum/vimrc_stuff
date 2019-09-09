@@ -45,9 +45,9 @@ elseif executable("pwsh")
     \ )
 endif
 
-" if IsWindows()
-"   call coc#config("powershell.integratedConsole.showOnStartup", 0)
-" endif
+if IsWindows()
+  call coc#config("powershell.integratedConsole.showOnStartup", 0)
+endif
 
 let languageserver = {}
 
@@ -184,7 +184,6 @@ on_if = 1
 [[plugins]]
 repo = 'TylerLeonhardt/coc-powershell'
 hook_post_update = '''
-call system('yarn install --frozen-lockfile')
 call coc#powershell#install()
 '''
 depends = 'coc.nvim'
