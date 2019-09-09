@@ -18,9 +18,7 @@ set shortmess=ca
 set signcolumn=yes
 '''
 hook_source = '''
-let g:coc_global_extensions=[
-  \ 'coc-json'
-  \ ]
+let g:coc_global_extensions=[]
 
 function! s:resolve_executable_path(path) abort
   if IsWindows()
@@ -32,27 +30,15 @@ endfunction
 
 if exists("g:powershellPath") && executable(g:powershellPath)
   call coc#config(
-    \ 'powershell.pwshPath',
-    \ g:powershellPath
-    \ )
-  call coc#config(
     \ 'powershell.powerShellExePath',
     \ g:powershellPath
     \ )
 elseif executable("powershell.exe")
   call coc#config(
-    \ 'powershell.pwshPath',
-    \ s:resolve_executable_path("powershell.exe")
-    \ )
-  call coc#config(
     \ 'powershell.powerShellExePath',
     \ s:resolve_executable_path("powershell.exe")
     \ )
 elseif executable("pwsh")
-  call coc#config(
-    \ 'powershell.pwshPath',
-    \ s:resolve_executable_path("pwsh")
-    \ )
   call coc#config(
     \ 'powershell.powerShellExePath',
     \ s:resolve_executable_path("pwsh")
@@ -202,6 +188,7 @@ call system('yarn install --frozen-lockfile')
 call coc#powershell#install()
 '''
 depends = 'coc.nvim'
+name = 'coc-powershell'
 merge = 0
 on_if = 1
 if = '''IsWindows() '''
@@ -210,18 +197,24 @@ if = '''IsWindows() '''
 repo = 'yatli/coc-powershell'
 hook_post_update = '''
 if exists("g:powershellPath") && executable(g:powershellPath)
+  echom "using predefined powershell path " . g:powershellPath
   let s:powershellPath = g:powershellPath
 elseif executable("powershell.exe")
+  echom "using path for powershell.exe"
   let s:powershellPath = "powershell.exe"
 elseif executable("pwsh")
+  echom "using path for pwsh"
   let s:powershellPath = "pwsh"
 endif
 
 if exists("s:powershellPath")
-  call system(s:powershellPath . " .\build.ps1")
+  let s:installScript = s:powershellPath . " build.ps1"
+  echom "calling powershell installer '" . s:installScript . "'"
+  call system(s:installScript)
 endif
 '''
 depends = 'coc.nvim'
+name = 'coc-pwsh'
 merge = 0
 on_if = 1
 if = '''!IsWindows() '''
@@ -254,6 +247,37 @@ merge = 0
 on_if = 1
 
 [[plugins]]
+repo = 'jaxbot/browserlink.vim'
+on_ft = 'html'
+
+[[plugins]]
+repo = 'neoclide/coc-tsserver'
+hook_post_update = '''
+call system('yarn install --frozen-lockfile')
+'''
+depends = 'coc.nvim'
+merge = 0
+on_if = 1
+
+[[plugins]]
+repo = 'neoclide/coc-tslint-plugin'
+hook_post_update = '''
+call system('yarn install --frozen-lockfile')
+'''
+depends = 'coc.nvim'
+merge = 0
+on_if = 1
+
+[[plugins]]
+repo = 'neoclide/coc-jest'
+hook_post_update = '''
+call system('yarn install --frozen-lockfile')
+'''
+depends = 'coc.nvim'
+merge = 0
+on_if = 1
+
+[[plugins]]
 repo = 'SirVer/ultisnips'
 hook_post_update = '''
 call system('yarn install --frozen-lockfile')
@@ -261,50 +285,50 @@ call system('yarn install --frozen-lockfile')
 merge = 0
 on_if = 1
 
-[[plugins]]
-repo = 'neoclide/coc-sources'
-hook_post_update = '''
-call system('yarn install --frozen-lockfile')
-'''
-depends = ['coc.nvim', 'ultisnips']
-merge = 0
-on_if = 1
+# [[plugins]]
+# repo = 'neoclide/coc-sources'
+# hook_post_update = '''
+# call system('yarn install --frozen-lockfile')
+# '''
+# depends = ['coc.nvim', 'ultisnips']
+# merge = 0
+# on_if = 1
 
-[[plugins]]
-repo = 'neoclide/coc-python'
-hook_post_update = '''
-call system('yarn install --frozen-lockfile')
-'''
-depends = 'coc.nvim'
-merge = 0
-on_if = 1
+# [[plugins]]
+# repo = 'neoclide/coc-python'
+# hook_post_update = '''
+# call system('yarn install --frozen-lockfile')
+# '''
+# depends = 'coc.nvim'
+# merge = 0
+# on_if = 1
 
-[[plugins]]
-repo = 'neoclide/coc-vimtex'
-hook_post_update = '''
-call system('yarn install --frozen-lockfile')
-'''
-depends = ['coc.nvim', 'vimtex']
-merge = 0
-on_if = 1
+# [[plugins]]
+# repo = 'neoclide/coc-vimtex'
+# hook_post_update = '''
+# call system('yarn install --frozen-lockfile')
+# '''
+# depends = ['coc.nvim', 'vimtex']
+# merge = 0
+# on_if = 1
 
-[[plugins]]
-repo = 'josa42/coc-sh'
-hook_post_update = '''
-call system('yarn install --frozen-lockfile')
-'''
-depends = 'coc.nvim'
-merge = 0
-on_if = 1
+# [[plugins]]
+# repo = 'josa42/coc-sh'
+# hook_post_update = '''
+# call system('yarn install --frozen-lockfile')
+# '''
+# depends = 'coc.nvim'
+# merge = 0
+# on_if = 1
 
-[[plugins]]
-repo = 'josa42/coc-lua'
-hook_post_update = '''
-call system('yarn install --frozen-lockfile')
-'''
-depends = 'coc.nvim'
-merge = 0
-on_if = 1
+# [[plugins]]
+# repo = 'josa42/coc-lua'
+# hook_post_update = '''
+# call system('yarn install --frozen-lockfile')
+# '''
+# depends = 'coc.nvim'
+# merge = 0
+# on_if = 1
 
 [[plugins]]
 repo = 'l04m33/vim-skuld'
