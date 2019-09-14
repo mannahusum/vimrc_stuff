@@ -20,12 +20,6 @@ autocmd MyAutoCmd BufWritePost,FileWritePost *.vim nested
 set tabline=%!tabber#TabLine()
 set guioptions-=e
 
-" OpenBrowser
-nmap <localleader>o <Plug>(openbrowser-open)
-
-" autocmd FileType ps1,ps1pester call vimrc_ca#keybindings_ps1()
-
-
 " Simpler Diff View
 " -----------------
 set diffopt+=iwhite,vertical
@@ -77,6 +71,18 @@ setlocal colorcolumn=115
 setlocal softtabstop=4 shiftwidth=4 tabstop=4 expandtab
 setlocal textwidth=80 formatoptions-=t wrapmargin=40
 setlocal iskeyword=A-Z,a-z,48-57,_,-
+'''
+
+pandoc = '''
+setlocal colorcolumn=115
+setlocal softtabstop=4 shiftwidth=4 tabstop=4 expandtab
+setlocal textwidth=80 formatoptions-=t wrapmargin=40
+'''
+
+markdown = '''
+setlocal colorcolumn=115
+setlocal softtabstop=4 shiftwidth=4 tabstop=4 expandtab
+setlocal textwidth=80 formatoptions-=t wrapmargin=40
 '''
 
 # ps1pester = '''

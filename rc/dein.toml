@@ -20,6 +20,18 @@ repo = 'junegunn/vim-emoji'
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
+hook_add = '''
+nmap <localleader>o <Plug>(openbrowser-open)
+'''
+
+[[plugins]]
+repo = 'tyru/open-browser-unicode.vim'
+hook_add = '''
+nmap <localleader>U :OpenBrowserUnicode<cr>
+'''
+
+[[plugins]]
+repo = 'previm/previm'
 
 [[plugins]]
 repo = 'Shougo/dein.vim'
@@ -80,14 +92,8 @@ endif
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
 
-# [[plugins]]
-# repo = 'sheerun/vim-polyglot'
-
 [[plugins]]
 repo = 'PProvost/vim-ps1'
-
-# [[plugins]]
-# repo = 'vim-scripts/Windows-PowerShell-indent-enhanced.git'
 
 [[plugins]]
 repo = 'interleaved/vim-pester'
