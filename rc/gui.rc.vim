@@ -41,7 +41,7 @@ endif
 " Don't override colorscheme.
 if !exists('g:colors_name')
   set background=dark
-  colorscheme desert
+  colorscheme blue
   if dein#tap('vim-solarized8')
     colorscheme solarized8
     set background=light
