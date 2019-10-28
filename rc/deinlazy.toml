@@ -1,4 +1,4 @@
-﻿[[plugins]]
+[[plugins]]
 repo = 'neoclide/coc.nvim'
 rev = 'master'
 hook_post_update = '''
@@ -27,23 +27,6 @@ function! s:resolve_executable_path(path) abort
     return trim(system("command -v " . a:path))
   endif
 endfunction
-
-if exists("g:powershellPath") && executable(g:powershellPath)
-  call coc#config(
-    \ 'powershell.powerShellExePath',
-    \ g:powershellPath
-    \ )
-elseif executable("powershell.exe")
-  call coc#config(
-    \ 'powershell.powerShellExePath',
-    \ s:resolve_executable_path("powershell.exe")
-    \ )
-elseif executable("pwsh")
-  call coc#config(
-    \ 'powershell.powerShellExePath',
-    \ s:resolve_executable_path("pwsh")
-    \ )
-endif
 
 if IsWindows()
   call coc#config("powershell.integratedConsole.showOnStartup", 0)
@@ -182,41 +165,12 @@ merge = 0
 on_if = 1
 
 [[plugins]]
-repo = 'TylerLeonhardt/coc-powershell'
-hook_post_update = '''
-call coc#powershell#install()
-'''
+repo = 'coc-extensions/coc-powershell'
 depends = 'coc.nvim'
+rev = 'c173c37afdd13e332c4054523566c418778a8433'
 name = 'coc-powershell'
 merge = 0
 on_if = 1
-if = '''IsWindows() '''
-
-[[plugins]]
-repo = 'yatli/coc-powershell'
-hook_post_update = '''
-if exists("g:powershellPath") && executable(g:powershellPath)
-  echom "using predefined powershell path " . g:powershellPath
-  let s:powershellPath = g:powershellPath
-elseif executable("powershell.exe")
-  echom "using path for powershell.exe"
-  let s:powershellPath = "powershell.exe"
-elseif executable("pwsh")
-  echom "using path for pwsh"
-  let s:powershellPath = "pwsh"
-endif
-
-if exists("s:powershellPath")
-  let s:installScript = s:powershellPath . " build.ps1"
-  echom "calling powershell installer '" . s:installScript . "'"
-  call system(s:installScript)
-endif
-'''
-depends = 'coc.nvim'
-name = 'coc-pwsh'
-merge = 0
-on_if = 1
-if = '''!IsWindows() '''
 
 [[plugins]]
 repo = 'neoclide/coc-json'
@@ -237,13 +191,22 @@ merge = 0
 on_if = 1
 
 [[plugins]]
-repo = 'neoclide/coc-html'
+repo = 'josa42/coc-go'
 hook_post_update = '''
 call system('yarn install --frozen-lockfile')
 '''
 depends = 'coc.nvim'
 merge = 0
 on_if = 1
+
+# [[plugins]]
+# repo = 'neoclide/coc-html'
+# hook_post_update = '''
+# call system('yarn install --frozen-lockfile')
+# '''
+# depends = 'coc.nvim'
+# merge = 0
+# on_if = 1
 
 [[plugins]]
 repo = 'jaxbot/browserlink.vim'
@@ -293,14 +256,14 @@ on_if = 1
 # merge = 0
 # on_if = 1
 
-# [[plugins]]
-# repo = 'neoclide/coc-python'
-# hook_post_update = '''
-# call system('yarn install --frozen-lockfile')
-# '''
-# depends = 'coc.nvim'
-# merge = 0
-# on_if = 1
+[[plugins]]
+repo = 'neoclide/coc-python'
+hook_post_update = '''
+call system('yarn install --frozen-lockfile')
+'''
+depends = 'coc.nvim'
+merge = 0
+on_if = 1
 
 # [[plugins]]
 # repo = 'neoclide/coc-vimtex'
@@ -457,6 +420,6 @@ hook_source = '''
   endif
 '''
 
-[[plugins]]
-repo = 'neoclide/coc-denite'
-depends = [ 'coc.nvim', 'denite.nvim' ]
+# [[plugins]]
+# repo = 'neoclide/coc-denite'
+# depends = [ 'coc.nvim', 'denite.nvim' ]
