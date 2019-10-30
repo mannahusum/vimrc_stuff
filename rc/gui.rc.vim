@@ -42,7 +42,7 @@ endif
 if !exists('g:colors_name')
   set background=dark
   colorscheme blue
-  if dein#tap('vim-solarized8')
+  if dein#check_install('vim-solarized8')
     colorscheme solarized8
     set background=light
   endif
