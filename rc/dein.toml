@@ -253,3 +253,8 @@ let g:qcc_query_command = "querycommand.sh %s"
 [[plugins]]
 repo = 'pearofducks/ansible-vim'
 
+[[plugins]]
+repo = 'fatih/vim-go'
+hook_add = '''
+let g:go_def_mapping_enabled = 0
+'''
