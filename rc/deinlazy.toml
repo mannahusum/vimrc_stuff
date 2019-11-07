@@ -265,6 +265,15 @@ depends = 'coc.nvim'
 merge = 0
 on_if = 1
 
+[[plugins]]
+repo = 'neoclide/coc-java'
+hook_post_update = '''
+call system('yarn install --frozen-lockfile')
+'''
+depends = 'coc.nvim'
+merge = 0
+on_if = 1
+
 # [[plugins]]
 # repo = 'neoclide/coc-vimtex'
 # hook_post_update = '''
