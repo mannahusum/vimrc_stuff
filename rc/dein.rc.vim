@@ -15,6 +15,11 @@ call dein#load_toml(g:vimdir . '/rc/dein.toml', {'lazy': 0})
 call dein#load_toml(g:vimdir . '/rc/deinlazy.toml', {'lazy' : 1})
 call dein#load_toml(g:vimdir . '/rc/deinft.toml')
 
+let s:dein_host = findfile('deinhost.toml', '~')
+if s:dein_host !=# ''
+  call dein#load_toml(s:dein_host)
+endif
+
 let s:vimrc_local = findfile('vimrc_local.vim', '.;')
 if s:vimrc_local !=# ''
   " Load develop version plugins.
