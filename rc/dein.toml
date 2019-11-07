@@ -3,8 +3,8 @@ repo = 'tpope/vim-fugitive'
 hook_source = '''
 " Fugitive Conflict Resolution
 nnoremap <leader>gd :Gvdiff<CR>
-nnoremap gDh :diffget //2<CR>
-nnoremap gDl :diffget //3<CR>
+nnoremap <leader>h :diffget //2<CR>
+nnoremap <leader>l :diffget //3<CR>
 '''
 # merged = 0
 
