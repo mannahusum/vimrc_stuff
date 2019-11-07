@@ -9,6 +9,9 @@ nnoremap <leader>l :diffget //3<CR>
 # merged = 0
 
 [[plugins]]
+repo = 'idanarye/vim-merginal'
+
+[[plugins]]
 repo = 'jreybert/vimagit'
 
 [[plugins]]
