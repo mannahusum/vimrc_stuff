@@ -261,3 +261,6 @@ repo = 'fatih/vim-go'
 hook_add = '''
 let g:go_def_mapping_enabled = 0
 '''
+
+[[plugins]]
+repo = 'vim-jp/vital.vim'
