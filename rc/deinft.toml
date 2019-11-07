@@ -85,6 +85,11 @@ setlocal softtabstop=4 shiftwidth=4 tabstop=4 expandtab
 setlocal textwidth=80 formatoptions-=t wrapmargin=40
 '''
 
+go = '''
+setlocal colorcolumn=80
+setlocal softtabstop=8 shiftwidth=8 tabstop=8 noexpandtab
+'''
+
 # ps1pester = '''
 # let &l:makeprg = vimrc_ca#find_powershell() . ' -NonInteractive -NoProfile -Command "' . "[Threading.Thread]::CurrentThread.CurrentUICulture = 'en-US' ; Invoke-Pester -Script %:p:S -Show Fails". '"'
 # " *>H:\\RemoteExecute\\PesterErrors.txt" . '"'
