@@ -67,20 +67,20 @@ setlocal colorcolumn=80
 '''
 
 ps1 = '''
-setlocal colorcolumn=115
+setlocal colorcolumn=80
 setlocal softtabstop=4 shiftwidth=4 tabstop=4 expandtab
 setlocal textwidth=80 formatoptions-=t wrapmargin=40
 setlocal iskeyword=A-Z,a-z,48-57,_,-
 '''
 
 pandoc = '''
-setlocal colorcolumn=115
+setlocal colorcolumn=80
 setlocal softtabstop=4 shiftwidth=4 tabstop=4 expandtab
 setlocal textwidth=80 formatoptions-=t wrapmargin=40
 '''
 
 markdown = '''
-setlocal colorcolumn=115
+setlocal colorcolumn=80
 setlocal softtabstop=4 shiftwidth=4 tabstop=4 expandtab
 setlocal textwidth=80 formatoptions-=t wrapmargin=40
 '''
