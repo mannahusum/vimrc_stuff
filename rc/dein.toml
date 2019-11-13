@@ -264,3 +264,12 @@ let g:go_def_mapping_enabled = 0
 
 [[plugins]]
 repo = 'vim-jp/vital.vim'
+
+[[plugins]]
+repo = 'vim-ruby/vim-ruby'
+hook_add = '''
+  augroup vagrant
+    au!
+    au BufRead,BufNewFile Vagrantfile set filetype=ruby
+  augroup END
+'''

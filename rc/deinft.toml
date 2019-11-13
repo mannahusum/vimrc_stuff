@@ -90,6 +90,11 @@ setlocal colorcolumn=80
 setlocal softtabstop=8 shiftwidth=8 tabstop=8 noexpandtab
 '''
 
+ruby = '''
+setlocal colorcolumn=80
+setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
+'''
+
 # ps1pester = '''
 # let &l:makeprg = vimrc_ca#find_powershell() . ' -NonInteractive -NoProfile -Command "' . "[Threading.Thread]::CurrentThread.CurrentUICulture = 'en-US' ; Invoke-Pester -Script %:p:S -Show Fails". '"'
 # " *>H:\\RemoteExecute\\PesterErrors.txt" . '"'
