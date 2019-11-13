@@ -90,6 +90,11 @@ setlocal colorcolumn=80
 setlocal softtabstop=8 shiftwidth=8 tabstop=8 noexpandtab
 '''
 
+"ansible" = '''
+setlocal colorcolumn=80
+setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
+'''
+
 ruby = '''
 setlocal colorcolumn=80
 setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
