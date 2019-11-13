@@ -266,6 +266,10 @@ merge = 0
 on_if = 1
 
 [[plugins]]
+repo = 'jeetsukumaran/vim-pythonsense'
+on_ft = 'python'
+
+[[plugins]]
 repo = 'neoclide/coc-java'
 hook_post_update = '''
 call system('yarn install --frozen-lockfile')
