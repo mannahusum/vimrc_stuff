@@ -7,7 +7,7 @@ let g:is_bash = 1
 let g:markdown_fenced_languages = []
 
 " Reload .vimrc automatically.
-" autocmd MyAutoCmd BufWritePost .vimrc,vimrc,*.rc.vim,*.toml source $MYVIMRC | redraw
+autocmd MyAutoCmd BufWritePost .vimrc,vimrc,*.rc.vim,*.toml source $MYVIMRC | redraw
 
 " Auto reload VimScript.
 autocmd MyAutoCmd BufWritePost,FileWritePost *.vim nested
@@ -50,54 +50,48 @@ _ = '''
 '''
 
 vim = '''
-if line('$') > 1000
-  syntax sync minlines=200
-endif
+  if line('$') > 1000
+    syntax sync minlines=200
+  endif
 
-setlocal foldmethod=indent
-setlocal shiftwidth=2 softtabstop=2
-setlocal iskeyword+=:,#
-setlocal colorcolumn=80
+  setlocal foldmethod=indent
+  setlocal shiftwidth=2 softtabstop=2
+  setlocal iskeyword+=:,#
+  setlocal colorcolumn=80
 '''
 
 toml = '''
-set shiftwidth=2 tabstop=2 expandtab
-syntax sync minlines=500
-setlocal colorcolumn=80
+  syntax sync minlines=500
+  setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
+  setlocal colorcolumn=80
 '''
 
 ps1 = '''
-setlocal colorcolumn=80
-setlocal softtabstop=4 shiftwidth=4 tabstop=4 expandtab
-setlocal textwidth=80 formatoptions-=t wrapmargin=40
-setlocal iskeyword=A-Z,a-z,48-57,_,-
+  setlocal softtabstop=4 shiftwidth=4 tabstop=4 expandtab
+  setlocal textwidth=80 formatoptions-=t wrapmargin=40
+  setlocal iskeyword=A-Z,a-z,48-57,_,-
+  setlocal colorcolumn=80
 '''
 
 pandoc = '''
-setlocal colorcolumn=80
-setlocal softtabstop=4 shiftwidth=4 tabstop=4 expandtab
-setlocal textwidth=80 formatoptions-=t wrapmargin=40
+  setlocal softtabstop=4 shiftwidth=4 tabstop=4 expandtab
+  setlocal textwidth=80 formatoptions-=t wrapmargin=40
+  setlocal colorcolumn=80
 '''
 
 markdown = '''
-setlocal colorcolumn=80
-setlocal softtabstop=4 shiftwidth=4 tabstop=4 expandtab
-setlocal textwidth=80 formatoptions-=t wrapmargin=40
+  setlocal softtabstop=4 shiftwidth=4 tabstop=4 expandtab
+  setlocal textwidth=80 formatoptions-=t wrapmargin=40
 '''
 
 go = '''
-setlocal colorcolumn=80
-setlocal softtabstop=8 shiftwidth=8 tabstop=8 noexpandtab
+  setlocal softtabstop=8 shiftwidth=8 tabstop=8 noexpandtab
+  setlocal colorcolumn=80
 '''
 
-"ansible" = '''
-setlocal colorcolumn=80
-setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
-'''
-
-ruby = '''
-setlocal colorcolumn=80
-setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
+sh = '''
+  setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
+  setlocal colorcolumn=80
 '''
 
 # ps1pester = '''
