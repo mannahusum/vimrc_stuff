@@ -18,34 +18,36 @@ endif
 "---------------------------------------------------------------------------
 " Windows:
 "
-if has('win32') || has('win64')
-  if &columns < 120
-    " Width of window.
-    set columns=120
-  endif
-  if &lines < 55
-  " Height of window.
-    set lines=55
-  endif
-else
-  if &columns < 170
-    " Width of window.
-     set columns=170
-  endif
-  if &lines < 40
+if !exists('g:columsset')
+  if has('win32') || has('win64')
+    if &columns < 120
+      " Width of window.
+      set columns=120
+    endif
+    if &lines < 55
     " Height of window.
-     set lines=40
+      set lines=55
+    endif
+  else
+    if &columns < 170
+      " Width of window.
+      set columns=170
+    endif
+    if &lines < 40
+      " Height of window.
+      set lines=40
+    endif
   endif
-endif
 
-" Don't override colorscheme.
-if !exists('g:colors_name')
+  " Don't override colorscheme.
   set background=dark
   colorscheme blue
   if dein#tap('vim-solarized8')
     colorscheme solarized8
     set background=light
   endif
+
+  let g:columsset=1
 endif
 
 "---------------------------------------------------------------------------
