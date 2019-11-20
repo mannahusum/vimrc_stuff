@@ -433,6 +433,21 @@ hook_source = '''
   endif
 '''
 
+[[plugins]]
+repo = 'vim-syntastic/syntastic'
+on_ft = 'toml'
+hook_add = '''
+  let g:syntastic_mode_map = {
+    \ "mode": "passive",
+    \ "active_filetypes": ["toml"],
+    \ "passive_filetypes": [] }
+'''
+
+[[plugins]]
+repo = 'vmchale/tomlcheck-vim'
+on_ft = 'toml'
+depends = [ 'syntastic' ]
+
 # [[plugins]]
 # repo = 'neoclide/coc-denite'
 # depends = [ 'coc.nvim', 'denite.nvim' ]
