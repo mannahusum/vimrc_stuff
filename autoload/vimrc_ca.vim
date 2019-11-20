@@ -1,15 +1,6 @@
 ﻿" vimrc functions
 "
 
-function! vimrc_ca#on_filetype() abort
-  if execute('filetype') =~# 'OFF'
-    " Lazy loading
-    silent! filetype plugin indent on
-    syntax enable
-    filetype detect
-  endif
-endfunction
-
 function! vimrc_ca#_plugindir_run(cmd) abort
   call system('cd ' . shellescape(g:dein#plugin.path) . '; '. a:cmd)
 endfunction
