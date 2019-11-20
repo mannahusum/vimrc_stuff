@@ -273,3 +273,14 @@ hook_add = '''
     au BufRead,BufNewFile Vagrantfile set filetype=ruby
   augroup END
 '''
+
+[[plugins]]
+repo = 'baverman/vial'
+
+[[plugins]]
+repo = 'baverman/vial-http'
+depends = 'vial'
+
+[[plugins]]
+repo = 'tpope/vim-characterize'
+
