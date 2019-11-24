@@ -235,24 +235,28 @@ repo = 'neoclide/coc-jest'
 hook_post_update = '''
 call system('yarn install --frozen-lockfile')
 '''
+hook_add = '''
+" Run jest for current project
+command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
+
+" Run jest for current file
+command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['%'])
+
+" Run jest for current test
+nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
+
+" Init jest in current cwd, require global jest command exists
+command! JestInit :call CocAction('runCommand', 'jest.init')
+'''
 depends = 'coc.nvim'
 merge = 0
 on_if = 1
 
-[[plugins]]
-repo = 'SirVer/ultisnips'
-hook_post_update = '''
-call system('yarn install --frozen-lockfile')
-'''
-merge = 0
-on_if = 1
-
 # [[plugins]]
-# repo = 'neoclide/coc-sources'
+# repo = 'SirVer/ultisnips'
 # hook_post_update = '''
 # call system('yarn install --frozen-lockfile')
 # '''
-# depends = ['coc.nvim', 'ultisnips']
 # merge = 0
 # on_if = 1
 
@@ -277,6 +281,15 @@ call system('yarn install --frozen-lockfile')
 depends = 'coc.nvim'
 merge = 0
 on_if = 1
+
+# [[plugins]]
+# repo = 'neoclide/coc-sources'
+# hook_post_update = '''
+# call system('yarn install --frozen-lockfile')
+# '''
+# depends = ['coc.nvim', 'ultisnips']
+# merge = 0
+# on_if = 1
 
 # [[plugins]]
 # repo = 'neoclide/coc-vimtex'
