@@ -9,11 +9,3 @@ My vimrc is quite messy, but it gets the job done.
 This is the current status of the shared config.
 
 
-# Usage
-
-Add following lines to your vimrc
-
-```
-let g:vimdir="~/.vim/"
-exec "source " . g:vimdir . "generalvimrc"
-```
