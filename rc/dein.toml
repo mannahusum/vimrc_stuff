@@ -265,6 +265,12 @@ let g:qcc_query_command = "querycommand.sh %s"
 repo = 'pearofducks/ansible-vim'
 
 [[plugins]]
+repo = 'b4b4r07/vim-ansible-vault'
+hook_add = '''
+let g:ansible_vault_password_file=$ANSIBLE_VAULT_PASSWORD_FILE
+'''
+
+[[plugins]]
 repo = 'fatih/vim-go'
 hook_add = '''
 let g:go_def_mapping_enabled = 0
