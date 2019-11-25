@@ -298,3 +298,6 @@ depends = 'vial'
 [[plugins]]
 repo = 'tpope/vim-characterize'
 
+[[plugins]]
+repo = 'junegunn/vim-peekaboo'
+
