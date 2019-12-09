@@ -65,6 +65,17 @@ elseif executable("bash-language-server")
   let bashConfig.command = s:resolve_executable_path("bash-language-server")
   let languageserver.bash = bashConfig
 endif
+
+let nixConfig = {
+  \ "args": [],
+  \ "filetypes": ["nix"],
+\}
+
+if executable("nix-lsp")
+  let nixConfig.command = s:resolve_executable_path("nix-lsp")
+  let languageserver.nix = nixConfig
+endif
+
 call coc#config('languageserver', languageserver)
 
 call coc#config('coc.preferences.useQuickfixForLocations', 1)
@@ -189,6 +200,15 @@ call system('yarn install --frozen-lockfile')
 depends = 'coc.nvim'
 merge = 0
 on_if = 1
+
+[[plugins]]
+repo = 'neoclide/coc-solargraph'
+depends = 'coc.nvim'
+merge = 0
+on_if = 1
+hook_post_update = '''
+call system('yarn install --frozen-lockfile')
+'''
 
 # [[plugins]]
 # repo = 'josa42/coc-go'
