@@ -180,6 +180,31 @@ repo = 'tpope/vim-dadbod'
 on_cmd = 'DB'
 
 [[plugins]]
+repo = 'neoclide/coc-sources'
+depends = 'coc.nvim'
+name = 'coc-emoji'
+normalized_name = 'coc-emoji'
+merge = 0
+on_if = 1
+rtp = 'packages/emoji'
+hook_post_update = '''
+call system('yarn install --frozen-lockfile')
+'''
+
+[[plugins]]
+repo = 'neoclide/coc-sources'
+depends = 'coc.nvim'
+name = 'coc-dictionary'
+normalized_name = 'coc-dictionary'
+merge = 0
+on_if = 1
+rev = 'master'
+rtp = 'packages/dictionary'
+hook_post_update = '''
+call system('yarn install --frozen-lockfile')
+'''
+
+[[plugins]]
 repo = 'coc-extensions/coc-powershell'
 depends = 'coc.nvim'
 rev = 'c173c37afdd13e332c4054523566c418778a8433'
