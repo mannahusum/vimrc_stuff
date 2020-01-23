@@ -79,6 +79,10 @@ endif
 call coc#config('languageserver', languageserver)
 
 call coc#config('coc.preferences.useQuickfixForLocations', 1)
+call coc#config('vimlsp.debug', 1)
+call coc#config('vimlsp.diagnostic.enable', 1)
+call coc#config('vimlsp.suggest.fromVimruntime', 1)
+call coc#config('vimlsp.suggest.fromRuntimepath', 1)
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -324,6 +328,15 @@ on_ft = 'python'
 
 [[plugins]]
 repo = 'neoclide/coc-java'
+hook_post_update = '''
+call system('yarn install --frozen-lockfile')
+'''
+depends = 'coc.nvim'
+merge = 0
+on_if = 1
+
+[[plugins]]
+repo = 'iamcco/coc-vimlsp'
 hook_post_update = '''
 call system('yarn install --frozen-lockfile')
 '''
