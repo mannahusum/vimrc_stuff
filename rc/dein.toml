@@ -290,10 +290,12 @@ hook_add = '''
 
 [[plugins]]
 repo = 'baverman/vial'
+if = '!IsWindows()'
 
 [[plugins]]
 repo = 'baverman/vial-http'
 depends = 'vial'
+if = '!IsWindows()'
 
 [[plugins]]
 repo = 'tpope/vim-characterize'
