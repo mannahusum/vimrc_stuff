@@ -94,6 +94,10 @@ sh = '''
   setlocal colorcolumn=80
 '''
 
+json = '''
+  setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
+  setlocal colorcolumn=80
+'''
 # ps1pester = '''
 # let &l:makeprg = vimrc_ca#find_powershell() . ' -NonInteractive -NoProfile -Command "' . "[Threading.Thread]::CurrentThread.CurrentUICulture = 'en-US' ; Invoke-Pester -Script %:p:S -Show Fails". '"'
 # " *>H:\\RemoteExecute\\PesterErrors.txt" . '"'
