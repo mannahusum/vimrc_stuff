@@ -309,3 +309,6 @@ repo = 'LnL7/vim-nix'
 [[plugins]]
 repo = 'hallison/vim-rdoc'
 
+[[plugins]]
+repo = 'psf/black'
+
