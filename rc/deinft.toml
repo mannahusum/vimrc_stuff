@@ -28,6 +28,10 @@ set diffopt+=iwhite,vertical
 " ------------------------------
 tnoremap <Esc> <C-\><C-n>
 tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
+
+augroup pandoc_syntax
+    au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
+augroup END
 '''
 
 [ftplugin]
