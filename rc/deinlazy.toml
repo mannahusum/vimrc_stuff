@@ -16,10 +16,9 @@ set shortmess=ca
 
 " always show signcolumns
 set signcolumn=yes
+let g:coc_global_extensions=[ 'coc-powershell' ]
 '''
 hook_source = '''
-let g:coc_global_extensions=[]
-
 function! s:resolve_executable_path(path) abort
   if IsWindows()
     return trim(system("where " . a:path))
@@ -208,13 +207,22 @@ hook_post_update = '''
 call system('yarn install --frozen-lockfile')
 '''
 
-[[plugins]]
-repo = 'coc-extensions/coc-powershell'
-depends = 'coc.nvim'
-rev = 'c173c37afdd13e332c4054523566c418778a8433'
-name = 'coc-powershell'
-merge = 0
-on_if = 1
+# [[plugins]]
+# repo = 'coc-extensions/coc-powershell'
+# depends = 'coc.nvim'
+# rev = 'release'
+# # rev = 'c173c37afdd13e332c4054523566c418778a8433'
+# name = 'coc-powershell'
+# merge = 0
+# on_if = 1
+# hook_post_update = '''
+# call system('yarn install --frozen-lockfile')
+# if IsWindows()
+#   call system('.\build.ps1')
+# else
+#   call system('pwsh build.ps1')
+# endif
+# '''
 
 [[plugins]]
 repo = 'neoclide/coc-json'
