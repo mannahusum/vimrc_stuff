@@ -312,3 +312,24 @@ repo = 'hallison/vim-rdoc'
 [[plugins]]
 repo = 'psf/black'
 
+[[plugins]]
+repo = 'tolecnal/icinga2-vim'
+
+[[plugins]]
+repo = 'vim-test/vim-test'
+hook_add = '''
+  let test#strategy = {
+    \ 'nearest': 'basic',
+    \ 'file': 'makegreen',
+    \ 'suite': 'asyncrun',
+  \}
+'''
+
+[[plugins]]
+repo = 'reinh/vim-makegreen'
+
+
+[[plugins]]
+repo = 'tpope/vim-dispatch'
+
+
