@@ -290,6 +290,10 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'direnv/direnv.vim'
+if = '!IsWindows()'
+
+[[plugins]]
 repo = 'baverman/vial'
 if = '!IsWindows()'
 
