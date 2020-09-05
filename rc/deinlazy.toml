@@ -1,6 +1,6 @@
 [[plugins]]
 repo = 'neoclide/coc.nvim'
-rev = 'master'
+rev = 'release'
 hook_post_update = '''
 call system('yarn install --frozen-lockfile')
 '''
