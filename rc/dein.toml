@@ -337,4 +337,6 @@ repo = 'reinh/vim-makegreen'
 [[plugins]]
 repo = 'tpope/vim-dispatch'
 
+[[plugins]]
+repo = 'rhysd/vim-grammarous'
 
