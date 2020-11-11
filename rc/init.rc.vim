@@ -60,9 +60,3 @@ set packpath=
 if has('gui_running')
    set guioptions=mc
 endif
-
-" Setup python
-if has('nvim') && !IsWindows()
-  let g:python3_host_prog = get(g:, 'python3_host_prog', "/usr/bin/python3.6")
-  let g:python_host_prog = get(g:, 'python_host_prog', "/usr/bin/python2.7")
-endif
