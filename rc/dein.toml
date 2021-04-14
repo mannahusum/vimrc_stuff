@@ -48,6 +48,9 @@ repo = 'previm/previm'
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
+repo = 'tpope/vim-vinegar'
+
+[[plugins]]
 repo = 'cespare/vim-toml'
 
 # [[plugins]]
@@ -340,3 +343,5 @@ repo = 'tpope/vim-dispatch'
 [[plugins]]
 repo = 'rhysd/vim-grammarous'
 
+[[plugins]]
+repo = 'blindFS/vim-taskwarrior'
