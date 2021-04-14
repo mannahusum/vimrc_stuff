@@ -96,6 +96,10 @@ let g:airline_section_z = airline#section#create(['windowswap', 'obsession', '0x
 '''
 
 [[plugins]]
+repo = 'tpope/vim-eunuch'
+if = '!IsWindows()'
+
+[[plugins]]
 repo = 'chrisbra/SudoEdit.vim'
 hook_add = '''
 if IsWindows()
