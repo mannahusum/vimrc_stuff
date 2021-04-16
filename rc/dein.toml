@@ -9,6 +9,13 @@ nnoremap <leader>l :diffget //3<CR>
 # merged = 0
 
 [[plugins]]
+repo = 'tpope/vim-rhubarb'
+
+[[plugins]]
+repo = 'tommcdo/vim-fubitive'
+if = 'exists("g:fubitive_domain_pattern")'
+
+[[plugins]]
 repo = 'tpope/vim-surround'
 hook_add = '''
   let b:surround_{char2nr('e')}
