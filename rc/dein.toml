@@ -1,4 +1,7 @@
 [[plugins]]
+repo = 'tpope/vim-git'
+
+[[plugins]]
 repo = 'tpope/vim-fugitive'
 hook_source = '''
 " Fugitive Conflict Resolution
@@ -14,14 +17,6 @@ repo = 'tpope/vim-rhubarb'
 [[plugins]]
 repo = 'tommcdo/vim-fubitive'
 if = 'exists("g:fubitive_domain_pattern")'
-
-[[plugins]]
-repo = 'tpope/vim-surround'
-hook_add = '''
-  let b:surround_{char2nr('e')}
-      \ = "\\begin{\1environment: \1}\n\t\r\n\\end{\1\1}"
-  let b:surround_{char2nr('c')} = "\\\1command: \1{\r}"
-'''
 
 [[plugins]]
 repo = 'idanarye/vim-merginal'
@@ -53,9 +48,6 @@ repo = 'previm/previm'
 
 [[plugins]]
 repo = 'Shougo/dein.vim'
-
-[[plugins]]
-repo = 'tpope/vim-vinegar'
 
 [[plugins]]
 repo = 'cespare/vim-toml'
@@ -101,6 +93,9 @@ hook_source = '''
 let s:spc =  nr2char(0x20, 1)
 let g:airline_section_z = airline#section#create(['windowswap', 'obsession', '0x%B'.s:spc, '%3p%%'.s:spc, 'linenr', 'maxlinenr', s:spc.':%3v'])
 '''
+
+[[plugins]]
+repo = 'tpope/vim-vinegar'
 
 [[plugins]]
 repo = 'tpope/vim-eunuch'
@@ -158,6 +153,14 @@ hook_add = '''
     let g:autofenc_ext_prog_path="C:\\msys64\\mingw64\\bin\\enca.exe"
   endif
   let g:autofenc_ext_prog_args="-i -L none"
+'''
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+hook_add = '''
+  let b:surround_{char2nr('e')}
+      \ = "\\begin{\1environment: \1}\n\t\r\n\\end{\1\1}"
+  let b:surround_{char2nr('c')} = "\\\1command: \1{\r}"
 '''
 
 [[plugins]]
@@ -223,9 +226,6 @@ hook_add = '''
 repo = 'tpope/vim-scriptease'
 
 [[plugins]]
-repo = 'tpope/vim-git'
-
-[[plugins]]
 repo = 'vim-pandoc/vim-pandoc'
 
 [[plugins]]
@@ -284,6 +284,7 @@ repo = 'b4b4r07/vim-ansible-vault'
 hook_add = '''
 let g:ansible_vault_password_file=$ANSIBLE_VAULT_PASSWORD_FILE
 '''
+if = '!IsWindows()'
 
 [[plugins]]
 repo = 'fatih/vim-go'
@@ -305,15 +306,6 @@ hook_add = '''
 
 [[plugins]]
 repo = 'direnv/direnv.vim'
-if = '!IsWindows()'
-
-[[plugins]]
-repo = 'baverman/vial'
-if = '!IsWindows()'
-
-[[plugins]]
-repo = 'baverman/vial-http'
-depends = 'vial'
 if = '!IsWindows()'
 
 [[plugins]]
@@ -356,3 +348,6 @@ repo = 'rhysd/vim-grammarous'
 
 [[plugins]]
 repo = 'blindFS/vim-taskwarrior'
+
+[[plugins]]
+repo = 'tpope/vim-obsession'
