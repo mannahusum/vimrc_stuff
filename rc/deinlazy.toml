@@ -13,7 +13,7 @@ set shortmess=ca
 
 " always show signcolumns
 set signcolumn=yes
-let g:coc_global_extensions=[ 'coc-powershell' ]
+let g:coc_global_extensions=[ 'coc-powershell', 'coc-vimtex' ]
 '''
 hook_source = '''
 function! s:resolve_executable_path(path) abort
