@@ -351,3 +351,8 @@ repo = 'blindFS/vim-taskwarrior'
 
 [[plugins]]
 repo = 'tpope/vim-obsession'
+
+[[plugins]]
+repo = 'raghur/vim-ghost'
+hook_post_update= 'call ghost#install()'
+
