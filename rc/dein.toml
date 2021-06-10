@@ -15,6 +15,22 @@ nnoremap <leader>l :diffget //3<CR>
 repo = 'tpope/vim-rhubarb'
 
 [[plugins]]
+repo = 'mattn/webapi-vim'
+if = 'exists("g:github_user")'
+
+[[plugins]]
+repo = 'mattn/vim-gist'
+if = 'exists("g:github_user")'
+hook_add = '''
+let g:gist_detect_filetype = 1
+let g:gist_show_privates = 1
+let g:gist_post_private = 1
+'''
+depends = [
+  'mattn/webapi-vim'
+]
+
+[[plugins]]
 repo = 'tommcdo/vim-fubitive'
 if = 'exists("g:fubitive_domain_pattern")'
 

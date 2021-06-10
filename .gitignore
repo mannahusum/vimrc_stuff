@@ -3,3 +3,4 @@ sessions
 .cache
 spell/*
 !spell/*.add.spl
+black

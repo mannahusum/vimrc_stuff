@@ -13,7 +13,7 @@ set shortmess=ca
 
 " always show signcolumns
 set signcolumn=yes
-let g:coc_global_extensions=[ 'coc-powershell', 'coc-vimtex' ]
+let g:coc_global_extensions=[ 'coc-powershell', 'coc-vimtex', 'coc-cmake' ]
 '''
 hook_source = '''
 function! s:resolve_executable_path(path) abort
@@ -79,6 +79,8 @@ call coc#config('vimlsp.debug', 1)
 call coc#config('vimlsp.diagnostic.enable', 1)
 call coc#config('vimlsp.suggest.fromVimruntime', 1)
 call coc#config('vimlsp.suggest.fromRuntimepath', 1)
+
+call coc#config('coc.source.emoji.filetypes', v:null)
 
 function! s:check_back_space() abort
   let col = col('.') - 1

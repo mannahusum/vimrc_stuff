@@ -1,6 +1,6 @@
 ﻿
 if has("gui_gtk2") || has("gui_gtk3")
-  set guifont=FuraCode\ Nerd\ Font\ Mono\ 10
+  set guifont=FuraCode\ Nerd\ Font\ Mono\ 7
 elseif has("gui_photon")
   set guifont=FuraCode\ Nerd\ Font\ Mono:s9
 elseif has("gui_kde")
