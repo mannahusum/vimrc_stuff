@@ -48,6 +48,12 @@ elseif executable("clangd")
   let languageserver.clangd = clangConfig
 endif
 
+if exists("g:cmakePath")
+  let cmake.cmakePath = g:cmakePath
+elseif executable("cmake")
+  let cmake.cmakePath = s:resolve_executable_path("cmake")
+endif
+
 let bashConfig = {
   \ "args": ["start"],
   \ "filetypes": ["sh"],
