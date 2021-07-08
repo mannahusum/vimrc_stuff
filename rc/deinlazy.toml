@@ -48,12 +48,6 @@ elseif executable("clangd")
   let languageserver.clangd = clangConfig
 endif
 
-if exists("g:cmakePath")
-  let cmake.cmakePath = g:cmakePath
-elseif executable("cmake")
-  let cmake.cmakePath = s:resolve_executable_path("cmake")
-endif
-
 let bashConfig = {
   \ "args": ["start"],
   \ "filetypes": ["sh"],
@@ -80,6 +74,12 @@ endif
 
 call coc#config('languageserver', languageserver)
 
+if exists("g:cmakePath")
+  call coc#config('cmake.cmakePath', g:cmakePath)
+elseif executable("cmake")
+  call coc#config('cmake.cmakePath', s:resolve_executable_path("cmake"))
+endif
+
 call coc#config('coc.preferences.useQuickfixForLocations', 1)
 call coc#config('vimlsp.debug', 1)
 call coc#config('vimlsp.diagnostic.enable', 1)
@@ -87,7 +87,7 @@ call coc#config('vimlsp.suggest.fromVimruntime', 1)
 call coc#config('vimlsp.suggest.fromRuntimepath', 1)
 
 call coc#config('coc.source.emoji.filetypes', v:null)
-call coc#config('coc.source.emoji.triggerchar', 'ℓ')
+call coc#config('coc.source.emoji.triggerCharacters', ["ℓ"])
 
 function! s:check_back_space() abort
   let col = col('.') - 1
