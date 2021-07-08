@@ -81,6 +81,7 @@ call coc#config('vimlsp.suggest.fromVimruntime', 1)
 call coc#config('vimlsp.suggest.fromRuntimepath', 1)
 
 call coc#config('coc.source.emoji.filetypes', v:null)
+call coc#config('coc.source.emoji.triggerchar', 'ℓ')
 
 function! s:check_back_space() abort
   let col = col('.') - 1
