@@ -537,6 +537,10 @@ repo = 'vmchale/tomlcheck-vim'
 on_ft = 'toml'
 depends = [ 'syntastic' ]
 
+[[plugins]]
+repo = 'itspriddle/vim-shellcheck'
+on_ft = 'sh'
+
 # [[plugins]]
 # repo = 'neoclide/coc-denite'
 # depends = [ 'coc.nvim', 'denite.nvim' ]
