@@ -372,3 +372,6 @@ repo = 'tpope/vim-obsession'
 repo = 'raghur/vim-ghost'
 hook_post_update= 'call ghost#install()'
 
+[[plugins]]
+repo = 'n0v1c3/vira'
+if = 'filereadable($HOME . "/.config/vira/vira_servers.json") || filereadable($HOME . "/.config/vira/vira_servers.yaml")'
