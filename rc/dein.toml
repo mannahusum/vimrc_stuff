@@ -361,9 +361,9 @@ repo = 'tpope/vim-dispatch'
 [[plugins]]
 repo = 'rhysd/vim-grammarous'
 
-[[plugins]]
-repo = 'blindFS/vim-taskwarrior'
-if = '!IsWindows()'
+# [[plugins]]
+# repo = 'blindFS/vim-taskwarrior'
+# if = '!IsWindows()'
 
 [[plugins]]
 repo = 'tpope/vim-obsession'
