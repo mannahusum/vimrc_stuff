@@ -7,6 +7,10 @@ elseif has("gui_kde")
   set guifont=FuraCode\ Nerd\ Font\ Mono/9/5/50/0/0/0/1/0
 elseif has("x11")
   set guifont=-*-courier-medium-r-normal-*-*-180-*-*-m-*-*
+elseif exists('g:fvim_loaded')
+  if g:fvim_os == 'windows' || g:fvim_render_scale > 1.00
+    set guifont=FiraMono\ NT:w12
+  endif
 else
   set guifont=FuraCode_Nerd_Font_Mono:h8:cANSI
 endif
