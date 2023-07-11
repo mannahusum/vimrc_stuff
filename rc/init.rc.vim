@@ -34,7 +34,12 @@ if IsWindows()
   endif
 endif
 
-let $CACHE = expand('~/.cache')
+if has('win32') || has('win64')
+  let $CACHE = $USERPROFILE . '/.cache'
+else
+  let $CACHE = expand('~/.cache')
+endif
+
 
 if !isdirectory(expand($CACHE))
   call mkdir(expand($CACHE), 'p')
