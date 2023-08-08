@@ -13,7 +13,7 @@ set shortmess=ca
 
 " always show signcolumns
 set signcolumn=yes
-let g:coc_global_extensions=[ 'coc-powershell', 'coc-vimtex', 'coc-cmake' ]
+let g:coc_global_extensions=[ 'coc-powershell', 'coc-vimtex', 'coc-cmake', 'coc-sh', 'coc-json' ]
 '''
 hook_source = '''
 function! s:resolve_executable_path(path) abort
@@ -73,6 +73,7 @@ if executable("nix-lsp")
 endif
 
 call coc#config('languageserver', languageserver)
+call coc#config('diagnostic.checkCurrentLine', 1)
 
 if exists("g:cmakePath")
   call coc#config('cmake.cmakePath', g:cmakePath)
@@ -183,6 +184,14 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 '''
 merge = 0
 on_if = 1
+
+[[plugins]]
+repo = 'shumphrey/fugitive-gitlab.vim'
+depends = 'fugitive'
+hook_source = '''
+call dein#recache_runtimepath()
+'''
+# on_if = 'exists("g:fugitive_gitlab_domains")'
 
 [[plugins]]
 repo = 'tpope/vim-dadbod'
@@ -376,14 +385,14 @@ on_if = 1
 # merge = 0
 # on_if = 1
 
-# [[plugins]]
-# repo = 'josa42/coc-sh'
-# hook_post_update = '''
-# call system('yarn install --frozen-lockfile')
-# '''
-# depends = 'coc.nvim'
-# merge = 0
-# on_if = 1
+[[plugins]]
+repo = 'josa42/coc-sh'
+hook_post_update = '''
+call system('yarn install --frozen-lockfile')
+'''
+depends = 'coc.nvim'
+merge = 0
+on_if = 1
 
 # [[plugins]]
 # repo = 'josa42/coc-lua'
