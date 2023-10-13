@@ -111,3 +111,7 @@ json = '''
 # " setl errorformat=%+GDescribing\ %.%#,%+G[-]%.%#,%+G[+]%.%#,%+GTests\ completed\ in%.%#,%+GPassed:\ %*\\d\\,\ Failed:\ %*\\d\\,\ Skipped:\ %*\\d\\,\ Pending:\ %*\\d\\,\ Inconclusive:\ %*\\d,%+E\ [-]\ %m,%+C\ \ \ Expected:\ %.%#,%+C\ \ \ But\ was:\ %.%#,%C\ \ \ %*\\d:\ %m,%Z\ \ \ at\ %.ScriptBlock%.\\,\ %f:\ line\ %l,%+E%*\\k\ :\ %.%#,%CAt\ %f:%l\ char:%c,%-C%.%#,%-G%.%#
 # '''
 
+nix = '''
+  setlocal softtabstop=4 shiftwidth=4 tabstop=4 expandtab
+  setlocal colorcolumn=80
+'''
