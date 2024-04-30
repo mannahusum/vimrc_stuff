@@ -384,10 +384,14 @@ augroup vim-ghost
 augroup END
 '''
 hook_post_source = '''
-GhostStart
+call ghost#load()
 '''
 
 
 [[plugins]]
 repo = 'n0v1c3/vira'
 if = 'filereadable($HOME . "/.config/vira/vira_servers.json") || filereadable($HOME . "/.config/vira/vira_servers.yaml")'
+
+[[plugins]]
+repo = 'jvirtanen/vim-hcl'
+
