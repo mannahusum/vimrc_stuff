@@ -13,7 +13,7 @@ set shortmess=ca
 
 " always show signcolumns
 set signcolumn=yes
-let g:coc_global_extensions=[ 'coc-powershell', 'coc-vimtex', 'coc-cmake', 'coc-sh', 'coc-json' ]
+let g:coc_global_extensions=[ 'coc-powershell', 'coc-vimtex', 'coc-cmake', 'coc-sh', 'coc-json', 'coc-python' ]
 '''
 hook_source = '''
 function! s:resolve_executable_path(path) abort
@@ -89,6 +89,9 @@ call coc#config('vimlsp.suggest.fromRuntimepath', 1)
 
 call coc#config('coc.source.emoji.filetypes', v:null)
 call coc#config('coc.source.emoji.triggerCharacters', ["ℓ"])
+
+call coc#config('python.formatting.provider', 'black')
+call coc#config('python.jediEnable', 1)
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -187,11 +190,15 @@ on_if = 1
 
 [[plugins]]
 repo = 'shumphrey/fugitive-gitlab.vim'
-depends = 'fugitive'
+depends = 'vim-fugitive'
 hook_source = '''
 call dein#recache_runtimepath()
 '''
-# on_if = 'exists("g:fugitive_gitlab_domains")'
+on_if = 'exists("g:fugitive_gitlab_domains")'
+
+[[plugins]]
+repo = 'sirjofri/vim-glissues'
+on_if = 'exists("g:gitlab_token")'
 
 [[plugins]]
 repo = 'tpope/vim-dadbod'
@@ -222,23 +229,6 @@ hook_post_update = '''
 call system('yarn install --frozen-lockfile')
 '''
 
-# [[plugins]]
-# repo = 'coc-extensions/coc-powershell'
-# depends = 'coc.nvim'
-# rev = 'release'
-# # rev = 'c173c37afdd13e332c4054523566c418778a8433'
-# name = 'coc-powershell'
-# merge = 0
-# on_if = 1
-# hook_post_update = '''
-# call system('yarn install --frozen-lockfile')
-# if IsWindows()
-#   call system('.\build.ps1')
-# else
-#   call system('pwsh build.ps1')
-# endif
-# '''
-
 [[plugins]]
 repo = 'neoclide/coc-json'
 hook_post_update = '''
@@ -265,24 +255,6 @@ on_if = 1
 hook_post_update = '''
 call system('yarn install --frozen-lockfile')
 '''
-
-# [[plugins]]
-# repo = 'josa42/coc-go'
-# hook_post_update = '''
-# call system('yarn install --frozen-lockfile')
-# '''
-# depends = 'coc.nvim'
-# merge = 0
-# on_if = 1
-
-# [[plugins]]
-# repo = 'neoclide/coc-html'
-# hook_post_update = '''
-# call system('yarn install --frozen-lockfile')
-# '''
-# depends = 'coc.nvim'
-# merge = 0
-# on_if = 1
 
 [[plugins]]
 repo = 'jaxbot/browserlink.vim'
@@ -328,14 +300,6 @@ depends = 'coc.nvim'
 merge = 0
 on_if = 1
 
-# [[plugins]]
-# repo = 'SirVer/ultisnips'
-# hook_post_update = '''
-# call system('yarn install --frozen-lockfile')
-# '''
-# merge = 0
-# on_if = 1
-
 [[plugins]]
 repo = 'neoclide/coc-python'
 hook_post_update = '''
@@ -367,24 +331,6 @@ depends = 'coc.nvim'
 merge = 0
 on_if = 1
 
-# [[plugins]]
-# repo = 'neoclide/coc-sources'
-# hook_post_update = '''
-# call system('yarn install --frozen-lockfile')
-# '''
-# depends = ['coc.nvim', 'ultisnips']
-# merge = 0
-# on_if = 1
-
-# [[plugins]]
-# repo = 'neoclide/coc-vimtex'
-# hook_post_update = '''
-# call system('yarn install --frozen-lockfile')
-# '''
-# depends = ['coc.nvim', 'vimtex']
-# merge = 0
-# on_if = 1
-
 [[plugins]]
 repo = 'josa42/coc-sh'
 hook_post_update = '''
@@ -393,15 +339,6 @@ call system('yarn install --frozen-lockfile')
 depends = 'coc.nvim'
 merge = 0
 on_if = 1
-
-# [[plugins]]
-# repo = 'josa42/coc-lua'
-# hook_post_update = '''
-# call system('yarn install --frozen-lockfile')
-# '''
-# depends = 'coc.nvim'
-# merge = 0
-# on_if = 1
 
 [[plugins]]
 repo = 'l04m33/vim-skuld'
