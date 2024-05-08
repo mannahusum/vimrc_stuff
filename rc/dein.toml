@@ -9,7 +9,6 @@ nnoremap <leader>gd :Gvdiff<CR>
 nnoremap <leader>h :diffget //2<CR>
 nnoremap <leader>l :diffget //3<CR>
 '''
-# merged = 0
 
 [[plugins]]
 repo = 'tpope/vim-rhubarb'
@@ -337,6 +336,9 @@ repo = 'hallison/vim-rdoc'
 
 [[plugins]]
 repo = 'psf/black'
+hook_add = '''
+  let g:black_use_virtualenv = 1
+'''
 
 [[plugins]]
 repo = 'tolecnal/icinga2-vim'
@@ -361,9 +363,9 @@ repo = 'tpope/vim-dispatch'
 [[plugins]]
 repo = 'rhysd/vim-grammarous'
 
-[[plugins]]
-repo = 'blindFS/vim-taskwarrior'
-if = '!IsWindows()'
+# [[plugins]]
+# repo = 'blindFS/vim-taskwarrior'
+# if = '!IsWindows()'
 
 [[plugins]]
 repo = 'tpope/vim-obsession'
@@ -371,6 +373,22 @@ repo = 'tpope/vim-obsession'
 [[plugins]]
 repo = 'raghur/vim-ghost'
 hook_post_update= 'call ghost#install()'
+hook_add = '''
+function! s:SetupGhostBuffer()
+    if match(expand("%:a"), '\v/ghost-(github|reddit)\.com-')
+        set ft=markdown
+    endif
+endfunction
+
+augroup vim-ghost
+    au!
+    au User vim-ghost#connected call s:SetupGhostBuffer()
+augroup END
+'''
+hook_post_source = '''
+call ghost#load()
+'''
+
 
 [[plugins]]
 repo = 'n0v1c3/vira'
@@ -382,3 +400,5 @@ call system('./install.sh')
 [[plugins]]
 repo = 'jvirtanen/vim-hcl'
 
+[[plugin]]
+repo = 'lucidph3nx/nvim-sops'
