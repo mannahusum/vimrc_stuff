@@ -1,14 +1,14 @@
 ﻿
 if has("gui_gtk2") || has("gui_gtk3")
-  set guifont=FuraCode\ Nerd\ Font\ Mono\ 11
+  set guifont=FuraMono\ Nerd\ Font\ 9
 elseif has("gui_photon")
-  set guifont=FuraCode\ Nerd\ Font\ Mono:s9
+  set guifont=FuraMono\ Nerd\ Font:s9
 elseif has("gui_kde")
-  set guifont=FuraCode\ Nerd\ Font\ Mono/9/5/50/0/0/0/1/0
+  set guifont=FuraMono\ Nerd\ Font/9/5/50/0/0/0/1/0
 elseif has("x11")
   set guifont=-*-courier-medium-r-normal-*-*-180-*-*-m-*-*
 else
-  set guifont=FuraCode_Nerd_Font_Mono:h8:cANSI
+  set guifont=FuraMono_Nerd_Font:h8:cANSI
 endif
 
 if has('win32') || has('win64')
