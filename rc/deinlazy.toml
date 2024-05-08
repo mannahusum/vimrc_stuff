@@ -62,14 +62,13 @@ elseif executable("bash-language-server")
   let languageserver.bash = bashConfig
 endif
 
-let nixConfig = {
-  \ "args": [],
-  \ "filetypes": ["nix"],
-\}
-
-if executable("nix-lsp")
-  let nixConfig.command = s:resolve_executable_path("nix-lsp")
-  let languageserver.nix = nixConfig
+if exists("g:nilPath")
+  let nilConfig = {
+    \ "rootPatterns": ["flake.nix"],
+    \ "filetypes": ["nix"]
+  \ }
+  let nilConfig.command = g:nilPath
+  let languageserver.nix = nilConfig
 endif
 
 call coc#config('languageserver', languageserver)
