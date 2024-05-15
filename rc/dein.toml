@@ -400,5 +400,5 @@ call system('./install.sh')
 [[plugins]]
 repo = 'jvirtanen/vim-hcl'
 
-[[plugin]]
+[[plugins]]
 repo = 'lucidph3nx/nvim-sops'
