@@ -179,6 +179,9 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'tpope/vim-repeat'
+
+[[plugins]]
 repo = 'tpope/vim-commentary'
 
 [[plugins]]
