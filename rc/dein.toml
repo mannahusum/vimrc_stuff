@@ -388,7 +388,11 @@ augroup END
 hook_post_source = '''
 call ghost#load()
 '''
+if = '!has("nvim")'
 
+[[plugins]]
+repo = 'subnut/nvim-ghost'
+if = 'has("nvim")'
 
 [[plugins]]
 repo = 'n0v1c3/vira'
