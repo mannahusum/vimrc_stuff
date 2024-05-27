@@ -4,3 +4,4 @@ sessions
 spell/*
 !spell/*.add.spl
 black
+/node_modules
