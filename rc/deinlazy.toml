@@ -71,6 +71,15 @@ if exists("g:nilPath")
   let languageserver.nix = nilConfig
 endif
 
+if exists("g:openscadlspPath")
+  let openscadlspConfig
+    \ "args": ["--stdio"],
+    \ "filetypes": ["openscad"]
+  \ }
+  let openscadlspConfig.command = g:openscadlspPath
+  let languageserver.nix = openscadlspConfig
+endif
+
 call coc#config('languageserver', languageserver)
 call coc#config('diagnostic.checkCurrentLine', 1)
 
