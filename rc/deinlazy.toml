@@ -72,7 +72,7 @@ if exists("g:nilPath")
 endif
 
 if exists("g:openscadlspPath")
-  let openscadlspConfig
+  let openscadlspConfig = {
     \ "args": ["--stdio"],
     \ "filetypes": ["openscad"]
   \ }
@@ -100,6 +100,10 @@ call coc#config('coc.source.emoji.triggerCharacters', ["ℓ"])
 
 call coc#config('python.formatting.provider', 'black')
 call coc#config('python.jediEnable', 1)
+if exists("g:pylintPath")
+  call coc#config('python.linting.pylintPath', g:pylintPath)
+endif
+
 
 function! s:check_back_space() abort
   let col = col('.') - 1
