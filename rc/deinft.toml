@@ -115,3 +115,7 @@ nix = '''
   setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
   setlocal colorcolumn=80
 '''
+
+hcl = '''
+  setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
+'''
