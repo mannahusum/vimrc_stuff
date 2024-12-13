@@ -394,7 +394,7 @@ call ghost#load()
 if = '!has("nvim")'
 
 [[plugins]]
-repo = 'subnut/nvim-ghost'
+repo = 'subnut/nvim-ghost.nvim'
 if = 'has("nvim")'
 
 [[plugins]]
