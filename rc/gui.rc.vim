@@ -11,6 +11,8 @@ elseif exists('g:fvim_loaded')
   if g:fvim_os == 'windows' || g:fvim_render_scale > 1.00
     set guifont=FiraMono\ NF:w12
   endif
+elseif exists('g:neovide')
+  set guifont=FiraMono\ Nerd\ Font:h8
 else
   set guifont=FuraMono_Nerd_Font:h8:cANSI
 endif
