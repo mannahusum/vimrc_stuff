@@ -4,6 +4,7 @@ repo = 'tpope/vim-git'
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 hook_add = '''
+nnoremap <leader>gc :Git commit<CR>
 nnoremap <leader>gg :Git<CR>
 nnoremap <leader>gw :Gwrite<CR>
 
@@ -55,6 +56,9 @@ hook_post_update= 'call vimrc_ca#install_vimproc()'
 
 [[plugins]]
 repo = 'junegunn/vim-emoji'
+hook_add = '''
+nnoremap <leader>gv :GV<CR>
+'''
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
