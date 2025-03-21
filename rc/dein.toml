@@ -11,6 +11,9 @@ nnoremap <leader>l :diffget //3<CR>
 '''
 
 [[plugins]]
+repo = 'tpope/vim-unimpaired'
+
+[[plugins]]
 repo = 'tpope/vim-rhubarb'
 
 [[plugins]]
@@ -35,6 +38,10 @@ if = 'exists("g:fubitive_domain_pattern")'
 
 [[plugins]]
 repo = 'idanarye/vim-merginal'
+hook_source = '''
+"
+nnoremap <leader>b :MerginalToggle<CR>
+'''
 
 [[plugins]]
 repo = 'jreybert/vimagit'
