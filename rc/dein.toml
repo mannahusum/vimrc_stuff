@@ -5,6 +5,7 @@ repo = 'tpope/vim-git'
 repo = 'tpope/vim-fugitive'
 hook_add = '''
 nnoremap <leader>gg :Git<CR>
+nnoremap <leader>gw :Gwrite<CR>
 
 " Fugitive Conflict Resolution
 nnoremap <leader>gd :Gvdiff<CR>
@@ -42,7 +43,7 @@ if = 'exists("g:fubitive_domain_pattern")'
 repo = 'idanarye/vim-merginal'
 hook_add = '''
 "
-nnoremap <leader>b :MerginalToggle<CR>
+nnoremap <leader>gb :MerginalToggle<CR>
 '''
 
 [[plugins]]
