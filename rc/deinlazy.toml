@@ -499,6 +499,18 @@ depends = [ 'syntastic' ]
 repo = 'itspriddle/vim-shellcheck'
 on_ft = 'sh'
 
-# [[plugins]]
-# repo = 'neoclide/coc-denite'
-# depends = [ 'coc.nvim', 'denite.nvim' ]
+[[plugins]]
+repo = 'j-hui/fidget.nvim'
+
+[[plugins]]
+repo = 'rest-nvim/rest.nvim'
+depends = ['nvim-treesitter', 'fidget.nvim']
+on_cmd = 'Rest'
+
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+hook_post_update = '''
+:TSUpdate
+'''
+on_cmd = [ 'TSBufDisable', 'TSBufEnable', 'TSBufToggle', 'TSDisable', 'TSEditQuery', 'TSEditQueryUserAfter', 'TSEnable', 'TSInstall', 'TSInstallSync', 'TSInstallInfo', 'TSModuleInfo', 'TSToggle', 'TSUninstall', 'TSUpdate', 'TSUpdateSync' ]
+on_func = 'nvim_treesitter#.*'
