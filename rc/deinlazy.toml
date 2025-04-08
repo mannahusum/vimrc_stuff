@@ -505,7 +505,11 @@ repo = 'j-hui/fidget.nvim'
 [[plugins]]
 repo = 'rest-nvim/rest.nvim'
 depends = ['nvim-treesitter', 'fidget.nvim']
+hook_add = '''
+autocmd BufNewFile,BufRead *.http set ft=http
+'''
 on_cmd = 'Rest'
+on_ft = 'http'
 
 [[plugins]]
 repo = 'nvim-treesitter/nvim-treesitter'
