@@ -53,20 +53,43 @@ _ = '''
   endif
 '''
 
-vim = '''
-  if line('$') > 1000
-    syntax sync minlines=200
-  endif
+go = '''
+  setlocal softtabstop=8 shiftwidth=8 tabstop=8 noexpandtab
+  setlocal colorcolumn=80
+'''
 
-  setlocal foldmethod=indent
-  setlocal shiftwidth=2 softtabstop=2
-  setlocal iskeyword+=:,#
+hcl = '''
+  setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
+'''
+
+json = '''
+  setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
+  setlocal colorcolumn=80
+'''
+markdown = '''
+  setlocal softtabstop=4 shiftwidth=4 tabstop=4 expandtab
+  setlocal textwidth=80 formatoptions-=t wrapmargin=40
+'''
+
+nix = '''
+  setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
+  setlocal colorcolumn=80
+'''
+
+sh = '''
+  setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
   setlocal colorcolumn=80
 '''
 
 toml = '''
   syntax sync minlines=500
   setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
+  setlocal colorcolumn=80
+'''
+
+pandoc = '''
+  setlocal softtabstop=4 shiftwidth=4 tabstop=4 expandtab
+  setlocal textwidth=80 formatoptions-=t wrapmargin=40
   setlocal colorcolumn=80
 '''
 
@@ -77,31 +100,6 @@ ps1 = '''
   setlocal colorcolumn=80
 '''
 
-pandoc = '''
-  setlocal softtabstop=4 shiftwidth=4 tabstop=4 expandtab
-  setlocal textwidth=80 formatoptions-=t wrapmargin=40
-  setlocal colorcolumn=80
-'''
-
-markdown = '''
-  setlocal softtabstop=4 shiftwidth=4 tabstop=4 expandtab
-  setlocal textwidth=80 formatoptions-=t wrapmargin=40
-'''
-
-go = '''
-  setlocal softtabstop=8 shiftwidth=8 tabstop=8 noexpandtab
-  setlocal colorcolumn=80
-'''
-
-sh = '''
-  setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
-  setlocal colorcolumn=80
-'''
-
-json = '''
-  setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
-  setlocal colorcolumn=80
-'''
 # ps1pester = '''
 # let &l:makeprg = vimrc_ca#find_powershell() . ' -NonInteractive -NoProfile -Command "' . "[Threading.Thread]::CurrentThread.CurrentUICulture = 'en-US' ; Invoke-Pester -Script %:p:S -Show Fails". '"'
 # " *>H:\\RemoteExecute\\PesterErrors.txt" . '"'
@@ -111,11 +109,13 @@ json = '''
 # " setl errorformat=%+GDescribing\ %.%#,%+G[-]%.%#,%+G[+]%.%#,%+GTests\ completed\ in%.%#,%+GPassed:\ %*\\d\\,\ Failed:\ %*\\d\\,\ Skipped:\ %*\\d\\,\ Pending:\ %*\\d\\,\ Inconclusive:\ %*\\d,%+E\ [-]\ %m,%+C\ \ \ Expected:\ %.%#,%+C\ \ \ But\ was:\ %.%#,%C\ \ \ %*\\d:\ %m,%Z\ \ \ at\ %.ScriptBlock%.\\,\ %f:\ line\ %l,%+E%*\\k\ :\ %.%#,%CAt\ %f:%l\ char:%c,%-C%.%#,%-G%.%#
 # '''
 
-nix = '''
-  setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
-  setlocal colorcolumn=80
-'''
+vim = '''
+  if line('$') > 1000
+    syntax sync minlines=200
+  endif
 
-hcl = '''
-  setlocal softtabstop=2 shiftwidth=2 tabstop=2 expandtab
+  setlocal foldmethod=indent
+  setlocal shiftwidth=2 softtabstop=2
+  setlocal iskeyword+=:,#
+  setlocal colorcolumn=80
 '''
