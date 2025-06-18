@@ -376,6 +376,9 @@ hook_add = '''
 
 [[plugins]]
 repo = 'reinh/vim-makegreen'
+hook_add = '''
+nnoremap <leader>mg :MakeGreen<CR>
+'''
 
 
 [[plugins]]
