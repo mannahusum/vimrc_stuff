@@ -12,6 +12,10 @@ nnoremap <leader>gw :Gwrite<CR>
 nnoremap <leader>gd :Gvdiff<CR>
 nnoremap <leader>h :diffget //2<CR>
 nnoremap <leader>l :diffget //3<CR>
+
+" Push and pull
+nnoremap <leader>gp :Git pull<CR>
+nnoremap <leader>gu :Git push<CR>
 '''
 
 [[plugins]]
