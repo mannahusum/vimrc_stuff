@@ -501,6 +501,10 @@ on_ft = 'sh'
 
 [[plugins]]
 repo = 'j-hui/fidget.nvim'
+on_cmd = 'Fidget'
+hook_source = '''
+lua require("fidget").setup {}
+'''
 
 [[plugins]]
 repo = 'rest-nvim/rest.nvim'
