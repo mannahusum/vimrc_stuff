@@ -199,7 +199,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " Using CocCommand
 """ Reformat current document
-nnoremap <silent> <space>f :CocCommand editor.action.formatDocument
+nnoremap <silent> <space>f :CocCommand editor.action.formatDocument<CR>
 '''
 merge = 0
 on_if = 1
