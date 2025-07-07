@@ -13,7 +13,7 @@ set shortmess=ca
 
 " always show signcolumns
 set signcolumn=yes
-let g:coc_global_extensions=[ 'coc-powershell', 'coc-vimtex', 'coc-cmake', 'coc-sh', 'coc-json', 'coc-python' ]
+let g:coc_global_extensions=[ 'coc-powershell', 'coc-vimtex', 'coc-cmake', 'coc-sh', 'coc-json', 'coc-pyright' ]
 '''
 hook_source = '''
 function! s:resolve_executable_path(path) abort
@@ -196,6 +196,10 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" Using CocCommand
+""" Reformat current document
+nnoremap <silent> <space>f :CocCommand editor.action.formatDocument
 '''
 merge = 0
 on_if = 1
@@ -323,6 +327,10 @@ on_if = 1
 
 [[plugins]]
 repo = 'jeetsukumaran/vim-pythonsense'
+on_ft = 'python'
+
+[[plugins]]
+repo = 'tartansandal/vim-compiler-pytest'
 on_ft = 'python'
 
 [[plugins]]
