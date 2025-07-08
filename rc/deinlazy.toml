@@ -530,3 +530,17 @@ hook_post_update = '''
 '''
 on_cmd = [ 'TSBufDisable', 'TSBufEnable', 'TSBufToggle', 'TSDisable', 'TSEditQuery', 'TSEditQueryUserAfter', 'TSEnable', 'TSInstall', 'TSInstallSync', 'TSInstallInfo', 'TSModuleInfo', 'TSToggle', 'TSUninstall', 'TSUpdate', 'TSUpdateSync' ]
 on_func = 'nvim_treesitter#.*'
+
+[[plugins]]
+repo = 'romgrk/todoist.nvim'
+hook_post_update = '''
+:TodoistInstall
+'''
+on_if = 'exists("$TODOIST_API_KEY")'
+
+[[plugins]]
+repo = 'liuchengxu/vim-clap'
+hook_post_update = '''
+:call clap#installer#download_binary()
+'''
+on_if = 'exists("$TODOIST_API_KEY")'
