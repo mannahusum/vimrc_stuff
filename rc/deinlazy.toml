@@ -533,6 +533,19 @@ on_func = 'nvim_treesitter#.*'
 
 [[plugins]]
 repo = 'romgrk/todoist.nvim'
+hook_add = '''
+nnoremap <leader>ti :Todoist<CR>
+let g:todoist = {
+\  'icons': {
+\    'unchecked': ' [ ] ',
+\    'checked':   ' [x] ',
+\    'loading':   ' […] ',
+\    'error':     ' [!] ',
+\  },
+\  'defaultProject': 'ITIV',
+\  'useMarkdownSyntax': v:true,
+\}
+'''
 hook_post_update = '''
 :TodoistInstall
 '''
@@ -540,6 +553,9 @@ on_if = 'exists("$TODOIST_API_KEY")'
 
 [[plugins]]
 repo = 'liuchengxu/vim-clap'
+hook_add = '''
+nnoremap <leader>td :Clap todoist<CR>
+'''
 hook_post_update = '''
 :call clap#installer#download_binary()
 '''
