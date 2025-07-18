@@ -55,17 +55,12 @@ endif
 "---------------------------------------------------------------------------
 " Options:
 set mouse=
-set mousemodel=
 
 " Don't focus the window when the mouse pointer is moved.
 set nomousefocus
 " Hide mouse pointer on insert mode.
 set mousehide
 
-" Execute commands without a new window
-set guioptions+=!
-" Link visual mode to clipboard
-set guioptions+=a
 " Hide toolbar and menus.
 set guioptions-=T
 set guioptions-=t
@@ -75,8 +70,6 @@ set guioptions-=r
 set guioptions-=L
 " Not guitablabel.
 set guioptions-=e
-" Confirm without window.
-set guioptions+=c
 " if has('patch-8.0.1609')
 "   set guioptions+=!
 " endif

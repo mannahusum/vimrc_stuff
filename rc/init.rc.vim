@@ -57,11 +57,3 @@ if !isdirectory(s:dein_dir)
 endif
 execute 'set runtimepath^=' . substitute(
     \ fnamemodify(s:dein_dir, ':p') , '/$', '', '')
-
-" Disable packpath
-set packpath=
-
-" Disable menu.vim
-if has('gui_running')
-   set guioptions=mc
-endif
