@@ -7,6 +7,7 @@ hook_add = '''
 nnoremap <leader>gc :Git commit<CR>
 nnoremap <leader>gg :Git<CR>
 nnoremap <leader>gw :Gwrite<CR>
+nnoremap <leader>gl :Gclog<CR>
 
 " Fugitive Conflict Resolution
 nnoremap <leader>gd :Gvdiff<CR>
@@ -43,6 +44,10 @@ depends = [
 [[plugins]]
 repo = 'tommcdo/vim-fubitive'
 if = 'exists("g:fubitive_domain_pattern")'
+
+[[plugins]]
+repo = 'borissov/fugitive-gitea'
+if = 'exists("g:fugitive_gitea_domains")'
 
 [[plugins]]
 repo = 'idanarye/vim-merginal'
