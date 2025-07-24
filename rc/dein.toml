@@ -18,6 +18,7 @@ nnoremap <leader>l :diffget //3<CR>
 nnoremap <leader>gf :Git fetch<CR>
 nnoremap <leader>gp :Git pull<CR>
 nnoremap <leader>gu :Git push<CR>
+nnoremap <leader>gU :Git -c push.default=current push<CR>
 '''
 
 [[plugins]]
