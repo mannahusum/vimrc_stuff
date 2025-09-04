@@ -32,6 +32,11 @@ tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 augroup pandoc_syntax
     au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
 augroup END
+
+augroup yaml_gitlab
+    au! BufNewFile,BufFilePre,BufRead .gitlab-ci.yaml set filetype=yaml.gitlab
+    au! BufNewFile,BufFilePre,BufRead .gitlab-ci.yml set filetype=yaml.gitlab
+augroup END
 '''
 
 [ftplugin]

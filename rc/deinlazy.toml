@@ -77,7 +77,15 @@ if exists("g:openscadlspPath")
     \ "filetypes": ["openscad"]
   \ }
   let openscadlspConfig.command = g:openscadlspPath
-  let languageserver.nix = openscadlspConfig
+  let languageserver.openscad = openscadlspConfig
+endif
+
+if exists("g:gitlabCiLs")
+  let gitlabcilsConfig = {
+    \ "filetypes": ["yaml.gitlab"]
+    \ }
+  let gitlabcilsConfig.command = g:gitlabCiLs
+  let languageserver.gitlabci = gitlabcilsConfig
 endif
 
 call coc#config('languageserver', languageserver)
