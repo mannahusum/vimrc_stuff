@@ -68,9 +68,6 @@ hook_post_update= 'call vimrc_ca#install_vimproc()'
 
 [[plugins]]
 repo = 'junegunn/vim-emoji'
-hook_add = '''
-nnoremap <leader>gv :GV<CR>
-'''
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
@@ -305,6 +302,9 @@ if = '''!has('nvim') '''
 
 [[plugins]]
 repo = 'junegunn/gv.vim'
+hook_add = '''
+nnoremap <leader>gv :GV<CR>
+'''
 
 [[plugins]]
 repo = 'lervag/vimtex'
