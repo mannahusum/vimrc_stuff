@@ -42,6 +42,6 @@ nnoremap <silent> <localleader>Df  :<C-u>Denite file/point file/old
   \ `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`
   \ file file:new<CR>
 nnoremap <silent> <localleader>Dv
-  \ :<C-u>Denite file/rec:`IsWindows() ? '~/vimfiles' : '~/.vim'`<CR>
+  \ :<C-u>Denite file/rec:`IsWindows() ? '~/vimfiles' : '~/.config/nvim'`<CR>
 
 nnoremap <localleader>m :make<cr>
