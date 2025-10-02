@@ -211,57 +211,28 @@ repo = 'tpope/vim-commentary'
 repo = 'mrtazz/simplenote.vim'
 
 [[plugins]]
-repo = 'Shougo/unite.vim'
-hook_add = '''
-  if executable('rg')
-    let unite_ignores = ["!CMakeFiles",
-          \"!*.dSYM",
-          \"!*.dat",
-          \"!*.pdf",
-          \"!*.bib"]
-    let unite_globs = []
-    for ig in unite_ignores
-      call add(unite_globs, "--glob '" . ig . "'")
-    endfor
-    " Use rg in unite grep source.
-    let g:unite_source_grep_command = 'rg'
-    let g:unite_source_grep_default_opts =
-      \ ' --smart-case -n --no-heading --color never --no-messages ' .
-      \ join(unite_globs) . ' -e '
+repo = 'nvim-lua/plenary.nvim'
+# Needed for telescope
 
-    " avoid having unite add '--' where it doesn't go
-    let g:unite_source_grep_separator = ""
-    let g:unite_source_grep_recursive_opt = ''
-    " The empty perens set the pattern, all files should match
-    let unite_globs2 = []
-    for ig in unite_ignores
-      call add(unite_globs2, '--glob')
-      call add(unite_globs2, ig)
-    endfor
-    let g:unite_source_rec_async_command =
-      \ ['rg', '--color', 'never', '--no-heading', '--files'] + unite_globs2
-  endif
-  nnoremap <leader>ur  :<C-u>Unite -start-insert file_rec/async:!<CR>
-  nnoremap <leader>ub  :<C-u>Unite buffer        file_mru bookmark<CR>
-  nnoremap <leader>uB  :<C-u>Unite bookmark<CR>
-  nnoremap <leader>uY  :<C-u>Unite history/yank<CR>
-  nnoremap <leader>uf  :<C-u>Unite -start-insert file<CR>
-  nnoremap <leader>un  :<C-u>Unite -start-insert file_rec:~/Projects/notes/<CR>
-  nnoremap <leader>ug  :<C-u>Unite grep:.<CR>
-  nnoremap <leader>uG  :<C-u>Unite grep:.:-i<CR>
+[[plugins]]
+repo = 'nvim-treesitter/nvim-treesitter'
+hook_post_update = '''
+:silent TSUpdate http
 '''
 
 [[plugins]]
-repo = 'sgur/unite-everything'
-if = 'IsWindows()'
+repo = 'nvim-telescope/telescope.nvim'
 hook_add = '''
-  " let g:unite_source_everything_limit = 100
-  let g:unite_source_everything_full_path_search = 1
-  let g:unite_source_everything_posix_regexp_search = 1
-  let g:unite_source_everything_sort_by_full_name = 0
-  let g:unite_source_everything_case_sensitive_search = 1
-  let g:unite_source_everything_async_minimum_length = 3
+" Find files using Telescope command-line sugar.
+nnoremap <localleader>Df <cmd>Telescope find_files<cr>
+nnoremap <localleader>Dg <cmd>Telescope live_grep<cr>
+nnoremap <localleader>Db <cmd>Telescope buffers<cr>
+nnoremap <localleader>Dh <cmd>Telescope help_tags<cr>
 '''
+# nnoremap <leader>uB  :<C-u>Unite bookmark<CR>
+# nnoremap <leader>uY  :<C-u>Unite history/yank<CR>
+# nnoremap <leader>uf  :<C-u>Unite -start-insert file<CR>
+# nnoremap <leader>un  :<C-u>Unite -start-insert file_rec:~/Projects/notes/<CR>
 
 [[plugins]]
 repo = 'tpope/vim-scriptease'

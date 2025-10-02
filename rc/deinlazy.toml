@@ -441,122 +441,6 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/denite.nvim'
-on_cmd = [ 'Denite' ]
-hook_add = '''
-'''
-hook_source = '''
-  " Configuration
-  call denite#custom#option('_', 'root_markers', '.git,.gitignore,.tfignore')
-  call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
-    \ [ '.git/', '.ropeproject/', '__pycache__/',
-    \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/'])
-
-  " Aliases
-  call denite#custom#alias('source', 'file/rec/git', 'file/rec')
-  call denite#custom#var('file/rec/git', 'command',
-    \ ['git', 'ls-files', '-co', '--exclude-standard'])
-
-  autocmd FileType denite call s:denite_my_settings()
-  function! s:denite_my_settings() abort
-    nnoremap <silent><buffer><expr> <CR>
-    \ denite#do_map('do_action')
-    nnoremap <silent><buffer><expr> d
-    \ denite#do_map('do_action', 'delete')
-    nnoremap <silent><buffer><expr> p
-    \ denite#do_map('do_action', 'preview')
-    nnoremap <silent><buffer><expr> q
-    \ denite#do_map('quit')
-    nnoremap <silent><buffer><expr> i
-    \ denite#do_map('open_filter_buffer')
-    nnoremap <silent><buffer><expr> <Space>
-    \ denite#do_map('toggle_select').'j'
-  endfunction
-
-  autocmd FileType denite-filter call s:denite_filter_my_settings()
-  function! s:denite_filter_my_settings() abort
-    imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
-  endfunction
-
-  if executable('ag')
-    " Change file/rec command.
-    call denite#custom#var('file/rec', 'command',
-    \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-
-    " Ag command on grep source
-    call denite#custom#var('grep', 'command', ['ag'])
-    call denite#custom#var('grep', 'default_opts',
-        \ ['-i', '--vimgrep'])
-    call denite#custom#var('grep', 'recursive_opts', [])
-    call denite#custom#var('grep', 'pattern_opt', [])
-    call denite#custom#var('grep', 'separator', ['--'])
-    call denite#custom#var('grep', 'final_opts', [])
-
-  elseif executable('rg')
-    " For ripgrep
-    " Note: It is slower than ag
-    call denite#custom#var('file/rec', 'command',
-    \ ['rg', '--files', '--glob', '!.git'])
-
-    " Ripgrep command on grep source
-    call denite#custom#var('grep', 'command', ['rg'])
-    call denite#custom#var('grep', 'default_opts',
-        \ ['-i', '--vimgrep', '--no-heading'])
-    call denite#custom#var('grep', 'recursive_opts', [])
-    call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-    call denite#custom#var('grep', 'separator', ['--'])
-    call denite#custom#var('grep', 'final_opts', [])
-
-  elseif executable('pt')
-    " For Pt(the platinum searcher)
-    " NOTE: It also supports windows.
-    call denite#custom#var('file/rec', 'command',
-    \ ['pt', '--follow', '--nocolor', '--nogroup',
-    \  (has('win32') ? '-g:' : '-g='), ''])
-
-    " Pt command on grep source
-    call denite#custom#var('grep', 'command', ['pt'])
-    call denite#custom#var('grep', 'default_opts',
-        \ ['-i', '--nogroup', '--nocolor', '--smart-case'])
-    call denite#custom#var('grep', 'recursive_opts', [])
-    call denite#custom#var('grep', 'pattern_opt', [])
-    call denite#custom#var('grep', 'separator', ['--'])
-    call denite#custom#var('grep', 'final_opts', [])
-
-  else
-
-    if executable('scantree.py')
-      " For python script scantree.py
-      " Read bellow on this file to learn more about scantree.py
-      call denite#custom#var('file/rec', 'command',
-      \ ['scantree.py', '--path', ':directory'])
-    endif
-
-    if executable('ack')
-      " Ack command on grep source
-      call denite#custom#var('grep', 'command', ['ack'])
-      call denite#custom#var('grep', 'default_opts',
-          \ ['--ackrc', $HOME.'/.ackrc', '-H', '-i',
-          \  '--nopager', '--nocolor', '--nogroup', '--column'])
-      call denite#custom#var('grep', 'recursive_opts', [])
-      call denite#custom#var('grep', 'pattern_opt', ['--match'])
-      call denite#custom#var('grep', 'separator', ['--'])
-      call denite#custom#var('grep', 'final_opts', [])
-
-    elseif executable('jvgrep')
-      " jvgrep command on grep source
-      call denite#custom#var('grep', 'command', ['jvgrep'])
-      call denite#custom#var('grep', 'default_opts', ['-i'])
-      call denite#custom#var('grep', 'recursive_opts', ['-R'])
-      call denite#custom#var('grep', 'pattern_opt', [])
-      call denite#custom#var('grep', 'separator', [])
-      call denite#custom#var('grep', 'final_opts', [])
-    endif
-
-  endif
-'''
-
-[[plugins]]
 repo = 'vim-syntastic/syntastic'
 on_ft = 'toml'
 hook_add = '''
@@ -590,14 +474,6 @@ autocmd BufNewFile,BufRead *.http set ft=http
 '''
 on_cmd = 'Rest'
 on_ft = 'http'
-
-[[plugins]]
-repo = 'nvim-treesitter/nvim-treesitter'
-hook_post_update = '''
-:silent TSUpdate http
-'''
-on_cmd = [ 'TSBufDisable', 'TSBufEnable', 'TSBufToggle', 'TSDisable', 'TSEditQuery', 'TSEditQueryUserAfter', 'TSEnable', 'TSInstall', 'TSInstallSync', 'TSInstallInfo', 'TSModuleInfo', 'TSToggle', 'TSUninstall', 'TSUpdate', 'TSUpdateSync' ]
-on_func = 'nvim_treesitter#.*'
 
 [[plugins]]
 repo = 'romgrk/todoist.nvim'

@@ -35,13 +35,13 @@ nnoremap <localleader>d :setlocal spell spelllang=de<cr>
 nnoremap <localleader>p :setlocal spell spelllang=pl<cr>
 nnoremap <localleader>b :setlocal spell spelllang=en_gb<cr>
 
-nnoremap <silent> <localleader>Dg  :<C-u>Denite -buffer-name=search
-  \ -no-empty grep<CR>
-nnoremap <silent> <localleader>Df  :<C-u>Denite file/point file/old
-  \ -sorters=sorter/rank
-  \ `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`
-  \ file file:new<CR>
-nnoremap <silent> <localleader>Dv
-  \ :<C-u>Denite file/rec:`IsWindows() ? '~/vimfiles' : '~/.config/nvim'`<CR>
+" nnoremap <silent> <localleader>Dg  :<C-u>Denite -buffer-name=search
+"   \ -no-empty grep<CR>
+" nnoremap <silent> <localleader>Df  :<C-u>Denite file/point file/old
+"   \ -sorters=sorter/rank
+"   \ `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`
+"   \ file file:new<CR>
+" nnoremap <silent> <localleader>Dv
+"   \ :<C-u>Denite file/rec:`IsWindows() ? '~/vimfiles' : '~/.config/nvim'`<CR>
 
 nnoremap <localleader>m :make<cr>
