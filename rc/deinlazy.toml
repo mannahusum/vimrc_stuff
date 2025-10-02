@@ -13,7 +13,16 @@ set shortmess=ca
 
 " always show signcolumns
 set signcolumn=yes
-let g:coc_global_extensions=[ 'coc-powershell', 'coc-vimtex', 'coc-cmake', 'coc-sh', 'coc-json', 'coc-pyright' ]
+let g:coc_global_extensions=[
+  \ 'coc-cmake',
+  \ 'coc-json',
+  \ 'coc-lists',
+  \ 'coc-powershell',
+  \ 'coc-pyright',
+  \ 'coc-sh',
+  \ 'coc-vimtex',
+  \ 'coc-yaml',
+  \ ]
 '''
 hook_source = '''
 function! s:resolve_executable_path(path) abort
@@ -63,12 +72,20 @@ elseif executable("bash-language-server")
 endif
 
 if exists("g:nilPath")
+  call coc#config('nix.enableLanguageServer', v:true)
+  call coc#config('nix.serverPath', g:nilPath)
+
   let nilConfig = {
     \ "rootPatterns": ["flake.nix"],
     \ "filetypes": ["nix"]
   \ }
   let nilConfig.command = g:nilPath
+  if exists("g:alejandraPath")
+    let nixServerSettings = {  "nil": {  "formatting": {  "command": [g:alejandraPath]  }  }  }
+  endif
+  let nilConfig.settings = nixServerSettings
   let languageserver.nix = nilConfig
+  call coc#config('nix.serverSettings', nixServerSettings)
 endif
 
 if exists("g:openscadlspPath")
@@ -113,12 +130,27 @@ if exists("g:pylintPath")
 endif
 
 
+autocmd FileType python let b:coc_root_patterns =
+      \ ['.git', '.env', 'setup.py', 'pyproject.toml', 'pyrightconfig.json']
+
+call coc#config('yaml.enable', 1)
+call coc#config('yaml.yamlVersion', '1.2')
+call coc#config('yaml.format.enable', 1)
+call coc#config('yaml.format.singleQuote', 1)
+call coc#config('yaml.bracketSpacing', 1)
+call coc#config('yaml.proseWrap', 'Always')
+call coc#config('yaml.printWidth', 78)
+call coc#config('yaml.hover', 1)
+call coc#config('yaml.completion', 1)
+
+
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use tab for trigger completion with characters ahead and navigate.
+'''
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -190,20 +222,48 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Using CocList
 " Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Show all buffers
+nnoremap <silent> <space>b  :<C-u>CocList buffers<cr>
+" Show last executed commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Manage extensions
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Show colors schemes
+nnoremap <silent> <space>f  :<C-u>CocList colors<cr>
+" Show grep text from current directoy
+nnoremap <silent> <space>g  :<C-u>CocList grep<cr>
+" List all vim helptags
+nnoremap <silent> <space>h  :<C-u>CocList helptags<cr>
+" Items from vim's location list
+nnoremap <silent> <space>l  :<C-u>CocList locationlist<cr>
+" Search lines by regex patterns
+nnoremap <silent> <space>L  :<C-u>CocList lines<cr>
 " Do default action for next item.
 nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Marks of vim
+nnoremap <silent> <space>m  :<C-u>CocList marks<cr>
+" Key mappings
+nnoremap <silent> <space>M  :<C-u>CocList maps<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" Most recent used files
+nnoremap <silent> <space>r  :<C-u>CocList mru<cr>
+" Show filetypes
+nnoremap <silent> <space>y  :<C-u>CocList filetypes<cr>
+" Show changes in current file
+nnoremap <silent> <space>~  :<C-u>CocList changes<cr>
+" Show command history
+nnoremap <silent> <space>!  :<C-u>CocList cmdhistory<cr>
+" Search lines by regex patterns.
+nnoremap <silent> <space><cr>  :<C-u>CocList lines<cr>
+" Show files in current directory
+nnoremap <silent> <space>.  :<C-u>CocList files<cr>
 
 " Using CocCommand
 """ Reformat current document
