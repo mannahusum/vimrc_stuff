@@ -409,3 +409,6 @@ repo = 'jvirtanen/vim-hcl'
 
 [[plugins]]
 repo = 'lucidph3nx/nvim-sops'
+
+[[plugins]]
+repo = 'Vimjas/vim-python-pep8-indent'
